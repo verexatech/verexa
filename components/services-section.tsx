@@ -290,7 +290,7 @@ function DesignGraphic() {
         <div className="absolute top-2 right-2 w-2 h-2 bg-primary shadow-[0_0_10px_hsl(var(--primary))] z-10 rounded-full animate-ping"></div>
 
         {/* Center Glass Panel */}
-        <div className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-xl bg-black/40 backdrop-blur-xl border border-white/20 flex items-center justify-center shadow-2xl z-20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px_hsl(var(--primary))]">
+        <div className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-xl bg-black/40 backdrop-blur-xl border border-white/20 flex items-center justify-center shadow-2xl z-20 group-hover:scale-110 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px_hsl(var(--primary))]">
           <PenTool className="w-8 h-8 text-white drop-shadow-md group-hover:text-primary transition-colors" />
         </div>
       </div>
@@ -328,7 +328,7 @@ function CloudGraphic() {
         {/* Main Cloud Node */}
         <div className="w-16 h-16 rounded-2xl bg-primary/20 border border-primary/40 flex items-center justify-center shadow-[0_0_30px_hsl(var(--primary)/0.5)] z-10 relative group-hover:scale-110 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_40px_hsl(var(--primary))]">
           <div className="absolute inset-0 rounded-2xl bg-primary/30 animate-ping opacity-20 group-hover:opacity-30 transition-opacity"></div>
-          <Cloud className="w-8 h-8 text-primary drop-shadow-md group-hover:text-white transition-colors" />
+          <Cloud className="w-8 h-8 text-white drop-shadow-md group-hover:text-accent transition-colors" />
         </div>
         {/* Connected Server Nodes */}
         <div className="flex gap-4">

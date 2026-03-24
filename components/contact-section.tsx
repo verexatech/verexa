@@ -195,7 +195,7 @@ export function WorkWithUsSection() {
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="font-heading fill-background stroke-white/20 font-bold uppercase tracking-wide text-[220px]"
+            className="font-heading fill-background stroke-white/25 font-bold uppercase tracking-wide text-[220px]"
             style={{ paintOrder: "stroke fill", strokeWidth: "3px" }}
           >
             Verexa

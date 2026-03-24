@@ -23,11 +23,11 @@ export function Footer() {
                 icon={<Twitter className="w-4 h-4" />}
               />
               <SocialLink
-                href="https://www.linkedin.com/company/verexa-technologies/"
+                href="https://www.linkedin.com/company/verexatech"
                 icon={<Linkedin className="w-4 h-4" />}
               />
               <SocialLink
-                href="https://www.instagram.com/verexatech/"
+                href="https://www.instagram.com/verexatech"
                 icon={<Instagram className="w-4 h-4" />}
               />
               <SocialLink

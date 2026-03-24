@@ -40,7 +40,7 @@ export function HeroSection() {
       <img
         src="/hero-bg.gif"
         alt="Hero Background"
-        className="-mt-32 lg:-mt-[15%] w-full h-[600px] lg:h-auto min-h-[60%] object-cover object-top opacity-50 xl:opacity-75 pointer-events-none z-0"
+        className="-mt-32 lg:-mt-[15%] w-full h-[600px] lg:h-auto min-h-[60%] object-cover object-top opacity-90 pointer-events-none z-0"
       />
     </section>
   );

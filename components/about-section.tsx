@@ -2,7 +2,6 @@
 
 import { ReactNode } from "react";
 import Image from "next/image";
-import { Code2, Globe, Zap } from "lucide-react";
 
 export function AboutSection() {
   return (
@@ -71,72 +70,98 @@ export function AboutSection() {
                     99%
                   </div>
                   <p className="text-muted-foreground/70 text-xs">
-                    Happy clients
+                    Clients Satisfied
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Visual Graphics */}
+          {/* Right Visual Graphics - 2x2 Card Grid */}
           <div className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end py-12 lg:py-0 min-h-[500px]">
             {/* Elegant backdrop glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
 
-            {/* Central Main Card */}
-            <div className="relative w-[280px] sm:w-[320px] xl:w-[380px] aspect-square rounded-3xl bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center group z-20">
-              <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-primary/10 to-transparent opacity-50"></div>
-              
-              {/* Animated Rings */}
-              <div className="absolute w-[75%] h-[75%] rounded-full border border-primary/20 border-t-primary/60 animate-[spin_10s_linear_infinite]" />
-              <div className="absolute w-[55%] h-[55%] rounded-full border border-white/10 border-b-white/50 animate-[spin_15s_linear_infinite_reverse]" />
-              
-              {/* Logo/Center Icon */}
-              <div className="w-24 h-24 rounded-2xl bg-background/80 backdrop-blur-2xl border border-white/20 flex items-center justify-center shadow-[0_0_30px_hsl(var(--primary)/0.3)] z-10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-700">
-                <Image src="/logo.png" alt="Verexa" width={60} height={60} className="object-contain drop-shadow-md" />
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 relative z-20 w-full max-w-[500px]">
+              {/* Column 1 - Offset Down */}
+              <div className="flex flex-col gap-4 sm:gap-6 mt-12">
+                {/* Card 1 */}
+                <div className="relative p-7 sm:p-8 rounded-4xl overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                  <div className="absolute inset-0 bg-card/60 backdrop-blur-3xl border border-white/0 rounded-4xl z-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-colors duration-500 group-hover:border-primary/20 group-hover:bg-primary/5"></div>
+                  <div className="absolute -inset-x-12 -inset-y-12 bg-linear-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0"></div>
+
+                  <div className="relative z-10">
+                    <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-primary transition-colors duration-500">
+                      01
+                    </div>
+                    <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-primary transition-colors duration-500">
+                      Our Mission
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Crafting exceptional digital experiences that scale
+                      effortlessly.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 2 */}
+                <div className="relative p-7 sm:p-8 rounded-4xl overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                  <div className="absolute inset-0 bg-card/60 backdrop-blur-3xl border border-white/0 rounded-4xl z-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-colors duration-500 group-hover:border-accent/20 group-hover:bg-accent/5"></div>
+                  <div className="absolute -inset-x-12 -inset-y-12 bg-linear-to-bl from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0"></div>
+
+                  <div className="relative z-10">
+                    <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-accent transition-colors duration-500">
+                      02
+                    </div>
+                    <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-accent transition-colors duration-500">
+                      Innovation
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Embracing cutting-edge tech to keep you ahead of the
+                      curve.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              {/* Badges/Tags */}
-              <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-3 px-6">
-                <span className="px-4 py-1.5 rounded-full bg-background/50 backdrop-blur-md border border-white/10 text-[10px] text-white/90 font-medium tracking-widest uppercase shadow-lg">Innovation</span>
-                <span className="px-4 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-[10px] text-primary-foreground font-medium tracking-widest uppercase shadow-lg">Future</span>
-              </div>
-            </div>
+              {/* Column 2 - Offset Up */}
+              <div className="flex flex-col gap-4 sm:gap-6 mb-12">
+                {/* Card 3 */}
+                <div className="relative p-7 sm:p-8 rounded-4xl overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                  <div className="absolute inset-0 bg-card/60 backdrop-blur-3xl border border-white/0 rounded-4xl z-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-colors duration-500 group-hover:border-accent/20 group-hover:bg-accent/5"></div>
+                  <div className="absolute -inset-x-12 -inset-y-12 bg-linear-to-tr from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0"></div>
 
-            {/* Floating Card 1 - Top Left */}
-            <div className="absolute top-[5%] left-[5%] xl:-left-[10%] w-52 p-4 rounded-2xl bg-background/60 backdrop-blur-2xl border border-white/10 shadow-2xl z-30 transform transition-transform duration-500 hover:scale-105 hover:-translate-y-2 cursor-default" style={{ animation: "float 6s ease-in-out infinite" }}>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/20 shadow-inner">
-                  <Code2 className="w-5 h-5 text-primary" />
+                  <div className="relative z-10">
+                    <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-accent transition-colors duration-500">
+                      03
+                    </div>
+                    <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-accent transition-colors duration-500">
+                      Global Reach
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      A widespread remote-first network of world-class experts.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-xs font-semibold text-white tracking-wide">Digital Craft</div>
-                  <div className="text-[9px] text-muted-foreground uppercase tracking-widest mt-0.5">Development</div>
-                </div>
-              </div>
-              <div className="space-y-2.5">
-                <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                  <div className="h-full bg-primary w-[85%] rounded-full shadow-[0_0_10px_hsl(var(--primary))]"></div>
-                </div>
-                <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                  <div className="h-full bg-primary/60 w-[60%] rounded-full"></div>
-                </div>
-              </div>
-            </div>
 
-            {/* Floating Card 2 - Bottom Right */}
-            <div className="absolute bottom-[5%] right-[0%] xl:-right-[10%] w-60 p-5 rounded-2xl bg-card/80 backdrop-blur-2xl border border-white/10 shadow-2xl z-30 transform transition-transform duration-500 hover:scale-105 hover:-translate-y-2 cursor-default" style={{ animation: "float 7s ease-in-out infinite 1s" }}>
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <div className="text-[10px] text-primary uppercase tracking-widest mb-1 font-semibold">Global Reach</div>
-                  <div className="text-white font-medium text-sm">Toronto Base</div>
+                {/* Card 4 */}
+                <div className="relative p-7 sm:p-8 rounded-4xl overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                  <div className="absolute inset-0 bg-card/60 backdrop-blur-3xl border border-white/0 rounded-4xl z-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-colors duration-500 group-hover:border-accent/20 group-hover:bg-accent/5"></div>
+                  <div className="absolute -inset-x-12 -inset-y-12 bg-linear-to-tl from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0"></div>
+
+                  <div className="relative z-10">
+                    <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-accent transition-colors duration-500">
+                      04
+                    </div>
+                    <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-accent transition-colors duration-500">
+                      Partnership
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Dedicated rapid collaboration treating your business as
+                      our own.
+                    </p>
+                  </div>
                 </div>
-                <div className="px-2 py-1 rounded-md bg-white/5 border border-white/10 text-white text-[10px] font-bold">100%</div>
-              </div>
-              <div className="flex -space-x-3 mt-2">
-                <div className="w-10 h-10 rounded-full border-2 border-card bg-primary/20 flex items-center justify-center z-30 backdrop-blur-md shadow-md"><Globe className="w-4 h-4 text-primary" /></div>
-                <div className="w-10 h-10 rounded-full border-2 border-card bg-accent/20 flex items-center justify-center z-20 backdrop-blur-md shadow-md"><Zap className="w-4 h-4 text-white" /></div>
-                <div className="w-10 h-10 rounded-full border-2 border-card bg-white/10 flex items-center justify-center z-10 backdrop-blur-md shadow-md"><span className="text-xs text-white font-bold tracking-tighter">10+</span></div>
               </div>
             </div>
           </div>
