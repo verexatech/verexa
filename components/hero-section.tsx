@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-background">
-      <div className="relative z-20 flex flex-col items-center justify-center pt-40">
+      <div className="relative z-20 flex flex-col items-center justify-center pt-48">
         <h1 className="text-[42px] sm:text-5xl lg:text-7xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent text-center pb-4 max-w-5xl mx-auto tracking-tight">
           Code.Design.
           <br />
@@ -13,8 +13,8 @@ export function HeroSection() {
         </h1>
 
         <p className="text-center md:text-xl sm:leading-8 sm:max-w-2xl opacity-80 text-foreground/82">
-          Innovative digital solutions for modern businesses.
-          Web, Mobile, Design, Infra and Support - all in one place.
+          Innovative digital solutions for Canadian businesses.
+          Web, Mobile, Design, Infra and Support — all in one place.
         </p>
 
         <div className="mt-8 mb-[66px] flex gap-4">
@@ -40,7 +40,7 @@ export function HeroSection() {
       <img
         src="/hero-bg.gif"
         alt="Hero Background"
-        className="-mt-32 lg:-mt-[15%] w-full h-[600px] lg:h-auto min-h-[60%] object-cover object-top opacity-90 pointer-events-none z-0"
+        className="-mt-36 lg:-mt-[15%] w-full h-[500px] lg:h-auto min-h-[60%] object-cover object-top opacity-90 pointer-events-none z-0"
       />
     </section>
   );

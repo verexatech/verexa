@@ -14,8 +14,8 @@ export function Footer() {
           <div className="col-span-3 md:col-span-2 lg:col-span-2">
             <Logo />
             <p className="text-muted-foreground text-sm font-medium leading-relaxed max-w-sm mt-4 mb-8">
-              Empowering global brands with cutting-edge digital experiences. We
-              design, build, and deploy the future.
+              Empowering Canadian businesses with cutting-edge digital
+              experiences. GTA-based. Canada-focused. Future-ready.
             </p>
             <div className="flex items-center gap-4">
               <SocialLink
@@ -67,13 +67,14 @@ export function Footer() {
               <li>
                 <a
                   href="tel:+14376607347"
-                  className="text-muted-foreground text-sm hover:text-white transition-colors cursor-default"
+                  className="text-muted-foreground text-sm hover:text-primary transition-colors relative group block w-fit"
                 >
                   +1 (437) 660-7347
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all group-hover:w-full"></span>
                 </a>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm hover:text-white transition-colors cursor-default">
+                <span className="text-muted-foreground text-sm hover:text-white transition-colors">
                   Toronto, ON, Canada
                 </span>
               </li>

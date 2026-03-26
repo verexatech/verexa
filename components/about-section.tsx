@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactNode } from "react";
-import Image from "next/image";
 
 export function AboutSection() {
   return (
@@ -17,20 +16,20 @@ export function AboutSection() {
               Who We Are
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              Verexa is a forward-thinking digital agency committed to crafting
-              exceptional experiences. We blend cutting-edge technology with
-              world-class design to help businesses scale, innovate, and
-              dominate their industries.
+              Verexa Technologies Inc. is a GTA-based technology company committed to crafting
+              exceptional experiences for Canadian businesses. We blend
+              cutting-edge technology with world-class design to help companies
+              across Canada scale, innovate, and lead their industries.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10">
               Our team of visionary designers, expert engineers, and strategic
               thinkers work collaboratively to turn your most ambitious ideas
-              into reality. We don't just build software; we build the future.
+              into reality. Proudly built in Canada, for Canada.
             </p>
 
             {/* Embedded Stats Row */}
             <div className="flex items-start justify-between w-full mt-2">
-              <div className="w-full text-center relative flex-1 min-w-0 group cursor-default p-2">
+              <div className="w-full text-center relative flex-1 min-w-0 group p-2">
                 <div className="absolute inset-0 rounded-2xl shadow-inner group-hover:bg-card/60 transition-colors"></div>
                 <div className="relative z-10">
                   <h3 className="text-muted-foreground text-xs sm:text-[10px] md:text-sm font-medium mb-2 uppercase tracking-widest truncate">
@@ -45,7 +44,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="hidden sm:block h-16 w-px bg-white/10 mx-2"></div>
-              <div className="w-full text-center relative flex-1 min-w-0 group cursor-default p-2">
+              <div className="w-full text-center relative flex-1 min-w-0 group p-2">
                 <div className="absolute inset-0 rounded-2xl shadow-inner group-hover:bg-card/60 transition-colors"></div>
                 <div className="relative z-10">
                   <h3 className="text-muted-foreground text-xs sm:text-[10px] md:text-sm font-medium mb-2 uppercase tracking-widest truncate">
@@ -60,7 +59,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="hidden sm:block h-16 w-px bg-white/10 mx-2"></div>
-              <div className="w-full text-center relative flex-1 min-w-0 group cursor-default p-2">
+              <div className="w-full text-center relative flex-1 min-w-0 group p-2">
                 <div className="absolute inset-0 rounded-2xl shadow-inner group-hover:bg-card/60 transition-colors"></div>
                 <div className="relative z-10">
                   <h3 className="text-muted-foreground text-xs sm:text-[10px] md:text-sm font-medium mb-2 uppercase tracking-widest truncate">
@@ -142,10 +141,10 @@ export function AboutSection() {
                       03
                     </div>
                     <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-accent transition-colors duration-500">
-                      Global Reach
+                      Canadian Roots
                     </h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
-                      A widespread remote-first network of world-class experts.
+                      Proudly headquartered in Toronto, serving businesses coast to coast.
                     </p>
                   </div>
                 </div>
@@ -189,7 +188,7 @@ function StatCard({
   icon: ReactNode;
 }) {
   return (
-    <div className="flex items-center gap-4 p-4 rounded-2xl bg-card/30 backdrop-blur-sm transition-colors hover:bg-card/50 cursor-default">
+    <div className="flex items-center gap-4 p-4 rounded-2xl bg-card/30 backdrop-blur-sm transition-colors hover:bg-card/50">
       <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center shrink-0 shadow-inner">
         {icon}
       </div>

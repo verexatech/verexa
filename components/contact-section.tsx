@@ -3,38 +3,86 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
+type FormData = { name: string; phone: string; email: string; message: string };
+type FormErrors = Partial<Record<keyof FormData, string>>;
+
+function validate(data: FormData): FormErrors {
+  const errors: FormErrors = {};
+  if (!data.name.trim()) {
+    errors.name = "Full name is required.";
+  } else if (data.name.trim().length < 2) {
+    errors.name = "Name must be at least 2 characters.";
+  }
+  if (data.phone && !/^[\d\s\-\+\(\)]{7,15}$/.test(data.phone)) {
+    errors.phone = "Enter a valid phone number.";
+  }
+  if (!data.email.trim()) {
+    errors.email = "Email address is required.";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    errors.email = "Enter a valid email address.";
+  }
+  if (!data.message.trim()) {
+    errors.message = "Message cannot be empty.";
+  } else if (data.message.trim().length < 10) {
+    errors.message = "Message must be at least 10 characters.";
+  }
+  return errors;
+}
+
 export function WorkWithUsSection() {
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
+    const validationErrors = validate(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    setErrors({});
+    setStatus("loading");
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (res.ok) {
-        setStatus('success');
-        setFormData({ name: '', phone: '', email: '', message: '' });
-        setTimeout(() => setStatus('idle'), 3000);
+        setStatus("success");
+        setFormData({ name: "", phone: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 3000);
       } else {
-        setStatus('error');
-        setTimeout(() => setStatus('idle'), 3000);
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 3000);
       }
     } catch (error) {
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 3000);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error on change
+    if (errors[name as keyof FormData]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
+
   return (
     <section
       id="contact"
@@ -45,8 +93,8 @@ export function WorkWithUsSection() {
           Work With Us
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-          Explore our worldwide presence and see where our templates and
-          services are making an impact.
+          Based in the GTA, Ontario — serving businesses across Canada with
+          premium digital solutions.
         </p>
       </div>
 
@@ -58,35 +106,9 @@ export function WorkWithUsSection() {
             className="w-full h-auto object-cover opacity-90 brightness-150 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
             alt="world map"
             onError={(e) => {
-              // Hide image if it fails to load
               e.currentTarget.style.display = "none";
             }}
           />
-
-          {/* Glowing Points SVG Overlay */}
-          <svg
-            viewBox="0 0 800 400"
-            className="absolute inset-0 w-full h-full pointer-events-none z-10"
-            preserveAspectRatio="xMidYMid slice"
-          >
-            <defs>
-              <filter id="glow">
-                <feGaussianBlur
-                  stdDeviation="2"
-                  result="coloredBlur"
-                ></feGaussianBlur>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"></feMergeNode>
-                  <feMergeNode in="SourceGraphic"></feMergeNode>
-                </feMerge>
-              </filter>
-            </defs>
-            {/* Render points from provided coordinates */}
-            {/* Canada */}
-            <MapPoint cx="162" cy="85" />
-            {/* India */}
-            <MapPoint cx="576" cy="180" />
-          </svg>
         </div>
 
         {/* Floating CTA Form Card */}
@@ -95,71 +117,88 @@ export function WorkWithUsSection() {
             Ready to Get Started?
           </h3>
           <p className="text-muted-foreground text-base mb-6">
-            Partner with our global team of experts to elevate your brand and
-            scale your digital presence.
+            Partner with our GTA-based team of experts to elevate your
+            brand and scale your digital presence across Canada.
           </p>
-          <form
-            className="flex flex-col gap-4"
-            onSubmit={handleSubmit}
-          >
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="h-12 bg-black/20 backdrop-blur-md rounded-xl border border-white/10 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/30 transition-all overflow-hidden">
+              {/* Name */}
+              <div className="flex flex-col gap-1">
+                <div className={`h-12 bg-black/20 backdrop-blur-md rounded-xl border transition-all overflow-hidden ${errors.name ? "border-red-500/60 ring-1 ring-red-500/30" : "border-white/10 hover:border-primary/30 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/30"}`}>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Full Name *"
+                    className="w-full h-full bg-transparent px-4 py-2 outline-none text-white text-sm"
+                  />
+                </div>
+                {errors.name && <p className="text-red-400 text-xs px-1">{errors.name}</p>}
+              </div>
+              {/* Phone */}
+              <div className="flex flex-col gap-1">
+                <div className={`h-12 bg-black/20 backdrop-blur-md rounded-xl border transition-all overflow-hidden ${errors.phone ? "border-red-500/60 ring-1 ring-red-500/30" : "border-white/10 hover:border-primary/30 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/30"}`}>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Phone Number"
+                    className="w-full h-full bg-transparent px-4 py-2 outline-none text-white text-sm"
+                  />
+                </div>
+                {errors.phone && <p className="text-red-400 text-xs px-1">{errors.phone}</p>}
+              </div>
+            </div>
+            {/* Email */}
+            <div className="flex flex-col gap-1">
+              <div className={`h-12 bg-black/20 backdrop-blur-md rounded-xl border transition-all overflow-hidden ${errors.email ? "border-red-500/60 ring-1 ring-red-500/30" : "border-white/10 hover:border-primary/30 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/30"}`}>
                 <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
+                  type="email"
+                  name="email"
+                  value={formData.email}
                   onChange={handleChange}
-                  required
-                  placeholder="Full Name"
+                  placeholder="Email Address *"
                   className="w-full h-full bg-transparent px-4 py-2 outline-none text-white text-sm"
                 />
               </div>
-              <div className="h-12 bg-black/20 backdrop-blur-md rounded-xl border border-white/10 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/30 transition-all overflow-hidden">
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
+              {errors.email && <p className="text-red-400 text-xs px-1">{errors.email}</p>}
+            </div>
+            {/* Message */}
+            <div className="flex flex-col gap-1">
+              <div className={`bg-black/20 backdrop-blur-md rounded-xl border transition-all overflow-hidden ${errors.message ? "border-red-500/60 ring-1 ring-red-500/30" : "border-white/10 hover:border-primary/30 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/30"}`}>
+                <textarea
+                  name="message"
+                  value={formData.message}
                   onChange={handleChange}
-                  placeholder="Phone Number"
-                  className="w-full h-full bg-transparent px-4 py-2 outline-none text-white text-sm"
-                />
+                  placeholder="Your Message *"
+                  rows={4}
+                  className="w-full bg-transparent px-4 py-3 outline-none text-white text-sm resize-none"
+                ></textarea>
               </div>
-            </div>
-            <div className="h-12 bg-black/20 backdrop-blur-md rounded-xl border border-white/10 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/30 transition-all overflow-hidden">
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                placeholder="Email Address"
-                className="w-full h-full bg-transparent px-4 py-2 outline-none text-white text-sm"
-              />
-            </div>
-            <div className="bg-black/20 backdrop-blur-md rounded-xl border border-white/10 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/30 transition-all overflow-hidden">
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                placeholder="Your Message..."
-                rows={4}
-                className="w-full bg-transparent px-4 py-3 outline-none text-white text-sm resize-none"
-              ></textarea>
+              {errors.message && <p className="text-red-400 text-xs px-1">{errors.message}</p>}
             </div>
             <Button
               type="submit"
               variant="default"
-              disabled={status === 'loading'}
-              className={`w-full h-12 rounded-xl mt-2 text-base font-semibold transition-all duration-300 ${status === 'success' ? 'bg-green-500 text-white hover:bg-green-600' : status === 'error' ? 'bg-red-500 text-white hover:bg-red-600' : 'liquid-glass'}`}
+              disabled={status === "loading"}
+              className={`w-full h-12 rounded-xl mt-2 text-base font-semibold transition-all duration-300 ${status === "success" ? "bg-green-500 text-white hover:bg-green-600" : status === "error" ? "bg-red-500 text-white hover:bg-red-600" : "liquid-glass"}`}
             >
-              {status === 'loading' ? 'Sending...' : status === 'success' ? 'Message Sent!' : status === 'error' ? 'Error Sending' : 'Send Message'}
+              {status === "loading"
+                ? "Sending..."
+                : status === "success"
+                  ? "Message Sent!"
+                  : status === "error"
+                    ? "Error Sending"
+                    : "Send Message"}
             </Button>
           </form>
         </div>
 
         {/* Bottom Giant Brand Text Graphic */}
       </div>
+
       <div className="pointer-events-none z-0 pt-10">
         <svg
           width="100%"
@@ -215,38 +254,5 @@ export function WorkWithUsSection() {
         </svg>
       </div>
     </section>
-  );
-}
-
-// Map glowing dot + radar ring effect
-function MapPoint({ cx, cy }: { cx: string; cy: string }) {
-  return (
-    <g>
-      <circle
-        cx={cx}
-        cy={cy}
-        r="2"
-        fill="hsl(var(--primary))"
-        filter="url(#glow)"
-      ></circle>
-      <circle cx={cx} cy={cy} r="8" fill="hsl(var(--primary))" opacity="0.3">
-        <animate
-          attributeName="r"
-          from="2"
-          to="12"
-          dur="2s"
-          begin="0s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          from="0.6"
-          to="0"
-          dur="2s"
-          begin="0s"
-          repeatCount="indefinite"
-        />
-      </circle>
-    </g>
   );
 }

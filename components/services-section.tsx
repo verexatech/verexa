@@ -41,7 +41,7 @@ export function ServicesSection() {
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
             Explore the comprehensive services that set Verexa apart in
-            delivering digital excellence.
+            delivering digital excellence to Canadian businesses.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export function ServicesSection() {
 
           <FeatureCard
             title="IT & Tech Support"
-            desc="24/7 reliable technical assistance to keep your operations running flawlessly."
+            desc="24/7 reliable technical assistance to keep your Canadian operations running flawlessly."
             className="w-full md:w-[32%]"
           >
             <SupportGraphic />
