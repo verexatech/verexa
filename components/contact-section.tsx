@@ -7,7 +7,7 @@ export function WorkWithUsSection() {
       id="contact"
       className="bg-background pt-24 overflow-hidden relative border-t border-border/10 scroll-mt-24"
     >
-      <div className="max-w-[1250px] mx-auto px-4 sm:px-6 relative z-10 text-center mb-16">
+      <div className="max-w-[1250px] mx-auto px-4 sm:px-6 relative z-10 text-center mb-8 md:mb-16">
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6">
           Contact Us
         </h2>
@@ -17,19 +17,19 @@ export function WorkWithUsSection() {
         </p>
       </div>
 
-      <div className="relative mx-auto max-w-7xl z-20 w-full mt-6 sm:mt-8 h-[600px] flex items-center justify-center">
+      <div className="relative mx-auto max-w-7xl z-20 w-full md:h-[600px] flex items-center justify-center">
         {/* Map Background */}
         <div className="absolute inset-0 w-full h-full opacity-60 pointer-events-none flex justify-center items-center">
           <img
             src="/world-map.svg"
-            className="w-full h-auto object-cover opacity-90 brightness-150 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+            className="hidden md:block w-full h-auto object-cover opacity-90 brightness-150 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
             alt="world map"
           />
         </div>
 
         {/* Floating CTA Form Card */}
         <div className="relative z-30 bg-card/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8 w-full max-w-xl mx-4 sm:mx-auto">
-          <h3 className="text-3xl text-center font-normal text-foreground mb-3">
+          <h3 className="text-2xl md:text-3xl text-center font-normal text-foreground mb-3">
             Have any questions?
           </h3>
           <p className="text-muted-foreground text-base text-center mb-6">
@@ -85,7 +85,7 @@ export function WorkWithUsSection() {
             textAnchor="middle"
             dominantBaseline="middle"
             className="font-heading fill-background stroke-white/20 font-bold uppercase tracking-wide text-[220px]"
-            style={{ paintOrder: "stroke fill", strokeWidth: "2px" }}
+            style={{ paintOrder: "stroke fill", strokeWidth: "3px" }}
           >
             Verexa
           </text>
@@ -97,7 +97,7 @@ export function WorkWithUsSection() {
             dominantBaseline="middle"
             className="font-heading fill-background stroke-primary font-bold uppercase tracking-wide text-[220px]"
             mask="url(#textMask)"
-            style={{ paintOrder: "stroke fill", strokeWidth: "2px" }}
+            style={{ paintOrder: "stroke fill", strokeWidth: "3px" }}
           >
             Verexa
           </text>

@@ -80,13 +80,13 @@ export function AboutSection() {
           </div>
 
           {/* Right Visual Graphics - 2x2 Card Grid */}
-          <div className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end py-12 lg:py-0 min-h-[500px]">
+          <div className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end pt-6 lg:py-0 min-h-[500px]">
             {/* Elegant backdrop glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
 
-            <div className="grid grid-cols-2 gap-4 sm:gap-6 relative z-20 w-full max-w-[500px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 relative z-20 w-full max-w-[500px]">
               {/* Column 1 - Offset Down */}
-              <div className="flex flex-col gap-4 sm:gap-6 mt-12">
+              <div className="flex flex-col gap-4 sm:gap-6 md:mt-12">
                 {/* Card 1 */}
                 <div className="relative p-7 sm:p-8 rounded-4xl overflow-hidden group hover:-translate-y-2 transition-all duration-500">
                   <div className="absolute inset-0 bg-card/60 backdrop-blur-3xl border border-white/0 rounded-4xl z-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-colors duration-500 group-hover:border-primary/20 group-hover:bg-primary/5"></div>
@@ -131,7 +131,7 @@ export function AboutSection() {
               </div>
 
               {/* Column 2 - Offset Up */}
-              <div className="flex flex-col gap-4 sm:gap-6 mb-12">
+              <div className="flex flex-col gap-4 sm:gap-6 md:mb-12">
                 {/* Card 3 */}
                 <div className="relative p-7 sm:p-8 rounded-4xl overflow-hidden group hover:-translate-y-2 transition-all duration-500">
                   <div className="absolute inset-0 bg-card/60 backdrop-blur-3xl border border-white/0 rounded-4xl z-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-colors duration-500 group-hover:border-accent/20 group-hover:bg-accent/5"></div>
@@ -177,7 +177,7 @@ export function AboutSection() {
             </div>
           </div>
         </div>
-        <div className="mt-16 flex justify-center">
+        <div className="mt-8 md:mt-16 flex justify-center">
           <Link
             href="/about"
             className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-8 py-4 rounded-xl font-medium group relative z-10"

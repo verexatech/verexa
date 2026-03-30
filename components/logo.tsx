@@ -4,13 +4,13 @@ import Link from "next/link";
 export function Logo() {
   return (
     <Link href="/">
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className="flex items-center gap-2 sm:gap-3 group">
         <Image
           src="/logo.png"
           alt="Verexa Logo"
           width={100}
           height={50}
-          className="h-8 sm:h-10 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-transform duration-300 hover:scale-105"
+          className="h-8 sm:h-10 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-transform duration-300 group-hover:scale-110"
           priority
         />
         <div className="flex flex-col justify-center items-center drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]">

@@ -88,7 +88,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative flex flex-col">
       <Navbar />
 
-      <section className="pt-32 pb-24 md:pt-48 md:pb-32 relative overflow-hidden flex-1 flex flex-col justify-center">
+      <section className="pt-36 pb-12 md:pt-48 md:pb-16 relative overflow-hidden flex-1 flex flex-col justify-center">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[40px_40px] mask-[linear-gradient(to_bottom,black_20%,transparent_100%)] pointer-events-none"></div>
 
         <div className="max-w-[1250px] mx-auto px-6 relative z-10 w-full">

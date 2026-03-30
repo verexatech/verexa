@@ -9,12 +9,12 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-48 md:pb-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6">
+      <section className="pt-36 pb-12 md:pt-48 md:pb-16 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6 text-center">
             Who We Are
           </h1>
-          <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-justify">
             Verexa Technologies Inc. is a GTA-based technology company committed
             to crafting exceptional experiences for Canadian businesses.
           </p>
@@ -22,23 +22,23 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-16 md:py-20 bg-background relative z-10 border-b border-white/5">
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal leading-[1.1] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6">
+      <section className="py-16 md:py-20 bg-background relative z-10">
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.1] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6 text-center">
             Our Story
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-6 text-justify">
             We blend cutting-edge technology with world-class design to help
             companies across Canada scale, innovate, and lead their industries.
           </p>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-16">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-16 text-justify">
             Our team of visionary designers, expert engineers, and strategic
             thinkers work collaboratively to turn your most ambitious ideas into
             reality. Proudly built in Canada, for Canada.
           </p>
 
           {/* Embedded Stats Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 xl:gap-8 relative z-20 w-full mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 xl:gap-8 relative z-20 w-full">
             <div className="w-full text-center relative flex-1 min-w-0 group p-2">
               <div className="absolute inset-0 rounded-2xl shadow-inner group-hover:bg-card/60 transition-colors"></div>
               <div className="relative z-10">
@@ -206,7 +206,7 @@ export default function AboutPage() {
         </div>
 
         {/* Global CTA */}
-        <div className="max-w-4xl mx-auto mt-16 md:mt-20 px-6 text-center">
+        <div className="max-w-4xl mx-auto mt-20 md:mt-40 px-6 text-center">
           <div className="bg-card/40 border border-white/10 rounded-3xl p-12 backdrop-blur-md shadow-2xl liquid-glass relative overflow-hidden">
             <h3 className="text-3xl md:text-4xl font-normal mb-4 relative z-10">
               Start your next project with us.

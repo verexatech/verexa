@@ -6,7 +6,7 @@ import { Cloud, PenTool, Server } from "lucide-react";
 export function WebGraphic() {
   return (
     <div className="w-full max-w-[340px] px-4 z-10 group">
-      <div className="w-full h-[220px] rounded-t-xl bg-card/60 backdrop-blur-sm border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden relative">
+      <div className="w-full h-[220px] rounded-xl bg-card/60 backdrop-blur-sm border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden relative">
         {/* Mac OS Title Bar */}
         <div className="h-8 border-b border-white/5 bg-white/5 flex items-center px-4 gap-2 shrink-0 z-20 backdrop-blur-xl relative">
           <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>

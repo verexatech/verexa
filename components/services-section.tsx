@@ -99,7 +99,7 @@ export function ServicesSection() {
           </FeatureCard>
         </div>
 
-        <div className="mt-16 flex justify-center">
+        <div className="mt-8 md:mt-16 flex justify-center">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-8 py-4 rounded-xl font-medium group relative z-10"
