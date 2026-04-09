@@ -1,0 +1,22 @@
+# Verexa Technologies
+
+> Empowering Canadian businesses with cutting-edge digital experiences. We specialize in web design, mobile app development, graphic design, cloud infrastructure, and IT support based in the GTA, Canada.
+
+Verexa Technologies is a digital solutions and IT support company based in the Greater Toronto Area (GTA), Canada. We specialize in helping small businesses and startups with their technology needs.
+
+## Services Offered
+- Web Design & Development (Next.js, React, Node.js)
+- Mobile App Development (React Native, iOS, Android)
+- UI/UX & Graphic Design
+- Cloud Infrastructure (AWS, Vercel, Google Cloud)
+- IT Support for Small Businesses
+
+## Contact & Links
+- Website: https://verexa.ca
+- Location: Greater Toronto Area (GTA), Ontario, Canada
+
+## About Us
+We deliver high-quality, state-of-the-art digital software solutions tailored to our clients' needs. Our focus is on modern aesthetics, vibrant designs, and dynamic user interfaces to ensure an engaging online presence.
+
+## Technical Details
+This site is built with Next.js, React, Tailwind CSS, Framer Motion, and Radix UI.

@@ -92,7 +92,7 @@ export const metadata: Metadata = {
     title: "Verexa Technologies | Digital Solutions & IT Support",
     description:
       "Empowering Canadian businesses with cutting-edge digital experiences. GTA-based technology company specializing in web, mobile, cloud & IT support.",
-    url: "https://verexatechnologies.ca",
+    url: "https://verexa.ca",
     siteName: "Verexa Technologies",
     images: [
       {
