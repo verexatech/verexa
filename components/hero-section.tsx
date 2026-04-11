@@ -21,7 +21,7 @@ export function HeroSection() {
 
         <p className="text-center md:text-xl sm:leading-8 sm:max-w-2xl opacity-80 text-foreground/82">
           Innovative digital solutions for Canadian businesses. Web, Mobile,
-          Design, Infra and Support — all in one place.
+          Design, Infra and Support. All in one place.
         </p>
 
         <div className="mt-8 mb-[66px] flex gap-4">

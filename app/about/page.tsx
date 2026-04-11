@@ -29,7 +29,10 @@ export default function AboutPage() {
             className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-justify"
           >
             Verexa Technologies Inc. is a GTA-based technology company committed
-            to crafting exceptional experiences for Canadian businesses.
+            to crafting exceptional experiences for Canadian businesses. From
+            ambitious startups to established enterprises, we partner with
+            organizations across Canada to build digital products that are
+            beautiful, performant, and built to last.
           </motion.p>
         </div>
       </section>
@@ -55,17 +58,30 @@ export default function AboutPage() {
           >
             We blend cutting-edge technology with world-class design to help
             companies across Canada scale, innovate, and lead their industries.
+            What started as a small team with a big vision has grown into a
+            full-service digital studio trusted by clients from coast to coast.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="text-muted-foreground text-lg leading-relaxed mb-16 text-justify"
+            className="text-muted-foreground text-lg leading-relaxed mb-6 text-justify"
           >
             Our team of visionary designers, expert engineers, and strategic
             thinkers work collaboratively to turn your most ambitious ideas into
             reality. Proudly built in Canada, for Canada.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            className="text-muted-foreground text-lg leading-relaxed mb-16 text-justify"
+          >
+            We believe technology should empower people, not overwhelm them.
+            Every solution we deliver is grounded in clarity, craftsmanship, and
+            a deep commitment to your long-term success.
           </motion.p>
 
           {/* Embedded Stats Row */}

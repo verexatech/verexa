@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import "./globals.css";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import { PageTransition } from "@/components/page-transition";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
@@ -156,7 +157,7 @@ export default function RootLayout({
         className={`${inter.variable} ${ibmPlexMono.variable} font-sans antialiased bg-background text-foreground`}
       >
         <SmoothCursor />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Analytics />
       </body>
     </html>

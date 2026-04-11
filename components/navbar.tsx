@@ -2,16 +2,19 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -37,27 +40,8 @@ export function Navbar() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Section Observer for URL Hash
-    const sections = document.querySelectorAll("section[id]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            if (id && window.scrollY >= 100) {
-              window.history.replaceState(null, "", `#${id}`);
-            }
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -40% 0px", threshold: 0 },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      observer.disconnect();
     };
   }, []);
 
@@ -76,16 +60,23 @@ export function Navbar() {
           <Logo />
 
           <div className="hidden md:flex items-center gap-10 pr-2">
-            {navLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className="text-foreground/90 text-md font-medium hover:text-primary transition-colors relative group py-2"
-              >
-                {label}
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] rounded-full bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            ))}
+            {navLinks.map(({ href, label }) => {
+              const isActive = pathname === href;
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`text-md font-medium transition-colors relative group py-2 ${
+                    isActive
+                      ? "text-primary"
+                      : "text-foreground/90 hover:text-primary"
+                  }`}
+                >
+                  {label}
+                  <span className="absolute bottom-1 left-0 h-[2px] rounded-full bg-primary transition-all duration-300 w-0 group-hover:w-full" />
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -119,16 +110,23 @@ export function Navbar() {
               : "translate-y-8 opacity-0"
           }`}
         >
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-3xl font-medium tracking-wide text-foreground/90 hover:text-primary transition-colors"
-            >
-              {label}
-            </Link>
-          ))}
+          {navLinks.map(({ href, label }) => {
+            const isActive = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-3xl font-medium tracking-wide transition-colors ${
+                  isActive
+                    ? "text-primary"
+                    : "text-foreground/90 hover:text-primary"
+                }`}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </>
