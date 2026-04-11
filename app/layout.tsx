@@ -17,7 +17,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: {
     default:
-      "Verexa Technologies | Digital Solutions, Web & Mobile Development",
+      "Verexa Technologies | Premium Digital Solutions for GTA Businesses",
     template: "%s | Verexa Technologies",
   },
   description:
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Verexa Technologies | Digital Solutions & IT Support",
+    title: "Verexa Technologies | Premium Digital Solutions for GTA Businesses",
     description:
       "Empowering Canadian businesses with cutting-edge digital experiences. GTA-based technology company specializing in web, mobile, cloud & IT support.",
     url: "https://verexa.ca",
