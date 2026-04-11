@@ -2,6 +2,7 @@
 
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 export function AboutSection() {
@@ -13,7 +14,13 @@ export function AboutSection() {
       <div className="max-w-[1250px] mx-auto px-4 sm:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-16">
           {/* Left Content Area */}
-          <div className="w-full lg:w-1/2 flex flex-col items-start text-left">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full lg:w-1/2 flex flex-col items-start text-left"
+          >
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6">
               About Us
             </h2>
@@ -77,10 +84,16 @@ export function AboutSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Visual Graphics - 2x2 Card Grid */}
-          <div className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end pt-6 lg:py-0 min-h-[500px]">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end pt-6 lg:py-0 min-h-[500px]"
+          >
             {/* Elegant backdrop glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -175,7 +188,7 @@ export function AboutSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className="mt-8 md:mt-16 flex justify-center">
           <Link

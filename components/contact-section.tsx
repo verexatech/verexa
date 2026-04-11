@@ -1,5 +1,8 @@
+"use client";
+
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export function WorkWithUsSection() {
   return (
@@ -7,7 +10,13 @@ export function WorkWithUsSection() {
       id="contact"
       className="bg-background pt-24 overflow-hidden relative border-t border-border/10 scroll-mt-24"
     >
-      <div className="max-w-[1250px] mx-auto px-4 sm:px-6 relative z-10 text-center mb-8 md:mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-[1250px] mx-auto px-4 sm:px-6 relative z-10 text-center mb-8 md:mb-16"
+      >
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6">
           Contact Us
         </h2>
@@ -15,7 +24,7 @@ export function WorkWithUsSection() {
           Based in the GTA, Ontario — serving businesses across Canada with
           premium digital solutions.
         </p>
-      </div>
+      </motion.div>
 
       <div className="relative mx-auto max-w-7xl z-20 w-full md:h-[600px] flex items-center justify-center">
         {/* Map Background */}
@@ -28,7 +37,13 @@ export function WorkWithUsSection() {
         </div>
 
         {/* Floating CTA Form Card */}
-        <div className="relative z-30 bg-card/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8 w-full max-w-xl mx-4 sm:mx-auto">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="relative z-30 bg-card/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8 w-full max-w-xl mx-4 sm:mx-auto"
+        >
           <h3 className="text-2xl md:text-3xl text-center font-normal text-foreground mb-3">
             Have any questions?
           </h3>
@@ -44,7 +59,7 @@ export function WorkWithUsSection() {
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Giant Brand Text Graphic */}
       </div>

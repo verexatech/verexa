@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 type FormData = { name: string; phone: string; email: string; message: string };
 type FormErrors = Partial<Record<keyof FormData, string>>;
@@ -92,20 +93,30 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[40px_40px] mask-[linear-gradient(to_bottom,black_20%,transparent_100%)] pointer-events-none"></div>
 
         <div className="max-w-[1250px] mx-auto px-6 relative z-10 w-full">
-          <div className="text-center mb-16 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center mb-16 relative"
+          >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6">
               Work With Us
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               Based in the GTA, Ontario — serving businesses across Canada with
-              premium digital solutions. Let's create something extraordinary
+              premium digital solutions. Let&apos;s create something extraordinary
               together.
             </p>
-          </div>
+          </motion.div>
 
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
             {/* Left Column: Map */}
-            <div className="w-full lg:w-1/2 flex flex-col items-center justify-center relative min-h-[400px] group">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="w-full lg:w-1/2 flex flex-col items-center justify-center relative min-h-[400px] group"
+            >
               <div className="relative w-full flex items-center justify-center">
                 {/* Elegant glow effect behind the map */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-primary/20 rounded-full blur-[140px] pointer-events-none group-hover:bg-primary/30 transition-colors duration-700"></div>
@@ -121,10 +132,15 @@ export default function ContactPage() {
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-normal bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mt-6 flex items-center gap-4">
                 Proudly Canadian <img src="/flag.svg" alt="flag" className="w-10 h-8" />
               </h3>
-            </div>
+            </motion.div>
 
             {/* Right Column: Form */}
-            <div className="w-full lg:w-1/2 max-w-lg mx-auto lg:mx-0 relative z-20">
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+              className="w-full lg:w-1/2 max-w-lg mx-auto lg:mx-0 relative z-20"
+            >
               <div className="bg-card/60 backdrop-blur-3xl border border-white/10 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.3)] p-8 sm:p-10 w-full liquid-glass relative overflow-hidden">
                 <div className="absolute -inset-x-12 -inset-y-12 bg-linear-to-bl from-primary/5 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0 pointer-events-none"></div>
                 <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none z-10"></div>
@@ -246,7 +262,7 @@ export default function ContactPage() {
                   </form>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

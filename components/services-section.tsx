@@ -2,6 +2,7 @@
 
 import { ReactNode, useState, useRef, MouseEvent } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import {
   WebGraphic,
@@ -43,7 +44,13 @@ export function ServicesSection() {
         }}
       />
       <div className="max-w-[1250px] mx-auto px-4 sm:px-6 relative z-10 sm:pt-0 object-contain">
-        <div className="text-center mb-16 relative">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-16 relative"
+        >
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6">
             Our Services
           </h2>
@@ -51,7 +58,7 @@ export function ServicesSection() {
             Explore the comprehensive services that set Verexa apart in
             delivering digital excellence to Canadian businesses.
           </p>
-        </div>
+        </motion.div>
 
         {/* Top Row: 2 Cards */}
         <div className="flex flex-col md:flex-row justify-between gap-6 mb-6">
@@ -59,6 +66,7 @@ export function ServicesSection() {
             title="Web Design & Development"
             desc="Crafting stunning, highly performant web applications tailored to your brand."
             className="w-full md:w-[49%]"
+            delay={0.1}
           >
             <WebGraphic />
           </FeatureCard>
@@ -67,6 +75,7 @@ export function ServicesSection() {
             title="Mobile App Development"
             desc="Native and cross-platform mobile experiences that engage users on the go."
             className="w-full md:w-[49%]"
+            delay={0.2}
           >
             <MobileGraphic />
           </FeatureCard>
@@ -78,6 +87,7 @@ export function ServicesSection() {
             title="Cloud Infrastructure"
             desc="Scalable, secure, and robust cloud architectures for your enterprise."
             className="w-full md:w-[32%]"
+            delay={0.1}
           >
             <CloudGraphic />
           </FeatureCard>
@@ -86,6 +96,7 @@ export function ServicesSection() {
             title="IT & Tech Support"
             desc="24/7 reliable technical assistance to keep your Canadian operations running flawlessly."
             className="w-full md:w-[32%]"
+            delay={0.2}
           >
             <SupportGraphic />
           </FeatureCard>
@@ -94,6 +105,7 @@ export function ServicesSection() {
             title="Graphic Designing"
             desc="Captivating visual identities, branding, and striking UI/UX designs."
             className="w-full md:w-[32%]"
+            delay={0.3}
           >
             <DesignGraphic />
           </FeatureCard>
@@ -119,11 +131,13 @@ function FeatureCard({
   desc,
   className,
   children,
+  delay = 0,
 }: {
   title: string;
   desc: string;
   className?: string;
   children?: ReactNode;
+  delay?: number;
 }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -139,7 +153,11 @@ function FeatureCard({
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay }}
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
@@ -176,6 +194,6 @@ function FeatureCard({
           {desc}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }
