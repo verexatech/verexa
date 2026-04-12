@@ -44,31 +44,7 @@ export default function ServicesPage() {
 
       {/* Services List Section */}
       <section className="py-20 bg-background relative z-10">
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-        @keyframes slowScroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-50%); }
-        }
-        @keyframes dashMove {
-          to { stroke-dashoffset: -24; }
-        }
-        @keyframes drawPath {
-          0% { stroke-dashoffset: 300; }
-          100% { stroke-dashoffset: 0; }
-        }
-        @keyframes shapeMorph {
-          0%, 100% { border-radius: 20%; transform: rotate(0deg) scale(1); }
-          50% { border-radius: 50%; transform: rotate(180deg) scale(1.05); }
-        }
-        @keyframes shimmerLine {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-      `,
-          }}
-        />
+
         <div className="max-w-7xl mx-auto px-6 flex flex-col gap-32">
           {/* Service 1: Web */}
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">

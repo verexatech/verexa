@@ -46,11 +46,18 @@ export function HeroSection() {
       {/* Background Gradient to fade background at the bottom */}
       <div className="absolute bottom-0 inset-x-0 h-48 bg-linear-to-b from-transparent to-background pointer-events-none z-10" />
 
-      <img
-        src="/hero-bg.gif"
-        alt="Hero Background"
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
         className="-mt-36 lg:-mt-[15%] w-full h-[500px] lg:h-auto min-h-[60%] object-cover object-top opacity-80 pointer-events-none z-0"
-      />
+      >
+        <source src="/hero-bg.mp4" type="video/mp4" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/hero-bg.gif" alt="Hero Background" />
+      </video>
     </section>
   );
 }
+

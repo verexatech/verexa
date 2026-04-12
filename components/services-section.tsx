@@ -18,31 +18,7 @@ export function ServicesSection() {
       id="services"
       className="bg-background overflow-hidden relative border-t border-border/10 scroll-mt-24 pt-24"
     >
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-        @keyframes slowScroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-50%); }
-        }
-        @keyframes dashMove {
-          to { stroke-dashoffset: -24; }
-        }
-        @keyframes drawPath {
-          0% { stroke-dashoffset: 300; }
-          100% { stroke-dashoffset: 0; }
-        }
-        @keyframes shapeMorph {
-          0%, 100% { border-radius: 20%; transform: rotate(0deg) scale(1); }
-          50% { border-radius: 50%; transform: rotate(180deg) scale(1.05); }
-        }
-        @keyframes shimmerLine {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-      `,
-        }}
-      />
+
       <div className="max-w-[1250px] mx-auto px-4 sm:px-6 relative z-10 sm:pt-0 object-contain">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

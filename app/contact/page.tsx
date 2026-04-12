@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 type FormData = { name: string; phone: string; email: string; message: string };
 type FormErrors = Partial<Record<keyof FormData, string>>;
@@ -118,19 +119,20 @@ export default function ContactPage() {
               className="w-full lg:w-1/2 flex flex-col items-center justify-center relative min-h-[400px] group"
             >
               <div className="relative w-full flex items-center justify-center">
-                {/* Elegant glow effect behind the map */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-primary/20 rounded-full blur-[140px] pointer-events-none group-hover:bg-primary/30 transition-colors duration-700"></div>
 
-                {/* Note: The map is styled heavily with filters to mute its brightness and blend beautifully into the dark theme */}
-                <img
+                <Image
                   src="/canada-map.png"
                   alt="Canada Map"
+                  width={512}
+                  height={512}
                   className="w-full max-w-lg h-auto object-contain opacity-60 brightness-[0.5] contrast-[1.4] invert transition-all duration-700 hover:opacity-80 hover:brightness-50"
                   style={{ filter: "brightness(0.8) contrast(1.2)" }}
                 />
               </div>
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-normal bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mt-6 flex items-center gap-4">
-                Proudly Canadian <img src="/flag.svg" alt="flag" className="w-10 h-8" />
+                Proudly Canadian{" "}
+                <Image src="/flag.svg" alt="Canadian flag" width={40} height={32} />
               </h3>
             </motion.div>
 

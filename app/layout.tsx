@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Outfit, IBM_Plex_Mono } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import "./globals.css";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { PageTransition } from "@/components/page-transition";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 const ibmPlexMono = IBM_Plex_Mono({
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500"],
   subsets: ["latin"],
   variable: "--font-ibm-plex-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {

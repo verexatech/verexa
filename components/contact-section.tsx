@@ -3,6 +3,8 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
+
 
 export function WorkWithUsSection() {
   return (
@@ -29,8 +31,10 @@ export function WorkWithUsSection() {
       <div className="relative mx-auto max-w-7xl z-20 w-full md:h-[600px] flex items-center justify-center">
         {/* Map Background */}
         <div className="absolute inset-0 w-full h-full opacity-60 pointer-events-none flex justify-center items-center">
-          <img
+          <Image
             src="/world-map.svg"
+            width={1200}
+            height={600}
             className="hidden md:block w-full h-auto object-cover opacity-90 brightness-150 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
             alt="world map"
           />
