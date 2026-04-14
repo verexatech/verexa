@@ -19,6 +19,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://verexa.ca"),
   title: {
     default:
       "Verexa Technologies | Premium Digital Solutions for GTA Businesses",

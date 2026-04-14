@@ -105,8 +105,8 @@ export default function ContactPage() {
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               Based in the GTA, Ontario — serving businesses across Canada with
-              premium digital solutions. Let&apos;s create something extraordinary
-              together.
+              premium digital solutions. Let&apos;s create something
+              extraordinary together.
             </p>
           </motion.div>
 
@@ -127,12 +127,21 @@ export default function ContactPage() {
                   width={512}
                   height={512}
                   className="w-full max-w-lg h-auto object-contain opacity-60 brightness-[0.5] contrast-[1.4] invert transition-all duration-700 hover:opacity-80 hover:brightness-50"
-                  style={{ filter: "brightness(0.8) contrast(1.2)" }}
+                  style={{
+                    filter: "brightness(0.8) contrast(1.2)",
+                    height: "auto",
+                  }}
                 />
               </div>
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-normal bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mt-6 flex items-center gap-4">
                 Proudly Canadian{" "}
-                <Image src="/flag.svg" alt="Canadian flag" width={40} height={32} />
+                <Image
+                  src="/flag.svg"
+                  alt="Canadian flag"
+                  width={40}
+                  height={32}
+                  style={{ height: "auto" }}
+                />
               </h3>
             </motion.div>
 

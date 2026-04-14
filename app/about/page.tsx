@@ -88,8 +88,16 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 xl:gap-8 relative z-20 w-full">
             {[
               { label: "Experience", value: "5+", sub: "Years of excellence" },
-              { label: "Projects", value: "10+", sub: "Successfully delivered" },
-              { label: "Satisfaction", value: "99%", sub: "Clients Success Rate" },
+              {
+                label: "Projects",
+                value: "10+",
+                sub: "Successfully delivered",
+              },
+              {
+                label: "Satisfaction",
+                value: "99%",
+                sub: "Clients Success Rate",
+              },
               { label: "Support", value: "24/7", sub: "Available for you" },
             ].map((stat, i) => (
               <motion.div
@@ -152,9 +160,16 @@ export default function AboutPage() {
                 <div className="absolute -inset-x-12 -inset-y-12 bg-linear-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0"></div>
                 <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none z-30"></div>
                 <div className="relative z-10">
-                  <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-primary transition-colors duration-500">01</div>
-                  <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-primary transition-colors duration-500">Excellence by Design</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">We engineer premium digital experiences where world-class aesthetics meet uncompromising technical precision.</p>
+                  <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-primary transition-colors duration-500">
+                    01
+                  </div>
+                  <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-primary transition-colors duration-500">
+                    Excellence by Design
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    We engineer premium digital experiences where world-class
+                    aesthetics meet uncompromising technical precision.
+                  </p>
                 </div>
               </motion.div>
 
@@ -170,9 +185,16 @@ export default function AboutPage() {
                 <div className="absolute -inset-x-12 -inset-y-12 bg-linear-to-bl from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0"></div>
                 <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none z-30"></div>
                 <div className="relative z-10">
-                  <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-accent transition-colors duration-500">02</div>
-                  <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-accent transition-colors duration-500">Relentless Innovation</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Pushing the boundaries of modern technology to future-proof your business in a rapidly evolving digital landscape.</p>
+                  <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-accent transition-colors duration-500">
+                    02
+                  </div>
+                  <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-accent transition-colors duration-500">
+                    Relentless Innovation
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Pushing the boundaries of modern technology to future-proof
+                    your business in a rapidly evolving digital landscape.
+                  </p>
                 </div>
               </motion.div>
 
@@ -188,9 +210,17 @@ export default function AboutPage() {
                 <div className="absolute -inset-x-12 -inset-y-12 bg-linear-to-tr from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0"></div>
                 <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none z-30"></div>
                 <div className="relative z-10">
-                  <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-accent transition-colors duration-500">03</div>
-                  <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-accent transition-colors duration-500">Unwavering Integrity</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Rooted in Canadian values, we believe in radical transparency, honest communication, and doing what&apos;s right for your business.</p>
+                  <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-accent transition-colors duration-500">
+                    03
+                  </div>
+                  <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-accent transition-colors duration-500">
+                    Unwavering Integrity
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Rooted in Canadian values, we believe in radical
+                    transparency, honest communication, and doing what&apos;s
+                    right for your business.
+                  </p>
                 </div>
               </motion.div>
 
@@ -206,9 +236,16 @@ export default function AboutPage() {
                 <div className="absolute -inset-x-12 -inset-y-12 bg-linear-to-tl from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0"></div>
                 <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none z-30"></div>
                 <div className="relative z-10">
-                  <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-accent transition-colors duration-500">04</div>
-                  <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-accent transition-colors duration-500">True Partnership</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">We operate not just as an agency, but as a dedicated extension of your team invested in your long-term success.</p>
+                  <div className="font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 group-hover:text-accent transition-colors duration-500">
+                    04
+                  </div>
+                  <h3 className="text-white font-medium text-xl mb-3 tracking-tight group-hover:text-accent transition-colors duration-500">
+                    True Partnership
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    We operate not just as an agency, but as a dedicated
+                    extension of your team invested in your long-term success.
+                  </p>
                 </div>
               </motion.div>
             </div>

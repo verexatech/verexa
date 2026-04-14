@@ -44,7 +44,6 @@ export default function ServicesPage() {
 
       {/* Services List Section */}
       <section className="py-20 bg-background relative z-10">
-
         <div className="max-w-7xl mx-auto px-6 flex flex-col gap-32">
           {/* Service 1: Web */}
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
@@ -67,10 +66,22 @@ export default function ServicesPage() {
                 that look great on every device and drive measurable results.
               </p>
               <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Custom UI/UX Design &amp; Branding</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Scalable Single Page Applications (React/Next.js)</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />E-commerce Platforms &amp; Integrations</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Performance &amp; SEO Optimization</li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Custom UI/UX Design &amp; Branding
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Scalable Single Page Applications (React/Next.js)
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  E-commerce Platforms &amp; Integrations
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Performance &amp; SEO Optimization
+                </li>
               </ul>
             </motion.div>
             <motion.div
@@ -107,10 +118,22 @@ export default function ServicesPage() {
                 capabilities to offer smooth, app-store ready experiences.
               </p>
               <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />iOS &amp; Android Native Development</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Cross-Platform Solutions (React Native)</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Intuitive Mobile UI/UX Design</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Seamless Backend API Integrations</li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  iOS &amp; Android Native Development
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Cross-Platform Solutions (React Native)
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Intuitive Mobile UI/UX Design
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Seamless Backend API Integrations
+                </li>
               </ul>
             </motion.div>
             <motion.div
@@ -147,10 +170,22 @@ export default function ServicesPage() {
                 traffic and ensure data security around the clock.
               </p>
               <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />AWS, GCP &amp; Azure Architecture</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Microservices &amp; Auto-scaling Deployments</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />DevOps Pipelines (CI/CD)</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Database Optimization &amp; Migration</li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  AWS, GCP &amp; Azure Architecture
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Microservices &amp; Auto-scaling Deployments
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  DevOps Pipelines (CI/CD)
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Database Optimization &amp; Migration
+                </li>
               </ul>
             </motion.div>
             <motion.div
@@ -187,10 +222,22 @@ export default function ServicesPage() {
                 bridges the gap between technology and your workflow.
               </p>
               <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />24/7 Helpdesk &amp; Rapid Response SLAs</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Cybersecurity Audits &amp; Monitoring</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Network Management &amp; Provisioning</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Software Maintenance &amp; Updates</li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  24/7 Helpdesk &amp; Rapid Response SLAs
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Cybersecurity Audits &amp; Monitoring
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Network Management &amp; Provisioning
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Software Maintenance &amp; Updates
+                </li>
               </ul>
             </motion.div>
             <motion.div
@@ -227,10 +274,22 @@ export default function ServicesPage() {
                 and engaging digital art that resonates with your audience.
               </p>
               <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Brand Identity &amp; Logo Design</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Wireframing &amp; Interactive Prototyping</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />Marketing Collateral &amp; Digital Assets</li>
-                <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" />User Research &amp; Usability Testing</li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Brand Identity &amp; Logo Design
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Wireframing &amp; Interactive Prototyping
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Marketing Collateral &amp; Digital Assets
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  User Research &amp; Usability Testing
+                </li>
               </ul>
             </motion.div>
             <motion.div
