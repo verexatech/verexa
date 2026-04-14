@@ -23,8 +23,8 @@ export function WorkWithUsSection() {
           Contact Us
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-          Based in the GTA, Ontario — serving businesses across Canada with
-          premium digital solutions.
+          Based in the Toronto, serving businesses across GTA with premium
+          digital solutions.
         </p>
       </motion.div>
 

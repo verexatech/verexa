@@ -32,7 +32,7 @@ export function ServicesSection() {
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
             Explore the comprehensive services that set Verexa apart in
-            delivering digital excellence to Canadian businesses.
+            delivering digital excellence to GTA based businesses.
           </p>
         </motion.div>
 

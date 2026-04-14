@@ -20,7 +20,7 @@ export function HeroSection() {
         </h1>
 
         <p className="text-center md:text-xl sm:leading-8 sm:max-w-2xl opacity-80 text-foreground/82">
-          Innovative digital solutions for Canadian businesses. Web, Mobile,
+          Innovative digital solutions for GTA based businesses. Web, Mobile,
           Design, Infra and Support. All in one place.
         </p>
 

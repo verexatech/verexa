@@ -29,9 +29,9 @@ export default function AboutPage() {
             className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-justify"
           >
             Verexa Technologies Inc. is a GTA-based technology company committed
-            to crafting exceptional experiences for Canadian businesses. From
+            to crafting exceptional experiences for businesses in GTA. From
             ambitious startups to established enterprises, we partner with
-            organizations across Canada to build digital products that are
+            organizations across GTA to build digital products that are
             beautiful, performant, and built to last.
           </motion.p>
         </div>
@@ -57,9 +57,9 @@ export default function AboutPage() {
             className="text-muted-foreground text-lg leading-relaxed mb-6 text-justify"
           >
             We blend cutting-edge technology with world-class design to help
-            companies across Canada scale, innovate, and lead their industries.
+            companies across GTA scale, innovate, and lead their industries.
             What started as a small team with a big vision has grown into a
-            full-service digital studio trusted by clients from coast to coast.
+            full-service digital studio trusted by clients across GTA.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

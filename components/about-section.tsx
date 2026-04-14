@@ -25,10 +25,10 @@ export function AboutSection() {
               About Us
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              Verexa Technologies Inc. is a GTA-based technology company
-              committed to crafting exceptional experiences for Canadian
-              businesses. We blend cutting-edge technology with world-class
-              design to help companies across Canada scale, innovate, and lead
+              Verexa Technologies Inc. is a Toronto based technology company
+              committed to crafting exceptional experiences for businesses in
+              GTA. We blend cutting-edge technology with world-class
+              design to help companies across GTA scale, innovate, and lead
               their industries.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10">

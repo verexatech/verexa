@@ -14,8 +14,8 @@ export function Footer() {
           <div className="col-span-3 md:col-span-2 lg:col-span-2">
             <Logo />
             <p className="text-muted-foreground text-sm font-medium leading-relaxed max-w-sm mt-4 mb-8">
-              Empowering Canadian businesses with cutting-edge digital
-              experiences. GTA-based. Canada-focused. Future-ready.
+              Empowering GTA businesses with cutting-edge digital
+              experiences. Toronto based. Future-ready.
             </p>
             <div className="flex items-center gap-4">
               <SocialLink
