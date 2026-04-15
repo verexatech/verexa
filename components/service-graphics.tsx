@@ -236,8 +236,8 @@ export function SupportGraphic() {
               <div className="w-1/3 h-1.5 rounded-full bg-white/20"></div>
               <div className="h-2 rounded-full bg-white/5 w-full overflow-hidden">
                 <div
-                  className={`h-full rounded-full transition-all duration-1000 ease-out ${widths[i] > 80 ? "bg-green-400/80" : widths[i] > 50 ? "bg-yellow-400/80" : "bg-primary"}`}
-                  style={{ width: `${widths[i]}%` }}
+                  className={`h-full w-full rounded-full transition-all duration-1000 ease-out ${widths[i] > 80 ? "bg-green-400/80" : widths[i] > 50 ? "bg-yellow-400/80" : "bg-primary"}`}
+                  style={{ transform: `scaleX(${widths[i] / 100})`, transformOrigin: "left" }}
                 ></div>
               </div>
             </div>
