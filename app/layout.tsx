@@ -142,7 +142,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overscroll-none cursor-none">
+    <html lang="en" className="overscroll-none cursor-none overflow-x-hidden">
       <head>
         {/* Google Analytics */}
         <Script

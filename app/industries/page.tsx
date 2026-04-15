@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 
 export default function IndustriesPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative">
+    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative overflow-x-hidden">
       <Navbar />
 
       {/* Hero Section */}

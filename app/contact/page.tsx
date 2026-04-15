@@ -87,7 +87,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative flex flex-col">
+    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative flex flex-col overflow-x-hidden">
       <Navbar />
 
       <section className="pt-36 pb-12 md:pt-48 md:pb-16 relative overflow-hidden flex-1 flex flex-col justify-center">
