@@ -11,9 +11,19 @@ import {
   Stethoscope,
   Monitor,
   PenTool,
+  HardHat,
+  Wrench,
+  ClipboardList,
+  CheckCircle2,
+  UtensilsCrossed,
+  Star,
+  ShoppingBag,
+  Smartphone,
+  Store,
+  Ruler,
+  Clock,
 } from "lucide-react";
 import { motion } from "motion/react";
-
 
 export function RealEstateGraphic() {
   return (
@@ -262,6 +272,180 @@ export function LegalGraphic() {
         >
           <Scale className="w-10 h-10 text-white drop-shadow-md" />
           <div className="absolute inset-0 rounded-full bg-primary/20 animate-pulse"></div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+export function ConstructionGraphic() {
+  return (
+    <div className="w-full h-2/3 flex justify-center items-center z-10 group/con">
+      <div className="relative w-56 h-48">
+        {/* Main Architectural CAD Card */}
+        <motion.div 
+          animate={{ y: [0, -8, 0], rotate: [0, 1, 0, -1, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 bg-card/40 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex flex-col items-center justify-center overflow-hidden z-10"
+        >
+          {/* Fine Blueprint Grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[8px_8px] opacity-70" />
+          
+          {/* Animated SVG Architectural Drawing */}
+          <div className="relative w-36 h-36 flex items-center justify-center">
+             <svg viewBox="0 0 100 100" className="w-full h-full relative z-10" fill="none" stroke="currentColor" strokeWidth="1.5">
+               {/* Ground line */}
+               <motion.line x1="10" y1="80" x2="90" y2="80" stroke="rgba(255,255,255,0.2)" />
+               <motion.line x1="10" y1="80" x2="90" y2="80" stroke="hsl(var(--primary))" 
+                 initial={{ strokeDashoffset: -80 }}
+                 animate={{ strokeDashoffset: [-80, 0, 0] }}
+                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                 strokeDasharray="80"
+               />
+               
+               {/* Building Structure Path */}
+               <motion.path 
+                 d="M 20 80 L 20 30 L 50 10 L 80 30 L 80 80 M 50 10 L 50 80 M 35 45 L 65 45 M 20 60 L 80 60 M 35 80 L 35 45 M 65 80 L 65 45"
+                 stroke="hsl(var(--primary))"
+                 initial={{ pathLength: 0, opacity: 0 }}
+                 animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 1] }}
+                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                 className="drop-shadow-[0_0_8px_rgba(var(--primary),0.5)]"
+               />
+               {/* Measurement nodes / dots */}
+               {[
+                 { cx: 20, cy: 80 }, { cx: 80, cy: 80 }, { cx: 50, cy: 10 },
+                 { cx: 20, cy: 30 }, { cx: 80, cy: 30 }, { cx: 35, cy: 45 }, { cx: 65, cy: 45 }
+               ].map((pos, i) => (
+                 <motion.circle 
+                   key={i} cx={pos.cx} cy={pos.cy} r="2" fill="white"
+                   initial={{ scale: 0 }}
+                   animate={{ scale: [0, 1, 0.8] }}
+                   transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+                 />
+               ))}
+             </svg>
+          </div>
+          
+          {/* Floating UI overlays inside CAD */}
+          <div className="absolute top-3 left-3 bg-white/10 px-2 py-0.5 rounded text-[8px] font-mono text-white/60 tracking-widest border border-white/10">
+            CAD_STRUCT_v2
+          </div>
+          <div className="absolute bottom-3 right-3 flex gap-1.5 items-center">
+             <div className="text-[7px] text-white/40 font-mono">RENDERING</div>
+             <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          </div>
+        </motion.div>
+
+        {/* Floating Tool Element (Monochrome/Primary instead of Yellow) */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute -top-6 -right-6 z-20 group-hover/con:scale-110 transition-transform duration-500"
+        >
+          <div className="w-16 h-16 rounded-full bg-card/80 backdrop-blur-xl border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] flex items-center justify-center hover:bg-primary/5 transition-colors">
+            <Ruler className="w-7 h-7 text-primary drop-shadow-[0_0_12px_rgba(var(--primary),0.5)] transform -rotate-45" />
+          </div>
+        </motion.div>
+        
+        {/* Floating Measurement/Data Card */}
+        <motion.div 
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute -bottom-4 -left-6 z-20"
+        >
+          <div className="py-2.5 px-4 rounded-xl bg-card/90 backdrop-blur-xl border border-white/20 shadow-2xl flex flex-col gap-1 items-start group-hover/con:border-primary/30 transition-colors duration-500">
+             <span className="text-[8px] text-muted-foreground uppercase tracking-widest">Est. Duration</span>
+             <div className="flex items-center gap-2 mt-0.5">
+                <Clock className="w-3.5 h-3.5 text-primary" />
+                <span className="text-sm font-mono text-white/90 font-medium">14 wks</span>
+             </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+export function FoodRetailGraphic() {
+  return (
+    <div className="w-full h-2/3 flex justify-center items-center z-10 group/food">
+      <div className="relative w-56 h-56 mt-4">
+        
+        {/* Abstract Menu / Ordering System Card */}
+        <motion.div 
+          animate={{ y: [0, -10, 0], rotate: [-1, 1, -1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          className="absolute left-2 top-0 w-52 h-60 bg-card/60 backdrop-blur-lg border border-white/10 rounded-2xl shadow-2xl transition-transform duration-500 flex flex-col p-5 gap-4 z-10"
+        >
+          <div className="flex items-center gap-3">
+            <Store className="w-7 h-7 text-primary/70" />
+            <div className="w-1/2 h-2.5 rounded-full bg-white/20" />
+          </div>
+          
+          {/* Abstract order list with scrolling items */}
+          <div className="relative overflow-hidden flex-1 border-y border-white/5 py-4 my-1">
+             <motion.div
+                animate={{ y: [0, -40] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                className="flex flex-col gap-4 w-full"
+             >
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className="flex justify-between items-center w-full">
+                     <div className="flex items-center gap-2 w-full">
+                        <UtensilsCrossed className="w-3.5 h-3.5 text-muted-foreground/40 shrink-0" />
+                        <div className="w-2/3 h-2 rounded-full bg-white/15" />
+                     </div>
+                     <div className="w-8 h-2 rounded-full bg-primary/40 shrink-0 ml-2" />
+                  </div>
+                ))}
+             </motion.div>
+             {/* Fade gradients to mask scrolling */}
+             <div className="absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-card/80 to-transparent pointer-events-none z-10" />
+             <div className="absolute inset-x-0 top-0 h-10 bg-linear-to-b from-card/80 to-transparent pointer-events-none z-10" />
+          </div>
+
+          <div className="flex justify-between items-center w-full pt-1 border-t border-white/5 mt-auto">
+             <div className="w-1/3 h-3.5 rounded-full bg-white/10" />
+             <div className="w-1/3 h-3.5 rounded-full bg-primary" />
+          </div>
+        </motion.div>
+
+        {/* Floating Shopping Bag Element */}
+        <motion.div 
+          animate={{ 
+            y: [0, -10, 0],
+            rotate: [0, 4, 0]
+          }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+          className="absolute -top-8 -right-6 w-24 h-24 rounded-full bg-card/60 backdrop-blur-xl border border-white/10 flex items-center justify-center shadow-[0_0_40px_rgba(0,0,0,0.5)] z-20 hover:scale-110 transition-transform duration-500 group-hover/food:border-primary/30"
+        >
+          <div className="absolute inset-0 bg-primary/10 rounded-full opacity-0 group-hover/food:opacity-100 transition-opacity duration-500"></div>
+          <ShoppingBag className="w-10 h-10 text-primary drop-shadow-[0_0_15px_rgba(var(--primary),0.6)]" />
+        </motion.div>
+        
+        {/* Floating Loyalty/Mobile Element */}
+        <motion.div 
+          animate={{ 
+            y: [0, 8, 0],
+          }}
+          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+          className="absolute -bottom-4 -right-8 z-20"
+        >
+          <div className="px-4 py-3 rounded-2xl bg-card/90 backdrop-blur-xl border border-white/20 shadow-2xl flex items-center justify-center gap-3 group-hover/food:border-yellow-500/30 transition-colors duration-500">
+             <Smartphone className="w-5 h-5 text-white/70" />
+             <div className="flex gap-1.5">
+                {[...Array(3)].map((_, i) => (
+                  <motion.div 
+                    key={i}
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+                  >
+                    <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.6)]" />
+                  </motion.div>
+                ))}
+             </div>
+          </div>
         </motion.div>
       </div>
     </div>

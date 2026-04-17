@@ -6,6 +6,8 @@ import {
   RealEstateGraphic,
   HealthcareGraphic,
   LegalGraphic,
+  ConstructionGraphic,
+  FoodRetailGraphic,
 } from "@/components/industry-graphics";
 import Link from "next/link";
 import { ChevronRight, ArrowRight } from "lucide-react";
@@ -194,6 +196,110 @@ export default function IndustriesPage() {
             >
               <div className="w-full max-w-md h-[400px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
                 <LegalGraphic />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Industry 4: Construction, Trades & Home Services */}
+          <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="flex-1 space-y-6"
+            >
+              <div className="text-primary text-sm font-bold tracking-widest uppercase">
+                04. Construction, Trades &amp; Home Services
+              </div>
+              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
+                Look as professional online as you are on the job.
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Most GTA tradespeople operate with zero online presence,
+                paper-based quoting, and word-of-mouth alone. We give
+                contractors and home-service businesses the digital tools to
+                generate leads, manage their crews, and win more work.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                {[
+                  "Project Portfolio Website",
+                  "Field Team Mobile App",
+                  "Brand & Truck Wrap Design",
+                  "Cloud Job Management",
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 text-muted-foreground"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="flex-1 w-full flex justify-start items-center"
+            >
+              <div className="w-full max-w-md h-[400px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
+                <ConstructionGraphic />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Industry 5: Food, Retail & Local Hospitality */}
+          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="flex-1 space-y-6"
+            >
+              <div className="text-primary text-sm font-bold tracking-widest uppercase">
+                05. Food, Retail &amp; Local Hospitality
+              </div>
+              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
+                Own your customer data. Cut the middleman.
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                GTA restaurants, cafés, and boutique retailers paying 20–30%
+                commissions to third-party platforms are leaving money on the
+                table. We build commission-free ordering, loyalty tools, and
+                strong brand presence that keeps customers coming back directly.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                {[
+                  "Online Ordering Website",
+                  "Loyalty & Rewards App",
+                  "Brand & Menu Design",
+                  "Cloud POS & Inventory Setup",
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 text-muted-foreground"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="flex-1 w-full flex justify-end items-center"
+            >
+              <div className="w-full max-w-md h-[400px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
+                <FoodRetailGraphic />
               </div>
             </motion.div>
           </div>
