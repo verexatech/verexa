@@ -52,7 +52,7 @@ export function HeroSection() {
         muted
         playsInline
         preload="none"
-        poster="/hero-poster.png"
+        poster="/hero-poster.webp"
         className="-mt-36 lg:-mt-[15%] w-full h-[500px] lg:h-auto min-h-[60%] object-cover object-top opacity-80 pointer-events-none z-0"
       >
         <source src="/hero-bg.webm" type="video/webm" />
