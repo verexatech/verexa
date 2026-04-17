@@ -47,9 +47,21 @@ export function MobileGraphic() {
   const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTab((prev) => (prev + 1) % 3);
-    }, 2500);
+    // Defer the interval start so it doesn't block initial render
+    let interval: ReturnType<typeof setInterval>;
+    const start = () => {
+      interval = setInterval(() => {
+        setActiveTab((prev) => (prev + 1) % 3);
+      }, 2500);
+    };
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      (window as Window & { requestIdleCallback: (cb: () => void, opts?: object) => void }).requestIdleCallback(start, { timeout: 2000 });
+    } else {
+      const t = setTimeout(start, 2000);
+      return () => clearTimeout(t);
+    }
+
     return () => clearInterval(interval);
   }, []);
 
@@ -98,14 +110,13 @@ export function DesignGraphic() {
           className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
           viewBox="0 0 160 160"
         >
+          {/* Replaced stroke-dashoffset animation (non-composited) with opacity pulse */}
           <path
             d="M 20 140 C 20 60, 100 20, 140 80 C 160 110, 140 150, 90 140"
             stroke="hsl(var(--primary))"
             fill="none"
             strokeWidth="2"
-            strokeDasharray="300"
-            strokeDashoffset="300"
-            style={{ animation: "drawPath 3s ease-in-out infinite alternate" }}
+            style={{ animation: "designPathFade 3s ease-in-out infinite alternate" }}
           />
         </svg>
         {/* Floating Abstract Design Elements */}
@@ -139,15 +150,27 @@ export function CloudGraphic() {
   const [activeServer, setActiveServer] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveServer((prev) => (prev + 1) % 3);
-    }, 1500);
+    // Defer the interval start so it doesn't block initial render
+    let interval: ReturnType<typeof setInterval>;
+    const start = () => {
+      interval = setInterval(() => {
+        setActiveServer((prev) => (prev + 1) % 3);
+      }, 1500);
+    };
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      (window as Window & { requestIdleCallback: (cb: () => void, opts?: object) => void }).requestIdleCallback(start, { timeout: 2000 });
+    } else {
+      const t = setTimeout(start, 2000);
+      return () => clearTimeout(t);
+    }
+
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="w-full h-2/3 flex justify-center items-start z-10 relative group">
-      {/* Decorative Connectivity Lines */}
+      {/* Decorative Connectivity Lines - replaced animated stroke-dasharray with opacity animation */}
       <svg
         viewBox="0 0 200 120"
         className="w-[120%] absolute top-12 opacity-40 pointer-events-none group-hover:opacity-70 transition-opacity duration-500"
@@ -192,19 +215,8 @@ export function CloudGraphic() {
 }
 
 export function SupportGraphic() {
-  const [widths, setWidths] = useState([85, 100, 60]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWidths([
-        60 + Math.random() * 40,
-        80 + Math.random() * 20,
-        40 + Math.random() * 50,
-      ]);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
+  // Replaced JS setInterval that caused layout thrashing with pure CSS animation
+  // The bars animate via CSS keyframes — no JS repaints on every tick
   return (
     <div className="w-full h-2/3 flex justify-center items-start z-10">
       <div className="flex flex-col gap-3 w-[85%]">
@@ -221,23 +233,25 @@ export function SupportGraphic() {
             ></div>
 
             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 relative z-10">
-              {/* Pulsing Status Dot */}
+              {/* Static status dot — animated by CSS */}
               <div
-                className={`w-2 h-2 rounded-full transition-colors duration-1000 ${
-                  widths[i] > 80
-                    ? "bg-green-400 shadow-[0_0_10px_#4ade80]"
-                    : widths[i] > 50
-                      ? "bg-yellow-400 shadow-[0_0_10px_#facc15]"
-                      : "bg-primary shadow-[0_0_10px_hsl(var(--primary))]"
-                }`}
-              ></div>
+                className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_#4ade80]"
+                style={{
+                  animation: `statusPulse ${2 + i * 0.7}s ease-in-out infinite`,
+                  animationDelay: `${i * 0.4}s`,
+                }}
+              />
             </div>
             <div className="flex-1 flex flex-col gap-2 relative z-10">
               <div className="w-1/3 h-1.5 rounded-full bg-white/20"></div>
               <div className="h-2 rounded-full bg-white/5 w-full overflow-hidden">
                 <div
-                  className={`h-full w-full rounded-full transition-all duration-1000 ease-out ${widths[i] > 80 ? "bg-green-400/80" : widths[i] > 50 ? "bg-yellow-400/80" : "bg-primary"}`}
-                  style={{ transform: `scaleX(${widths[i] / 100})`, transformOrigin: "left" }}
+                  className="h-full rounded-full bg-green-400/80"
+                  style={{
+                    animation: `barWidth ${3 + i}s ease-in-out infinite alternate`,
+                    animationDelay: `${i * 0.6}s`,
+                    transformOrigin: "left",
+                  }}
                 ></div>
               </div>
             </div>

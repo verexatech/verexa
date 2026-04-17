@@ -4,7 +4,8 @@ import { useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
+
 import Image from "next/image";
 
 type FormData = { name: string; phone: string; email: string; message: string };
@@ -94,21 +95,26 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[40px_40px] mask-[linear-gradient(to_bottom,black_20%,transparent_100%)] pointer-events-none"></div>
 
         <div className="max-w-[1250px] mx-auto px-6 relative z-10 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mb-16 relative"
-          >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6">
+          <div className="text-center mb-16 relative">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6"
+            >
               Work With Us
-            </h1>
-            <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+              className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+            >
               Based in the GTA, Ontario — serving businesses across Canada with
               premium digital solutions. Let&apos;s create something
               extraordinary together.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
             {/* Left Column: Map */}

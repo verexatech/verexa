@@ -2,7 +2,8 @@
 
 import { ReactNode, useState, useRef, MouseEvent } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
+
 import { ChevronRight } from "lucide-react";
 import {
   WebGraphic,

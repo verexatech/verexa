@@ -1,7 +1,8 @@
 "use client"
 
 import { FC, useEffect, useRef, useState } from "react"
-import { motion, useSpring } from "framer-motion"
+import { motion, useSpring } from "motion/react"
+
 
 interface Position {
   x: number

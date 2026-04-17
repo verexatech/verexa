@@ -12,7 +12,8 @@ import {
   Monitor,
   PenTool,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
+
 
 export function RealEstateGraphic() {
   return (

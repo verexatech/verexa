@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export function HeroSection() {
   return (
@@ -51,8 +51,11 @@ export function HeroSection() {
         loop
         muted
         playsInline
+        preload="none"
+        poster="/hero-poster.png"
         className="-mt-36 lg:-mt-[15%] w-full h-[500px] lg:h-auto min-h-[60%] object-cover object-top opacity-80 pointer-events-none z-0"
       >
+        <source src="/hero-bg.webm" type="video/webm" />
         <source src="/hero-bg.mp4" type="video/mp4" />
       </video>
     </section>

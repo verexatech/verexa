@@ -36,7 +36,7 @@
 @theme inline {
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-heading: var(--font-ibm-plex-mono), monospace;
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-card: hsl(var(--card));
@@ -128,8 +128,25 @@
   100% { transform: translateX(100%); }
 }
 
+
+@keyframes designPathFade {
+  0% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+@keyframes statusPulse {
+  0%, 100% { background-color: #4ade80; box-shadow: 0 0 10px #4ade80; }
+  50% { background-color: hsl(var(--primary)); box-shadow: 0 0 10px hsl(var(--primary)); }
+}
+
+@keyframes barWidth {
+  0% { width: 60%; }
+  100% { width: 95%; }
+}
+
 .animate-marquee {
   animation: marquee 20s linear infinite;
+  will-change: transform;
 }
 
 a,
