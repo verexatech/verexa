@@ -13,7 +13,6 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 
-
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative overflow-x-hidden">
@@ -317,14 +316,14 @@ export default function ServicesPage() {
         >
           <div className="bg-card/40 border border-white/10 rounded-3xl p-12 backdrop-blur-md shadow-2xl liquid-glass relative overflow-hidden">
             <h3 className="text-3xl md:text-4xl font-normal mb-4 relative z-10">
-              Start your next project with us.
+              Start your next project with us
             </h3>
             <p className="text-muted-foreground text-lg mb-8 relative z-10">
               Let&apos;s build something extraordinary together.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-8 py-4 rounded-xl font-medium group relative z-10"
+              className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-6 py-3 rounded-xl font-medium group relative z-10"
             >
               Get in Touch
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

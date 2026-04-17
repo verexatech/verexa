@@ -6,7 +6,6 @@ import { motion } from "motion/react";
 
 import Image from "next/image";
 
-
 export function WorkWithUsSection() {
   return (
     <section
@@ -58,7 +57,7 @@ export function WorkWithUsSection() {
           <div className="mt-10 flex justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-8 py-4 rounded-xl font-medium group relative z-10"
+              className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-6 py-3 rounded-xl font-medium group relative z-10"
             >
               Get in Touch
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

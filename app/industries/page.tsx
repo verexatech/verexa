@@ -11,7 +11,6 @@ import Link from "next/link";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
-
 export default function IndustriesPage() {
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative overflow-x-hidden">
@@ -221,7 +220,7 @@ export default function IndustriesPage() {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-8 py-4 rounded-xl font-medium group"
+                  className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-6 py-3 rounded-xl font-medium group"
                 >
                   Get Strategy Session
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -262,26 +261,6 @@ export default function IndustriesPage() {
             {/* Background Decorative Mesh */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 blur-[100px] -z-10"></div>
           </div>
-        </motion.div>
-
-        {/* Final CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-4xl mx-auto mt-40 px-6 text-center"
-        >
-          <h3 className="text-3xl md:text-5xl font-normal mb-8 leading-tight">
-            Ready to lead your industry?
-          </h3>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-10 py-5 rounded-2xl text-lg font-medium group"
-          >
-            Start Your Journey
-            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
         </motion.div>
       </section>
 

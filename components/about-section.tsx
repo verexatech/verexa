@@ -28,9 +28,9 @@ export function AboutSection() {
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
               Verexa Technologies Inc. is a Toronto based technology company
               committed to crafting exceptional experiences for businesses in
-              GTA. We blend cutting-edge technology with world-class
-              design to help companies across GTA scale, innovate, and lead
-              their industries.
+              GTA. We blend cutting-edge technology with world-class design to
+              help companies across GTA scale, innovate, and lead their
+              industries.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10">
               Our team of visionary designers, expert engineers, and strategic
@@ -194,7 +194,7 @@ export function AboutSection() {
         <div className="mt-8 md:mt-16 flex justify-center">
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-8 py-4 rounded-xl font-medium group relative z-10"
+            className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-6 py-3 rounded-xl font-medium group relative z-10"
           >
             Learn More
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

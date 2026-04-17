@@ -19,9 +19,8 @@ export function ServicesSection() {
       id="services"
       className="bg-background overflow-hidden relative border-t border-border/10 scroll-mt-24 pt-24"
     >
-
       <div className="max-w-[1250px] mx-auto px-4 sm:px-6 relative z-10 sm:pt-0 object-contain">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -91,7 +90,7 @@ export function ServicesSection() {
         <div className="mt-8 md:mt-16 flex justify-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-8 py-4 rounded-xl font-medium group relative z-10"
+            className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-6 py-3 rounded-xl font-medium group relative z-10"
           >
             Explore All Services
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
