@@ -108,18 +108,6 @@ export function WorkWithUsSection() {
           >
             Verexa
           </text>
-          {/* Center Glowing Masked Text */}
-          <text
-            x="50%"
-            y="50%"
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className="font-heading fill-background stroke-primary font-bold uppercase tracking-wide text-[220px]"
-            mask="url(#textMask)"
-            style={{ paintOrder: "stroke fill", strokeWidth: "3px" }}
-          >
-            Verexa
-          </text>
         </svg>
       </div>
     </section>

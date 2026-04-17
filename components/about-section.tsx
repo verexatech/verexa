@@ -204,27 +204,3 @@ export function AboutSection() {
     </section>
   );
 }
-
-function StatCard({
-  value,
-  label,
-  icon,
-}: {
-  value: string;
-  label: string;
-  icon: ReactNode;
-}) {
-  return (
-    <div className="flex items-center gap-4 p-4 rounded-2xl bg-card/30 backdrop-blur-sm transition-colors hover:bg-card/50">
-      <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center shrink-0 shadow-inner">
-        {icon}
-      </div>
-      <div className="flex flex-col">
-        <span className="text-2xl font-bold text-white tracking-tight">
-          {value}
-        </span>
-        <span className="text-xs text-muted-foreground">{label}</span>
-      </div>
-    </div>
-  );
-}

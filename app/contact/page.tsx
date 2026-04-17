@@ -127,15 +127,17 @@ export default function ContactPage() {
               <div className="relative w-full flex items-center justify-center">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-primary/20 rounded-full blur-[140px] pointer-events-none group-hover:bg-primary/30 transition-colors duration-700"></div>
 
-                <Image
-                  src="/canada-map.png"
-                  alt="Canada Map"
-                  width={512}
-                  height={512}
-                  className="w-full max-w-lg h-auto object-contain opacity-60 brightness-[0.5] contrast-[1.4] invert transition-all duration-700 hover:opacity-80 hover:brightness-50"
+                <div
+                  className="w-full max-w-lg aspect-3/4 bg-primary opacity-60 transition-all duration-700 hover:opacity-80"
                   style={{
-                    filter: "brightness(0.8) contrast(1.2)",
-                    height: "auto",
+                    WebkitMaskImage: "url('/map.svg')",
+                    WebkitMaskSize: "contain",
+                    WebkitMaskRepeat: "no-repeat",
+                    WebkitMaskPosition: "center",
+                    maskImage: "url('/map.svg')",
+                    maskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    maskPosition: "center",
                   }}
                 />
               </div>
