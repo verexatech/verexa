@@ -26,7 +26,7 @@ export function AboutSection() {
               About Us
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              Verexa Technologies Inc. is a Toronto based technology company
+              Verexa Technologies is a Toronto based technology company
               committed to crafting exceptional experiences for businesses in
               GTA. We blend cutting-edge technology with world-class design to
               help companies across GTA scale, innovate, and lead their

@@ -28,7 +28,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
             className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-justify"
           >
-            Verexa Technologies Inc. is a GTA-based technology company committed
+            Verexa Technologies is a GTA-based technology company committed
             to crafting exceptional experiences for businesses in GTA. From
             ambitious startups to established enterprises, we partner with
             organizations across GTA to build digital products that are
