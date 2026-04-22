@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | Verexa Technologies",
   },
   description:
-    "Empowering Canadian businesses with cutting-edge digital experiences. We specialize in web design, mobile app development, graphic design, cloud infrastructure, and IT support based in the GTA, Canada.",
+    "Empowering Canadian businesses with cutting-edge digital experiences. GTA-based technology company specializing in web, mobile, cloud & IT support.",
   keywords: [
     "Verexa Technologies",
     "Technology Company GTA",

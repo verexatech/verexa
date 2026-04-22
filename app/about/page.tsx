@@ -28,8 +28,8 @@ export default function AboutPage() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
             className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-justify"
           >
-            Verexa Technologies is a GTA-based technology company committed
-            to crafting exceptional experiences for businesses in GTA. From
+            Verexa Technologies is a GTA-based technology company committed to
+            crafting exceptional experiences for businesses in GTA. From
             ambitious startups to established enterprises, we partner with
             organizations across GTA to build digital products that are
             beautiful, performant, and built to last.
@@ -40,14 +40,14 @@ export default function AboutPage() {
       {/* Our Story Section */}
       <section className="py-16 md:py-20 bg-background relative z-10">
         <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6"
           >
             Our Story
-          </motion.h1>
+          </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
