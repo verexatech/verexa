@@ -8,6 +8,7 @@ import {
   CloudGraphic,
   SupportGraphic,
   DesignGraphic,
+  AIGraphic,
 } from "@/components/service-graphics";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
@@ -201,7 +202,7 @@ export default function ServicesPage() {
             </motion.div>
           </div>
 
-          {/* Service 4: IT */}
+          {/* Service 4: AI */}
           <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
             <motion.div
               initial={{ opacity: 0, x: 40 }}
@@ -211,7 +212,60 @@ export default function ServicesPage() {
               className="flex-1 space-y-6"
             >
               <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                04. IT &amp; Tech Support
+                04. AI Automation
+              </div>
+              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
+                Work smarter, not harder.
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Streamline operations and elevate user experiences with
+                intelligent AI solutions. We integrate cutting-edge machine
+                learning models to automate repetitive tasks, extract insights,
+                and create responsive applications that learn and adapt.
+              </p>
+              <ul className="space-y-3 mt-6 text-muted-foreground">
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Custom LLM Integrations
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Automated Workflows &amp; Data Processing
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Intelligent Chatbots &amp; Assistants
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Predictive Analytics &amp; Insights
+                </li>
+              </ul>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="flex-1 w-full flex justify-start items-center"
+            >
+              <div className="w-full max-w-md h-[390px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
+                <AIGraphic />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Service 5: IT */}
+          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="flex-1 space-y-6"
+            >
+              <div className="text-primary text-sm font-bold tracking-widest uppercase">
+                05. IT &amp; Tech Support
               </div>
               <h2 className="text-3xl md:text-5xl font-normal leading-tight">
                 Flawless operations, 24/7.
@@ -241,11 +295,11 @@ export default function ServicesPage() {
               </ul>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-start items-center"
+              className="flex-1 w-full flex justify-end items-center"
             >
               <div className="w-full max-w-md h-[390px] relative rounded-[32px] pt-12 overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
                 <SupportGraphic />
@@ -253,17 +307,17 @@ export default function ServicesPage() {
             </motion.div>
           </div>
 
-          {/* Service 5: Design */}
-          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+          {/* Service 6: Design */}
+          <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="flex-1 space-y-6"
             >
               <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                05. Graphic Designing
+                06. Graphic Designing
               </div>
               <h2 className="text-3xl md:text-5xl font-normal leading-tight">
                 Visuals that captivate.
@@ -293,13 +347,13 @@ export default function ServicesPage() {
               </ul>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-end items-center"
+              className="flex-1 w-full flex justify-start items-center"
             >
-              <div className="w-full max-w-md h-[390px] relative rounded-[32px] pt-12 overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
+              <div className="w-full max-w-md h-[390px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
                 <DesignGraphic />
               </div>
             </motion.div>

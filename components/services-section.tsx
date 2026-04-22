@@ -10,7 +10,7 @@ import {
   MobileGraphic,
   CloudGraphic,
   SupportGraphic,
-  DesignGraphic,
+  AIGraphic,
 } from "@/components/service-graphics";
 
 export function ServicesSection() {
@@ -69,21 +69,21 @@ export function ServicesSection() {
           </FeatureCard>
 
           <FeatureCard
-            title="IT & Tech Support"
-            desc="24/7 reliable technical assistance to keep your Canadian operations running flawlessly."
+            title="AI Automation"
+            desc="Streamline operations and elevate user experiences with intelligent AI solutions."
             className="w-full md:w-[32%]"
             delay={0.2}
           >
-            <SupportGraphic />
+            <AIGraphic />
           </FeatureCard>
 
           <FeatureCard
-            title="Graphic Designing"
-            desc="Captivating visual identities, branding, and striking UI/UX designs."
+            title="IT & Tech Support"
+            desc="24/7 reliable technical assistance to keep your Canadian operations running flawlessly."
             className="w-full md:w-[32%]"
             delay={0.3}
           >
-            <DesignGraphic />
+            <SupportGraphic />
           </FeatureCard>
         </div>
 
