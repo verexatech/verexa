@@ -53,6 +53,13 @@ export function WebGraphic() {
           0% { transform: translateY(0); }
           100% { transform: translateY(-50%); }
         }
+        @keyframes cursorMove {
+          0%, 100% { transform: translateZ(80px) translate(0px, 0px) scale(1); }
+          33% { transform: translateZ(80px) translate(60px, -40px) scale(1); }
+          38% { transform: translateZ(80px) translate(60px, -40px) scale(0.8); }
+          43% { transform: translateZ(80px) translate(60px, -40px) scale(1); }
+          66% { transform: translateZ(80px) translate(80px, 20px) scale(1); }
+        }
       `}</style>
 
       <div className="absolute inset-0 bg-primary/10 blur-[80px] rounded-full group-hover:bg-primary/20 transition-colors duration-500"></div>
@@ -100,7 +107,7 @@ export function WebGraphic() {
           className="absolute top-10 -left-8 w-32 h-24 rounded-xl bg-black/80 backdrop-blur-2xl border border-white/10 shadow-2xl p-2.5 flex flex-col gap-1.5 z-20 overflow-hidden"
           style={{ animation: "webLayer1 6s ease-in-out infinite alternate" }}
         >
-          <div className="flex items-center gap-1.5 mb-1 text-muted-foreground text-[9px] font-mono">
+          <div className="flex items-center gap-1.5 text-muted-foreground text-[9px] font-mono relative z-10 bg-[#0f0f0f] -mx-2.5 -mt-2.5 px-2.5 pt-2.5 pb-1.5">
             <Code2 className="w-3 h-3 text-primary" /> React.tsx
           </div>
           <div

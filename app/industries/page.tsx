@@ -337,7 +337,7 @@ export default function IndustriesPage() {
                   { val: "3.5x", label: "Faster Growth" },
                   { val: "35%", label: "Budget Shift" },
                   { val: "2.9%", label: "GTA GDP Growth" },
-                  { val: "#1", label: "Canadian Tech Market" },
+                  { val: "#1", label: "Canadian Market" },
                 ].map((stat, i) => (
                   <motion.div
                     key={i}
