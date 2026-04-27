@@ -10,7 +10,7 @@ import {
   FoodRetailGraphic,
 } from "@/components/industry-graphics";
 import Link from "next/link";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function IndustriesPage() {

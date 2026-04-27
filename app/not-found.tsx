@@ -4,8 +4,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { Button } from "@/components/ui/button";
-import { ChevronRight, Home, ArrowLeft } from "lucide-react";
+import { ChevronRight, Home } from "lucide-react";
 
 export default function NotFound() {
   return (
