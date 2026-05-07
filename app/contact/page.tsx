@@ -6,13 +6,6 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import Image from "next/image";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Contact | Verexa Technologies",
-  description:
-    "Let's create something extraordinary together. Based in the GTA, Ontario — serving businesses across Canada.",
-};
 
 type FormData = { name: string; phone: string; email: string; message: string };
 type FormErrors = Partial<Record<keyof FormData, string>>;
