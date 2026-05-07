@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Services | Web, Mobile, Cloud & AI Solutions | Verexa Technologies",
+  title: "Our Services | Verexa Technologies",
   description: "End-to-end digital solutions: Web Design, Mobile Apps, Cloud Infrastructure, AI Automation, and IT Support. Based in GTA, serving Brampton, Mississauga, and Toronto.",
   keywords: ["Web Development GTA", "Mobile App Developers Toronto", "Cloud Infrastructure Canada", "AI Automation Services", "IT Support Brampton"],
   openGraph: {
