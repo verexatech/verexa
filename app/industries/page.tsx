@@ -12,6 +12,12 @@ import {
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Industries | Verexa Technologies",
+  description: "We serve the GTA's most critical sectors. We build the trust and reliability your business depends on.",
+};
 
 export default function IndustriesPage() {
   return (

@@ -13,6 +13,13 @@ import {
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Services | Verexa Technologies",
+  description:
+    "We build modern, scalable web & mobile apps, custom software, e-commerce stores, and AI-powered solutions. Based in GTA, serving Brampton, Mississauga, Toronto, and beyond.",
+};
 
 export default function ServicesPage() {
   return (

@@ -5,6 +5,13 @@ import { Footer } from "@/components/footer";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | Verexa Technologies",
+  description:
+    "We are a GTA-based technology company committed to crafting exceptional digital experiences for businesses across Greater Toronto Area and all of Canada.",
+};
 
 export default function AboutPage() {
   return (
