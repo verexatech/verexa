@@ -90,9 +90,9 @@ const DefaultCursorSVG: FC = () => {
 export function SmoothCursor({
   cursor = <DefaultCursorSVG />,
   springConfig = {
-    damping: 45,
-    stiffness: 400,
-    mass: 1,
+    damping: 30,
+    stiffness: 800,
+    mass: 0.5,
     restDelta: 0.001,
   },
 }: SmoothCursorProps) {
@@ -108,12 +108,12 @@ export function SmoothCursor({
   const cursorY = useSpring(0, springConfig)
   const rotation = useSpring(0, {
     ...springConfig,
-    damping: 60,
-    stiffness: 300,
+    damping: 40,
+    stiffness: 800,
   })
   const scale = useSpring(1, {
     ...springConfig,
-    stiffness: 500,
+    stiffness: 1000,
     damping: 35,
   })
 
@@ -200,29 +200,18 @@ export function SmoothCursor({
       }
     }
 
-    let rafId = 0
-    const throttledPointerMove = (e: PointerEvent) => {
-      if (!isTrackablePointer(e.pointerType)) {
-        return
-      }
-
-      if (rafId) return
-
-      rafId = requestAnimationFrame(() => {
-        smoothPointerMove(e)
-        rafId = 0
-      })
+    const handlePointerMove = (e: PointerEvent) => {
+      smoothPointerMove(e)
     }
 
     document.body.style.cursor = "none"
-    window.addEventListener("pointermove", throttledPointerMove, {
+    window.addEventListener("pointermove", handlePointerMove, {
       passive: true,
     })
 
     return () => {
-      window.removeEventListener("pointermove", throttledPointerMove)
+      window.removeEventListener("pointermove", handlePointerMove)
       document.body.style.cursor = "auto"
-      if (rafId) cancelAnimationFrame(rafId)
       if (timeout !== null) {
         clearTimeout(timeout)
       }
