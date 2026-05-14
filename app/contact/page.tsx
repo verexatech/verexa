@@ -140,16 +140,6 @@ export default function ContactPage() {
                   }}
                 />
               </div>
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-normal bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mt-6 flex items-center gap-4">
-                Proudly Canadian{" "}
-                <Image
-                  src="/flag.svg"
-                  alt="Canadian flag"
-                  width={40}
-                  height={32}
-                  style={{ height: "auto" }}
-                />
-              </h3>
             </motion.div>
 
             {/* Right Column: Form */}

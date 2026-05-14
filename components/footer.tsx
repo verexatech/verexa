@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { Twitter, Linkedin, Instagram, Youtube } from "lucide-react";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -14,8 +15,8 @@ export function Footer() {
           <div className="col-span-3 md:col-span-2 lg:col-span-2">
             <Logo />
             <p className="text-muted-foreground text-sm font-medium leading-relaxed max-w-sm mt-4 mb-8">
-              Empowering GTA businesses with cutting-edge digital
-              experiences. Toronto based. Future-ready.
+              Empowering GTA businesses with cutting-edge digital experiences.
+              Toronto based. Future-ready.
             </p>
             <div className="flex items-center gap-4">
               <SocialLink
@@ -84,10 +85,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex items-center justify-center gap-4">
+        <div className="pt-8 border-t border-white/5 flex items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm text-center">
             © {new Date().getFullYear()} Verexa Technologies Inc.{" "}
             <span className="text-nowrap">All rights reserved.</span>
+          </p>
+          <p className="text-sm font-normal bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent flex items-center justify-center gap-2">
+            Proudly Canadian{" "}
+            <Image
+              src="/flag.svg"
+              alt="Canadian flag"
+              width={24}
+              height={24}
+              style={{ height: "auto" }}
+            />
           </p>
         </div>
       </div>

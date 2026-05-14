@@ -152,14 +152,14 @@ export default function PortfolioPage() {
                     className="w-full max-w-lg relative group block"
                     aria-label={`Visit ${project.name}`}
                   >
-                    <div className="w-full rounded-[32px] overflow-hidden bg-card/30 border border-white/5 group-hover:border-primary/40 shadow-2xl liquid-glass transition-all duration-500 group-hover:-translate-y-2 relative">
+                    <div className="w-full rounded-xl md:rounded-4xl overflow-hidden bg-card/30 border border-white/5 group-hover:border-primary/40 shadow-2xl liquid-glass transition-all duration-500 group-hover:-translate-y-2 relative">
                       {/* Glow effect */}
-                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl pointer-events-none rounded-[32px]" />
+                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl pointer-events-none rounded-xl md:rounded-4xl" />
 
                       {/* Top bar decoration */}
                       <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none z-30" />
 
-                      <div className="relative aspect-video w-full overflow-hidden rounded-[32px]">
+                      <div className="relative aspect-video w-full overflow-hidden rounded-xl md:rounded-4xl">
                         <Image
                           src={project.image}
                           alt={`${project.name} — ${project.tagline}`}
