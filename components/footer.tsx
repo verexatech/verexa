@@ -9,7 +9,7 @@ export function Footer() {
       {/* Decorative Glow */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="max-w-[1250px] mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-[1250px] mx-auto px-6 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 sm:gap-x-8 gap-y-12 lg:gap-8 mb-8 md:mb-16">
           {/* Brand Col */}
           <div className="col-span-3 md:col-span-2 lg:col-span-2">
@@ -85,18 +85,18 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm text-center">
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-xs md:text-sm font-normal bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent flex items-center justify-center gap-2">
             © {new Date().getFullYear()} Verexa Technologies Inc.{" "}
             <span className="text-nowrap">All rights reserved.</span>
           </p>
-          <p className="text-sm font-normal bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent flex items-center justify-center gap-2">
+          <p className="text-xs md:text-sm font-normal bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent flex items-center justify-center gap-2">
             Proudly Canadian{" "}
             <Image
               src="/flag.svg"
               alt="Canadian flag"
-              width={24}
-              height={24}
+              width={20}
+              height={20}
               style={{ height: "auto" }}
             />
           </p>
