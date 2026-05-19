@@ -2,6 +2,7 @@ export const company = {
   name: "Verexa Technologies Inc.",
   tagline: "Empowering GTA businesses with cutting-edge digital experiences.",
   shortDescription: "Empowering GTA businesses with cutting-edge digital experiences. Toronto based. Future-ready.",
+  founder: "Rajat Sachdeva",
   contact: {
     email: "contact@verexa.ca",
     phone: "+1 (437) 660-7347",

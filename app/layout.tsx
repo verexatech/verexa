@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { PageTransition } from "@/components/page-transition";
+import { ChatWidget } from "@/components/ChatWidget";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -732,6 +733,7 @@ export default function RootLayout({
       >
         <SmoothCursor />
         <PageTransition>{children}</PageTransition>
+        <ChatWidget />
         <Analytics />
       </body>
     </html>

@@ -110,7 +110,7 @@ export default function ContactPage() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
               className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             >
-              Based in {company.contact.region} — serving businesses across Canada with
+              Based in {company.contact.region}{" "}— serving businesses across Canada with
               premium digital solutions. Let&apos;s create something
               extraordinary together.
             </motion.p>
