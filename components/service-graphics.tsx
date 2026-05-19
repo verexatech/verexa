@@ -1159,7 +1159,7 @@ export function PerformanceGraphic() {
       `}</style>
 
       {/* Background ambient glow */}
-      <div className="absolute inset-0 bg-orange-500/10 blur-[80px] rounded-full group-hover:bg-orange-500/20 transition-colors duration-500"></div>
+      <div className="absolute inset-0 bg-primary/10 blur-[80px] rounded-full group-hover:bg-primary/20 transition-colors duration-500"></div>
 
       <div
         className="relative w-full max-w-[340px] aspect-4/3 z-10 transition-transform duration-700"
@@ -1183,7 +1183,7 @@ export function PerformanceGraphic() {
                  <div className="h-3 w-20 bg-white/20 rounded-md"></div>
                  <div className="h-5 w-32 bg-primary/40 rounded-md mt-1"></div>
                </div>
-               <div className="w-10 h-10 rounded-full bg-orange-500/20 border border-orange-500/30 flex items-center justify-center">
+               <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
                  <Target className="w-5 h-5 text-orange-400" />
                </div>
             </div>
@@ -1195,7 +1195,7 @@ export function PerformanceGraphic() {
               <div className="w-full h-full relative z-10 flex items-end justify-between">
                 <div className="w-1/4 bg-blue-500/40 rounded-t-sm" style={{ animation: "barGrow1 4s ease-in-out infinite" }}></div>
                 <div className="w-1/4 bg-purple-500/40 rounded-t-sm" style={{ animation: "barGrow3 5s ease-in-out infinite" }}></div>
-                <div className="w-1/4 bg-orange-500/50 rounded-t-sm shadow-[0_0_15px_rgba(249,115,22,0.4)]" style={{ animation: "barGrow2 4.5s ease-in-out infinite" }}></div>
+                <div className="w-1/4 bg-primary/50 rounded-t-sm" style={{ animation: "barGrow2 4.5s ease-in-out infinite" }}></div>
               </div>
 
               {/* Trend Line SVG */}
