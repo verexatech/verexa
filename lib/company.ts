@@ -1,0 +1,57 @@
+export const company = {
+  name: "Verexa Technologies Inc.",
+  tagline: "Empowering GTA businesses with cutting-edge digital experiences.",
+  shortDescription: "Empowering GTA businesses with cutting-edge digital experiences. Toronto based. Future-ready.",
+  contact: {
+    email: "contact@verexa.ca",
+    phone: "+1 (437) 660-7347",
+    location: "Toronto, ON, Canada",
+    region: "GTA, Ontario",
+  },
+  socials: {
+    twitter: "https://twitter.com/verexatech",
+    linkedin: "https://www.linkedin.com/company/verexatech",
+    instagram: "https://www.instagram.com/verexatech",
+    youtube: "https://www.youtube.com/@verexatech",
+  },
+  stats: [
+    { label: "Experience", value: "5+", sub: "Years of excellence" },
+    { label: "Projects", value: "10+", sub: "Successfully delivered" },
+    { label: "Satisfaction", value: "99%", sub: "Clients Success Rate" },
+    { label: "Support", value: "24/7", sub: "Available for you" },
+  ],
+  values: [
+    {
+      id: "01",
+      title: "Excellence by Design",
+      description: "We engineer premium digital experiences where world-class aesthetics meet uncompromising technical precision.",
+      gradientHover: "group-hover:bg-primary/5",
+      accentHover: "group-hover:text-primary",
+      bgAccent: "from-primary/10",
+    },
+    {
+      id: "02",
+      title: "Relentless Innovation",
+      description: "Pushing the boundaries of modern technology to future-proof your business in a rapidly evolving digital landscape.",
+      gradientHover: "group-hover:bg-accent/5",
+      accentHover: "group-hover:text-accent",
+      bgAccent: "from-accent/10",
+    },
+    {
+      id: "03",
+      title: "Unwavering Integrity",
+      description: "Rooted in Canadian values, we believe in radical transparency, honest communication, and doing what's right for your business.",
+      gradientHover: "group-hover:bg-accent/5",
+      accentHover: "group-hover:text-accent",
+      bgAccent: "from-accent/10",
+    },
+    {
+      id: "04",
+      title: "True Partnership",
+      description: "We operate not just as an agency, but as a dedicated extension of your team invested in your long-term success.",
+      gradientHover: "group-hover:bg-accent/5",
+      accentHover: "group-hover:text-accent",
+      bgAccent: "from-accent/10",
+    },
+  ],
+};

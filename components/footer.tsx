@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { Twitter, Linkedin, Instagram, Youtube } from "lucide-react";
 import Image from "next/image";
+import { company } from "@/lib/company";
 
 export function Footer() {
   return (
@@ -15,24 +16,23 @@ export function Footer() {
           <div className="col-span-3 md:col-span-2 lg:col-span-2">
             <Logo />
             <p className="text-muted-foreground text-sm font-medium leading-relaxed max-w-sm mt-4 mb-8">
-              Empowering GTA businesses with cutting-edge digital experiences.
-              Toronto based. Future-ready.
+              {company.shortDescription}
             </p>
             <div className="flex items-center gap-4">
               <SocialLink
-                href="https://twitter.com/verexatech"
+                href={company.socials.twitter}
                 icon={<Twitter className="w-4 h-4" />}
               />
               <SocialLink
-                href="https://www.linkedin.com/company/verexatech"
+                href={company.socials.linkedin}
                 icon={<Linkedin className="w-4 h-4" />}
               />
               <SocialLink
-                href="https://www.instagram.com/verexatech"
+                href={company.socials.instagram}
                 icon={<Instagram className="w-4 h-4" />}
               />
               <SocialLink
-                href="https://www.youtube.com/@verexatech"
+                href={company.socials.youtube}
                 icon={<Youtube className="w-4 h-4" />}
               />
             </div>
@@ -60,24 +60,24 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <span className="text-muted-foreground text-sm hover:text-white transition-colors">
-                  Toronto, ON, Canada
+                  {company.contact.location}
                 </span>
               </li>
               <li>
                 <a
-                  href="mailto:contact@verexa.ca"
+                  href={`mailto:${company.contact.email}`}
                   className="text-muted-foreground text-sm hover:text-primary transition-colors relative group block w-fit"
                 >
-                  contact@verexa.ca
+                  {company.contact.email}
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all group-hover:w-full"></span>
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+14376607347"
+                  href={`tel:${company.contact.phone.replace(/[^0-9+]/g, "")}`}
                   className="text-muted-foreground text-sm hover:text-primary transition-colors relative group block w-fit"
                 >
-                  +1 (437) 660-7347
+                  {company.contact.phone}
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all group-hover:w-full"></span>
                 </a>
               </li>
@@ -87,7 +87,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs md:text-sm font-normal bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent flex items-center justify-center gap-2">
-            © {new Date().getFullYear()} Verexa Technologies Inc.{" "}
+            © {new Date().getFullYear()} {company.name}{" "}
             <span className="text-nowrap">All rights reserved.</span>
           </p>
           <p className="text-xs md:text-sm font-normal bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent flex items-center justify-center gap-2">

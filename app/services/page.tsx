@@ -9,10 +9,22 @@ import {
   SupportGraphic,
   DesignGraphic,
   AIGraphic,
+  PerformanceGraphic,
 } from "@/components/service-graphics";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
+import { services } from "@/lib/services";
+
+const graphicMap = {
+  web: <WebGraphic />,
+  mobile: <MobileGraphic />,
+  cloud: <CloudGraphic />,
+  ai: <AIGraphic />,
+  support: <SupportGraphic />,
+  design: <DesignGraphic />,
+  performance: <PerformanceGraphic />,
+};
 
 export default function ServicesPage() {
   return (
@@ -46,318 +58,66 @@ export default function ServicesPage() {
       {/* Services List Section */}
       <section className="py-20 bg-background relative z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col gap-32">
-          {/* Service 1: Web */}
-          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                01. Web Design &amp; Development
-              </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Digital experiences that convert.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Crafting stunning, highly performant web applications tailored
-                to your brand. We build fast, accessible, and scalable websites
-                that look great on every device and drive measurable results.
-              </p>
-              <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Custom UI/UX Design &amp; Branding
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Scalable Single Page Applications (React/Next.js)
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  E-commerce Platforms &amp; Integrations
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Performance &amp; SEO Optimization
-                </li>
-              </ul>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-end items-center"
-            >
-              <div className="w-full max-w-md h-[390px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <WebGraphic />
-              </div>
-            </motion.div>
-          </div>
+          {services.map((service, index) => {
+            const isEven = index % 2 !== 0;
 
-          {/* Service 2: Mobile */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                02. Mobile App Development
+            return (
+              <div
+                key={service.id}
+                className={`flex flex-col ${
+                  isEven ? "md:flex-row-reverse" : "md:flex-row"
+                } items-center gap-12 md:gap-20`}
+              >
+                <motion.div
+                  initial={{ opacity: 0, x: isEven ? 40 : -40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  className="flex-1 space-y-6"
+                >
+                  <div className="text-primary text-sm font-bold tracking-widest uppercase">
+                    {service.id}. {service.title}
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-normal leading-tight">
+                    {service.tagline}
+                  </h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-3 mt-6 text-muted-foreground">
+                    {service.features.map((feature, fIndex) => (
+                      <li key={fIndex} className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="pt-4">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium group"
+                    >
+                      Learn more about {service.title}
+                      <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: isEven ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  className={`flex-1 w-full flex ${
+                    isEven ? "justify-start" : "justify-end"
+                  } items-center`}
+                >
+                  <div className="w-full max-w-md h-[390px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
+                    {graphicMap[service.graphicId]}
+                  </div>
+                </motion.div>
               </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Your business, in their pocket.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Native and cross-platform mobile experiences that engage users
-                on the go. We design intuitive apps that leverage device
-                capabilities to offer smooth, app-store ready experiences.
-              </p>
-              <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  iOS &amp; Android Native Development
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Cross-Platform Solutions (React Native)
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Intuitive Mobile UI/UX Design
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Seamless Backend API Integrations
-                </li>
-              </ul>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-start items-center"
-            >
-              <div className="w-full max-w-md h-[390px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <MobileGraphic />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Service 3: Cloud */}
-          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                03. Cloud Infrastructure
-              </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Scale without limits.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Scalable, secure, and robust cloud architectures for your
-                enterprise. We engineer resilient backend systems to handle high
-                traffic and ensure data security around the clock.
-              </p>
-              <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  AWS, GCP &amp; Azure Architecture
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Microservices &amp; Auto-scaling Deployments
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  DevOps Pipelines (CI/CD)
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Database Optimization &amp; Migration
-                </li>
-              </ul>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-end items-center"
-            >
-              <div className="w-full max-w-md h-[390px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <CloudGraphic />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Service 4: AI */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                04. AI Automation
-              </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Work smarter, not harder.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Streamline operations and elevate user experiences with
-                intelligent AI solutions. We integrate cutting-edge machine
-                learning models to automate repetitive tasks, extract insights,
-                and create responsive applications that learn and adapt.
-              </p>
-              <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Custom LLM Integrations
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Automated Workflows &amp; Data Processing
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Intelligent Chatbots &amp; Assistants
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Predictive Analytics &amp; Insights
-                </li>
-              </ul>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-start items-center"
-            >
-              <div className="w-full max-w-md h-[390px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <AIGraphic />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Service 5: IT */}
-          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                05. IT &amp; Tech Support
-              </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Flawless operations, 24/7.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Reliable technical assistance to keep your Canadian operations
-                running flawlessly. Our proactive support prevents downtime and
-                bridges the gap between technology and your workflow.
-              </p>
-              <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  24/7 Helpdesk &amp; Rapid Response SLAs
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Cybersecurity Audits &amp; Monitoring
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Network Management &amp; Provisioning
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Software Maintenance &amp; Updates
-                </li>
-              </ul>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-end items-center"
-            >
-              <div className="w-full max-w-md h-[390px] relative rounded-[32px] pt-12 overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <SupportGraphic />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Service 6: Design */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                06. Graphic Designing
-              </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Visuals that captivate.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Captivating visual identities, branding, and striking UI/UX
-                designs. We transform complex ideas into intuitive, beautiful,
-                and engaging digital art that resonates with your audience.
-              </p>
-              <ul className="space-y-3 mt-6 text-muted-foreground">
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Brand Identity &amp; Logo Design
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Wireframing &amp; Interactive Prototyping
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Marketing Collateral &amp; Digital Assets
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  User Research &amp; Usability Testing
-                </li>
-              </ul>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-start items-center"
-            >
-              <div className="w-full max-w-md h-[390px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <DesignGraphic />
-              </div>
-            </motion.div>
-          </div>
+            );
+          })}
         </div>
 
         {/* Global CTA */}

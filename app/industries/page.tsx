@@ -10,8 +10,17 @@ import {
   FoodRetailGraphic,
 } from "@/components/industry-graphics";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
+import { industries } from "@/lib/industries";
+
+const graphicMap = {
+  "real-estate": <RealEstateGraphic />,
+  healthcare: <HealthcareGraphic />,
+  legal: <LegalGraphic />,
+  construction: <ConstructionGraphic />,
+  "food-retail": <FoodRetailGraphic />,
+};
 
 export default function IndustriesPage() {
   return (
@@ -48,261 +57,69 @@ export default function IndustriesPage() {
       {/* Industry Sections */}
       <section className="py-20 bg-background relative z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col gap-32">
-          {/* Industry 1: Real Estate */}
-          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                01. Real Estate &amp; Property Management
-              </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Responsive systems for GTA&apos;s housing demand.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                With immigration driving relentless demand in the GTA, real
-                estate professionals need digital tools that can keep up. We
-                transform outdated infrastructure into modern, scalable
-                platforms.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                {[
-                  "Listing & Search App",
-                  "Tenant / Client Portal",
-                  "Brand Identity Package",
-                  "Cloud Document System",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 text-muted-foreground"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    {item}
+          {industries.map((industry, index) => {
+            const isEven = index % 2 !== 0;
+
+            return (
+              <div
+                key={industry.id}
+                className={`flex flex-col ${
+                  isEven ? "md:flex-row-reverse" : "md:flex-row"
+                } items-center gap-12 md:gap-20`}
+              >
+                <motion.div
+                  initial={{ opacity: 0, x: isEven ? 40 : -40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  className="flex-1 space-y-6"
+                >
+                  <div className="text-primary text-sm font-bold tracking-widest uppercase">
+                    {industry.id}. {industry.title}
                   </div>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-end items-center"
-            >
-              <div className="w-full max-w-md h-[400px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <RealEstateGraphic />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Industry 2: Healthcare */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                02. Healthcare, Dental &amp; Wellness
-              </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Mission-critical tech for patient trust.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                In healthcare, downtime isn&apos;t just an inconvenience; it
-                disrupts care. We provide secure, cloud infrastructure and 24/7
-                IT support to keep your practice resilient.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                {[
-                  "Online Booking System",
-                  "PHI Data Privacy Audits",
-                  "Clinic Branding & Signage",
-                  "Health Monitoring Integrations",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 text-muted-foreground"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    {item}
+                  <h2 className="text-3xl md:text-5xl font-normal leading-tight">
+                    {industry.tagline}
+                  </h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    {industry.description}
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                    {industry.features.map((feature, fIndex) => (
+                      <div
+                        key={fIndex}
+                        className="flex items-center gap-3 text-muted-foreground"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        {feature}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-start items-center"
-            >
-              <div className="w-full max-w-md h-[400px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <HealthcareGraphic />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Industry 3: Professional Services */}
-          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                03. Professional &amp; Legal Services
-              </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Digital scale for fast-growing firms.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Law firms, accounting practices, and advisory firms are the
-                backbone of Toronto&apos;s volume of small businesses. We bridge
-                the digital divide for firms that are outgrowing their current
-                tech.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                {[
-                  "Secure Client Portal",
-                  "Cloud Workspace Setup",
-                  "Professional Brand Package",
-                  "Clio Integration",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 text-muted-foreground"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    {item}
+                  <div className="pt-6">
+                    <Link
+                      href={`/industries/${industry.slug}`}
+                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium group"
+                    >
+                      Explore {industry.title} solutions
+                      <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-end items-center"
-            >
-              <div className="w-full max-w-md h-[400px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <LegalGraphic />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Industry 4: Construction, Trades & Home Services */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                04. Construction, Trades &amp; Home Services
-              </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Look as professional online as you are on the job.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Most GTA tradespeople operate with zero online presence,
-                paper-based quoting, and word-of-mouth alone. We give
-                contractors and home-service businesses the digital tools to
-                generate leads, manage their crews, and win more work.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                {[
-                  "Project Portfolio Website",
-                  "Field Team Mobile App",
-                  "Brand & Truck Wrap Design",
-                  "Cloud Job Management",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 text-muted-foreground"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    {item}
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: isEven ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  className={`flex-1 w-full flex ${
+                    isEven ? "justify-start" : "justify-end"
+                  } items-center`}
+                >
+                  <div className="w-full max-w-md h-[400px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
+                    {graphicMap[industry.graphicId]}
                   </div>
-                ))}
+                </motion.div>
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-start items-center"
-            >
-              <div className="w-full max-w-md h-[400px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <ConstructionGraphic />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Industry 5: Food, Retail & Local Hospitality */}
-          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 space-y-6"
-            >
-              <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                05. Food, Retail &amp; Local Hospitality
-              </div>
-              <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                Own your customer data. Cut the middleman.
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                GTA restaurants, cafés, and boutique retailers paying 20–30%
-                commissions to third-party platforms are leaving money on the
-                table. We build commission-free ordering, loyalty tools, and
-                strong brand presence that keeps customers coming back directly.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                {[
-                  "Online Ordering Website",
-                  "Loyalty & Rewards App",
-                  "Brand & Menu Design",
-                  "Cloud POS & Inventory Setup",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 text-muted-foreground"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex-1 w-full flex justify-end items-center"
-            >
-              <div className="w-full max-w-md h-[400px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
-                <FoodRetailGraphic />
-              </div>
-            </motion.div>
-          </div>
+            );
+          })}
         </div>
 
         {/* Market Insights / Cross-cutting stats */}
