@@ -52,9 +52,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </Link>
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
              <div className="flex-1 space-y-6">
-                <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                  Service {service.id}
-                </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent">
                   {service.title}
                 </h1>

@@ -673,10 +673,10 @@ export const metadata: Metadata = {
     siteName: "Verexa Technologies",
     images: [
       {
-        url: "/logo.png",
+        url: "/banner.png",
         width: 1200,
         height: 630,
-        alt: "Verexa Technologies Logo",
+        alt: "Verexa Technologies Banner",
       },
     ],
     locale: "en_CA",
@@ -687,7 +687,7 @@ export const metadata: Metadata = {
     title: "Verexa Technologies | Digital Solutions",
     description:
       "Empowering Canadian businesses with cutting-edge digital experiences. GTA-based. Canada-focused.",
-    images: ["/logo.png"],
+    images: ["/banner.png"],
   },
   robots: {
     index: true,
