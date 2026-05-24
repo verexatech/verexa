@@ -14,14 +14,14 @@ export function HeroSection() {
         className="relative z-20 flex flex-col items-center justify-center pt-48"
       >
         <h1 className="text-[42px] sm:text-5xl lg:text-7xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent text-center pb-4 max-w-5xl mx-auto tracking-tight">
-          Design.Code.
+          Digital Solutions
           <br />
-          Deploy.Support.
+          for GTA Businesses
         </h1>
 
         <p className="text-center md:text-xl sm:leading-8 sm:max-w-2xl opacity-80 text-foreground/82">
-          Innovative digital solutions for GTA based businesses. Web, Mobile,
-          Design, Infra and Support. All in one place.
+          Serving Toronto, Mississauga, Brampton & across the GTA. Web, mobile,
+          cloud, AI & managed IT — built for Canadian businesses.
         </p>
 
         <div className="mt-8 mb-[66px] flex gap-4">
