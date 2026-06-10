@@ -9,7 +9,6 @@ import {
   SupportGraphic,
   DesignGraphic,
   AIGraphic,
-  PerformanceGraphic,
 } from "@/components/service-graphics";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
@@ -22,8 +21,7 @@ const graphicMap = {
   cloud: <CloudGraphic />,
   ai: <AIGraphic />,
   support: <SupportGraphic />,
-  design: <DesignGraphic />,
-  performance: <PerformanceGraphic />,
+  design: <DesignGraphic />
 };
 
 export default function ServicesPage() {
