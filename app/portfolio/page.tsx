@@ -21,6 +21,7 @@ const projects = [
     tags: ["AI/ML", "SaaS", "Web App", "Next.js"],
     direction: "ltr" as const,
   },
+
   {
     id: "typeinvoice",
     number: "02",
@@ -59,6 +60,19 @@ const projects = [
     image: "/portfolio/elevategrad.png",
     tags: ["EdTech", "Web App", "Mentorship", "Next.js"],
     direction: "rtl" as const,
+  },
+  {
+    id: "solovio",
+    number: "05",
+    label: "Creator Automation Platform",
+    name: "Solovio",
+    tagline: "Operate like a small team.",
+    description:
+      "A creator operations platform built for solo creators, coaches, educators, and personal brands. Solovio helps users automate repetitive Instagram conversations, capture leads, manage follow-ups, and turn audience attention into action without adding more manual work.",
+    url: "https://solovio.app/",
+    image: "/portfolio/solovio.png",
+    tags: ["Creator Tools", "Automation", "SaaS", "Next.js"],
+    direction: "ltr" as const,
   },
 ];
 
