@@ -1,28 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Portfolio | Verexa Technologies",
+  title: { absolute: "Technology Case Studies | Verexa Technologies" },
   description:
-    "Explore Verexa Technologies' portfolio of premium digital products built for ambitious startups and growing businesses across Canada. From AI-powered SaaS platforms to sleek web applications.",
-  keywords: [
-    "Verexa Portfolio",
-    "Web Development Portfolio GTA",
-    "SaaS Development Toronto",
-    "Digital Product Portfolio Canada",
-    "App Development Case Studies",
-  ],
+    "Explore Verexa case studies covering AI products, workflow automation, custom business software, and cloud-backed applications.",
+  alternates: { canonical: "/portfolio" },
   openGraph: {
-    title: "Our Portfolio | Verexa Technologies",
+    title: "Technology Case Studies | Verexa Technologies",
     description:
-      "Premium digital products built by Verexa Technologies for ambitious startups and growing businesses.",
+      "The problems, solutions, engineering focus, and demonstrated capabilities behind selected Verexa work.",
+    url: "/portfolio",
     type: "website",
   },
 };
 
-export default function PortfolioLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PortfolioLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

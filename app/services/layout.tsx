@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Services | Verexa Technologies",
-  description: "End-to-end digital solutions: Web Design, Mobile Apps, Cloud Infrastructure, AI Automation, and IT Support. Based in GTA, serving Brampton, Mississauga, and Toronto.",
-  keywords: ["Web Development GTA", "Mobile App Developers Toronto", "Cloud Infrastructure Canada", "AI Automation Services", "IT Support Brampton"],
+  title: { absolute: "AI Automation, Business Software & Managed Technology | Verexa Technologies" },
+  description:
+    "Explore AI and workflow automation, custom business software, managed technology, and cloud infrastructure services for GTA businesses.",
+  alternates: { canonical: "/services" },
   openGraph: {
-    title: "Our Services | Verexa Technologies",
-    description: "Captivating web designs, robust cloud infrastructures, and AI-powered solutions.",
+    title: "Technology Services for GTA Businesses | Verexa Technologies",
+    description:
+      "Automation, business software, managed technology, and cloud infrastructure tied to real operating needs.",
+    url: "/services",
     type: "website",
   },
 };
 
-export default function ServicesLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ServicesLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

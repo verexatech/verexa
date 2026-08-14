@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   reactStrictMode: true,
+  poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
@@ -33,6 +31,30 @@ const nextConfig = {
       "@radix-ui/react-toast",
       "@radix-ui/react-tooltip",
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/services/web-design-and-development",
+        destination: "/services/custom-business-software#web-applications",
+        permanent: true,
+      },
+      {
+        source: "/services/mobile-app-development",
+        destination: "/services/custom-business-software#mobile-applications",
+        permanent: true,
+      },
+      {
+        source: "/services/it-and-tech-support",
+        destination: "/services/managed-technology",
+        permanent: true,
+      },
+      {
+        source: "/services/graphic-designing",
+        destination: "/services/custom-business-software#product-design",
+        permanent: true,
+      },
+    ];
   },
 }
 

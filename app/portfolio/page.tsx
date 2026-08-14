@@ -1,289 +1,138 @@
 "use client";
 
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import Link from "next/link";
-import Image from "next/image";
-import { ChevronRight, ExternalLink, ArrowUpRight } from "lucide-react";
+import { ChevronRight, ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
 
-const projects = [
-  {
-    id: "coprep",
-    number: "01",
-    label: "AI SaaS Platform",
-    name: "CoPrep AI",
-    tagline: "AI-powered interview preparation.",
-    description:
-      "A fully-featured AI coaching platform designed to help job seekers ace their interviews. CoPrep AI delivers real-time feedback on body language, speech clarity, and answer quality using advanced machine learning — giving candidates a competitive edge.",
-    url: "https://www.coprep.ai/",
-    image: "/portfolio/coprep.png",
-    tags: ["AI/ML", "SaaS", "Web App", "Next.js"],
-    direction: "ltr" as const,
-  },
-
-  {
-    id: "typeinvoice",
-    number: "02",
-    label: "Productivity Tool",
-    name: "TypeInvoice",
-    tagline: "Beautiful invoicing, effortlessly.",
-    description:
-      "A sleek, typography-first invoicing platform that lets freelancers and small businesses create, send, and track professional invoices in seconds. Built for speed and clarity, TypeInvoice turns a tedious task into an elegant experience.",
-    url: "https://typeinvoice.com/",
-    image: "/portfolio/typeinvoice.png",
-    tags: ["SaaS", "Fintech", "Web App", "React"],
-    direction: "rtl" as const,
-  },
-  {
-    id: "cryptex",
-    number: "03",
-    label: "Crypto Dashboard",
-    name: "Cryptex",
-    tagline: "Real-time crypto intelligence.",
-    description:
-      "A high-performance cryptocurrency portfolio tracker and market analytics dashboard. Cryptex delivers live price data, portfolio breakdowns, and visual insights with a futuristic, data-rich interface designed for serious traders.",
-    url: "https://trycryptex.vercel.app/",
-    image: "/portfolio/cryptex.png",
-    tags: ["Crypto", "Dashboard", "Real-time", "React"],
-    direction: "ltr" as const,
-  },
-  {
-    id: "elevategrad",
-    number: "04",
-    label: "EdTech Platform",
-    name: "ElevateGrad",
-    tagline: "Mentorship meets academia.",
-    description:
-      "An education platform purpose-built for graduate students and early-career professionals. ElevateGrad connects learners with expert mentors, specialized courses, and career resources — all in one beautifully designed environment.",
-    url: "https://elevategrad.com/",
-    image: "/portfolio/elevategrad.png",
-    tags: ["EdTech", "Web App", "Mentorship", "Next.js"],
-    direction: "rtl" as const,
-  },
-  {
-    id: "solovio",
-    number: "05",
-    label: "Creator Automation Platform",
-    name: "Solovio",
-    tagline: "Operate like a small team.",
-    description:
-      "A creator operations platform built for solo creators, coaches, educators, and personal brands. Solovio helps users automate repetitive Instagram conversations, capture leads, manage follow-ups, and turn audience attention into action without adding more manual work.",
-    url: "https://solovio.app/",
-    image: "/portfolio/solovio.png",
-    tags: ["Creator Tools", "Automation", "SaaS", "Next.js"],
-    direction: "ltr" as const,
-  },
-];
+import { AssessmentCta } from "@/components/assessment-cta";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { caseStudies } from "@/lib/case-studies";
 
 export default function PortfolioPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="pt-36 pb-12 md:pt-48 md:pb-16 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6"
-          >
-            What We Built
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-            className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
-          >
-            From AI platforms to SaaS solutions, we have helped startups and
-            growing businesses across Canada build premium digital products that
-            drive real results.
-          </motion.p>
-        </div>
+      <section className="relative overflow-hidden pb-16 pt-36 text-center md:pb-24 md:pt-48">
+        <div className="absolute left-1/2 top-20 h-96 w-[800px] -translate-x-1/2 rounded-full bg-primary/8 blur-[140px]" />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0 }}
+          className="relative z-10 mx-auto max-w-5xl px-6"
+        >
+          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+            Selected work
+          </p>
+          <h1 className="bg-linear-to-b from-foreground from-20% to-muted-foreground bg-clip-text text-5xl font-normal leading-[1.02] text-transparent sm:text-6xl lg:text-7xl">
+            Problems, products,
+            <br />
+            and the work between.
+          </h1>
+          <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            These case studies explain what each product needed to do, how the
+            solution was shaped, and what the live product now enables.
+          </p>
+        </motion.div>
       </section>
 
-      {/* Projects Section */}
-      <section className="py-20 bg-background relative z-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col gap-32">
-          {projects.map((project) => {
-            const isRtl = project.direction === "rtl";
-
+      <section className="pb-24 md:pb-32">
+        <div className="mx-auto flex max-w-7xl flex-col gap-24 px-6 md:gap-32">
+          {caseStudies.map((study, index) => {
+            const reverse = index % 2 !== 0;
             return (
-              <div
-                key={project.id}
-                className={`flex flex-col ${
-                  isRtl ? "md:flex-row-reverse" : "md:flex-row"
-                } items-center gap-12 md:gap-20`}
+              <motion.article
+                key={study.slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-70px" }}
+                transition={{ duration: 0.65, delay: 0 }}
+                className={`flex flex-col items-center gap-10 lg:gap-20 ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"}`}
               >
-                {/* Text Side */}
-                <motion.div
-                  initial={{ opacity: 0, x: isRtl ? 40 : -40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
-                  className="flex-1 space-y-6"
-                >
-                  <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                    {project.number}. {project.label}
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                    {project.tagline}
-                  </h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    {project.description}
+                <div className="flex-1">
+                  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                    {study.number} · {study.label}
                   </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {project.tags.map((tag) => (
+                  <h2 className="text-4xl font-normal sm:text-5xl">{study.name}</h2>
+                  <p className="mt-4 text-xl text-foreground/78">{study.tagline}</p>
+                  <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                    {study.summary}
+                  </p>
+                  <div className="mt-7 flex flex-wrap gap-2">
+                    {study.services.map((service) => (
                       <span
-                        key={tag}
-                        className="px-3 py-1 rounded-full text-xs font-medium border bg-primary/10 text-primary border-primary/20"
+                        key={service}
+                        className="rounded-full border border-primary/20 bg-primary/8 px-3 py-1.5 text-xs text-primary"
                       >
-                        {tag}
+                        {service}
                       </span>
                     ))}
                   </div>
-                </motion.div>
+                  <div className="mt-8 flex flex-wrap gap-5">
+                    <Link
+                      href={`/portfolio/${study.slug}`}
+                      className="inline-flex items-center gap-2 font-medium text-primary"
+                    >
+                      Read case study <ChevronRight className="h-4 w-4" />
+                    </Link>
+                    <Link
+                      href={study.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 font-medium text-muted-foreground hover:text-foreground"
+                    >
+                      Visit product <ExternalLink className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
 
-                {/* Image Side */}
-                <motion.div
-                  initial={{ opacity: 0, x: isRtl ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
-                  className={`flex-1 w-full flex ${
-                    isRtl ? "justify-start" : "justify-end"
-                  } items-center`}
-                >
+                <div className="w-full flex-1">
                   <Link
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full max-w-lg relative group block"
-                    aria-label={`Visit ${project.name}`}
+                    href={`/portfolio/${study.slug}`}
+                    className="group block overflow-hidden rounded-[32px] border border-white/8 bg-card/30 shadow-2xl"
                   >
-                    <div className="w-full rounded-xl md:rounded-4xl overflow-hidden bg-card/30 border border-white/5 group-hover:border-primary/40 shadow-2xl liquid-glass transition-all duration-500 group-hover:-translate-y-2 relative">
-                      {/* Glow effect */}
-                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl pointer-events-none rounded-xl md:rounded-4xl" />
-
-                      {/* Top bar decoration */}
-                      <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none z-30" />
-
-                      <div className="relative aspect-video w-full overflow-hidden rounded-xl md:rounded-4xl">
-                        <Image
-                          src={project.image}
-                          alt={`${project.name} — ${project.tagline}`}
-                          fill
-                          className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                          sizes="(max-width: 1024px) 100vw, 50vw"
-                        />
-                        {/* Overlay on hover */}
-                        <div className="absolute inset-0 bg-background/0 group-hover:bg-background/10 transition-colors duration-500 flex items-center justify-center">
-                          <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 flex items-center gap-2 border border-white/20 text-sm font-medium text-white shadow-lg">
-                            <ExternalLink className="w-4 h-4" />
-                            Visit Site
-                          </div>
-                        </div>
+                    <div className="relative aspect-video overflow-hidden">
+                      <Image
+                        src={study.image}
+                        alt={`${study.name} product interface`}
+                        fill
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-background/0 transition-colors group-hover:bg-background/20">
+                        <span className="flex translate-y-2 items-center gap-2 rounded-full border border-white/15 bg-background/70 px-4 py-2 text-sm font-medium opacity-0 backdrop-blur-xl transition-all group-hover:translate-y-0 group-hover:opacity-100">
+                          View case study <ChevronRight className="h-4 w-4" />
+                        </span>
                       </div>
                     </div>
-
-                    {/* Project name badge */}
-                    <div className="mt-4 flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
-                      <span className="text-muted-foreground text-sm font-medium">
-                        {project.name}
-                      </span>
-                      <span className="text-muted-foreground/40 text-sm">
-                        •
-                      </span>
-                      <span className="text-muted-foreground/60 text-xs truncate">
-                        {project.url.replace("https://", "").replace(/\/$/, "")}
-                      </span>
-                    </div>
                   </Link>
-                </motion.div>
-              </div>
+                </div>
+              </motion.article>
             );
           })}
         </div>
+      </section>
 
-        {/* Stats Row */}
+      <section className="border-y border-white/5 bg-card/10 py-16">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto mt-32 px-6"
+          viewport={{ once: true, margin: "-70px" }}
+          transition={{ duration: 0.65, delay: 0 }}
+          className="mx-auto max-w-4xl px-6 text-center"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 xl:gap-8 relative z-20 w-full">
-            {[
-              {
-                label: "Projects",
-                value: "10+",
-                sub: "Successfully delivered",
-              },
-              { label: "Clients", value: "15+", sub: "Across Canada & GTA" },
-              {
-                label: "Satisfaction",
-                value: "99%",
-                sub: "Client success rate",
-              },
-              { label: "Support", value: "24/7", sub: "Always available" },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.1 }}
-                className="w-full text-center relative flex-1 min-w-0 group p-2"
-              >
-                <div className="absolute inset-0 rounded-2xl shadow-inner group-hover:bg-card/60 transition-colors" />
-                <div className="relative z-10">
-                  <h3 className="text-muted-foreground text-xs sm:text-[10px] md:text-sm font-medium mb-2 uppercase tracking-widest truncate">
-                    {stat.label}
-                  </h3>
-                  <div className="text-4xl lg:text-5xl tracking-tight font-medium text-white mb-2">
-                    {stat.value}
-                  </div>
-                  <p className="text-muted-foreground/70 text-xs">{stat.sub}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Global CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto mt-20 px-6 text-center"
-        >
-          <div className="bg-card/40 border border-white/10 rounded-3xl p-12 backdrop-blur-md shadow-2xl liquid-glass relative overflow-hidden">
-            <h3 className="text-3xl md:text-4xl font-normal mb-4 relative z-10">
-              Ready to build your next product?
-            </h3>
-            <p className="text-muted-foreground text-lg mb-8 relative z-10">
-              Let&apos;s craft something extraordinary together.
-            </p>
-            <Link
-              href="/contact"
-              id="portfolio-cta-contact"
-              className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-6 py-3 rounded-xl font-medium group relative z-10"
-            >
-              Start a Project
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
+          <h2 className="text-3xl font-normal sm:text-4xl">Evidence over inflated numbers.</h2>
+          <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-muted-foreground">
+            We describe the products and capabilities that can be verified. As
+            measured business outcomes become available, they can be added with
+            their scope and source.
+          </p>
         </motion.div>
       </section>
 
+      <AssessmentCta />
       <Footer />
     </main>
   );

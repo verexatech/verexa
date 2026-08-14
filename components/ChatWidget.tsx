@@ -105,10 +105,10 @@ export function ChatWidget() {
   }, [messages]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end sm:bottom-6 sm:right-6">
       {/* Chat Window */}
       {isOpen && (
-        <div className="mb-4 w-[360px] sm:w-[420px] h-[540px] rounded-[20px] flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 fade-in duration-300 relative bg-background/80 backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_60px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.05)]">
+        <div className="relative mb-4 flex h-[min(540px,calc(100vh-7rem))] w-[calc(100vw-2rem)] max-w-[420px] flex-col overflow-hidden rounded-[20px] border border-white/[0.08] bg-background/80 shadow-[0_8px_60px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.05)] backdrop-blur-2xl animate-in slide-in-from-bottom-5 fade-in duration-300">
           {/* Decorative Glow */}
           <div className="absolute -top-20 -right-20 w-[200px] h-[200px] bg-primary/15 rounded-full blur-[80px] pointer-events-none" />
           <div className="absolute -bottom-10 -left-10 w-[150px] h-[150px] bg-primary/10 rounded-full blur-[60px] pointer-events-none" />
@@ -242,7 +242,7 @@ export function ChatWidget() {
       {showBubble && !isOpen && (
         <button
           onClick={toggleChat}
-          className="mb-3 px-4 py-2.5 rounded-xl bg-card/80 backdrop-blur-xl border border-white/[0.08] shadow-lg text-sm text-foreground animate-in slide-in-from-bottom-2 fade-in duration-300 hover:bg-card transition-colors whitespace-nowrap"
+          className="mb-3 hidden whitespace-nowrap rounded-xl border border-white/[0.08] bg-card/80 px-4 py-2.5 text-sm text-foreground shadow-lg backdrop-blur-xl transition-colors hover:bg-card sm:block animate-in slide-in-from-bottom-2 fade-in duration-300"
         >
           👋 How can I help you?
         </button>

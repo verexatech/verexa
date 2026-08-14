@@ -1,282 +1,326 @@
 "use client";
 
-import { useState } from "react";
-import { Navbar } from "@/components/navbar";
+import { ArrowDown, CalendarDays, CheckCircle2, Mail, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+
 import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { Reveal } from "@/components/page-transition";
 import { Button } from "@/components/ui/button";
-import { motion } from "motion/react";
-import Image from "next/image";
 import { company } from "@/lib/company";
 
-type FormData = { name: string; phone: string; email: string; message: string };
+type FormData = {
+  name: string;
+  workEmail: string;
+  phone: string;
+  company: string;
+  employeeCount: string;
+  interest: string;
+  currentProcess: string;
+  budget: string;
+  website: string;
+};
+
 type FormErrors = Partial<Record<keyof FormData, string>>;
+
+const initialForm: FormData = {
+  name: "",
+  workEmail: "",
+  phone: "",
+  company: "",
+  employeeCount: "",
+  interest: "technology-assessment",
+  currentProcess: "",
+  budget: "",
+  website: "",
+};
 
 function validate(data: FormData): FormErrors {
   const errors: FormErrors = {};
-  if (!data.name.trim()) {
-    errors.name = "Full name is required.";
-  } else if (data.name.trim().length < 2) {
-    errors.name = "Name must be at least 2 characters.";
+  if (data.name.trim().length < 2) errors.name = "Enter your full name.";
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.workEmail)) {
+    errors.workEmail = "Enter a valid work email.";
   }
-  if (data.phone && !/^[\d\s\-\+\(\)]{7,15}$/.test(data.phone)) {
+  if (!data.company.trim()) errors.company = "Enter your company name.";
+  if (!data.interest) errors.interest = "Choose an area of interest.";
+  if (data.currentProcess.trim().length < 20) {
+    errors.currentProcess = "Please share at least a few details about the current process.";
+  }
+  if (data.phone && !/^[\d\s\-+()]{7,20}$/.test(data.phone)) {
     errors.phone = "Enter a valid phone number.";
-  }
-  if (!data.email.trim()) {
-    errors.email = "Email address is required.";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    errors.email = "Enter a valid email address.";
-  }
-  if (!data.message.trim()) {
-    errors.message = "Message cannot be empty.";
-  } else if (data.message.trim().length < 10) {
-    errors.message = "Message must be at least 10 characters.";
   }
   return errors;
 }
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormData>(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [status, setStatus] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const processRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  useEffect(() => {
+    const requestedInterest = new URLSearchParams(window.location.search).get("interest");
+    const allowed = [
+      "technology-assessment",
+      "ai-automation",
+      "business-software",
+      "managed-technology",
+      "cloud-infrastructure",
+      "website-application",
+    ];
+    if (requestedInterest && allowed.includes(requestedInterest)) {
+      const timer = window.setTimeout(() => {
+        setFormData((current) => ({ ...current, interest: requestedInterest }));
+      }, 0);
+      return () => window.clearTimeout(timer);
+    }
+  }, []);
+
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+    setErrors((current) => ({ ...current, [name]: undefined }));
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     const validationErrors = validate(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-    setErrors({});
-    setStatus("loading");
 
+    setStatus("loading");
     try {
-      const res = await fetch("/api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
-      if (res.ok) {
-        setStatus("success");
-        setFormData({ name: "", phone: "", email: "", message: "" });
-        setTimeout(() => setStatus("idle"), 3000);
-      } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
-      }
-    } catch (error) {
+      if (!response.ok) throw new Error("Request failed");
+      setFormData(initialForm);
+      setErrors({});
+      setStatus("success");
+    } catch {
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name as keyof FormData]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
+  const requestCall = () => {
+    setFormData((current) => ({
+      ...current,
+      interest: "technology-assessment",
+      currentProcess:
+        current.currentProcess || "I would like to request a 30-minute call to discuss ",
+    }));
+    document.getElementById("assessment-form")?.scrollIntoView({ behavior: "smooth" });
+    window.setTimeout(() => processRef.current?.focus(), 500);
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative flex flex-col overflow-x-hidden">
+    <main className="min-h-screen overflow-x-clip bg-background text-foreground">
       <Navbar />
 
-      <section className="pt-36 pb-12 md:pt-48 md:pb-16 relative overflow-hidden flex-1 flex flex-col justify-center">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[40px_40px] mask-[linear-gradient(to_bottom,black_20%,transparent_100%)] pointer-events-none"></div>
-
-        <div className="max-w-[1250px] mx-auto px-6 relative z-10 w-full">
-          <div className="text-center mb-16 relative">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-7xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6"
-            >
-              Work With Us
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-              className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            >
-              Based in {company.contact.region}{" "}— serving businesses across Canada with
-              premium digital solutions. Let&apos;s create something
-              extraordinary together.
-            </motion.p>
+      <section className="relative overflow-hidden pb-16 pt-36 md:pb-24 md:pt-48">
+        <div className="absolute left-1/2 top-20 h-96 w-[800px] -translate-x-1/2 rounded-full bg-primary/8 blur-[140px]" />
+        <Reveal priority className="relative z-10 mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[1fr_0.85fr] lg:items-end">
+          <div>
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              Technology assessment
+            </p>
+            <h1 className="bg-linear-to-b from-foreground from-20% to-muted-foreground bg-clip-text text-5xl font-normal leading-[1.02] text-transparent sm:text-6xl lg:text-7xl">
+              Show us where the work gets stuck.
+            </h1>
+            <p className="mt-7 max-w-3xl text-xl leading-relaxed text-muted-foreground">
+              Tell us about one process, system, or recurring technology problem.
+              We’ll use that context to identify a practical first step.
+            </p>
           </div>
-
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
-            {/* Left Column: Map */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              className="w-full lg:w-1/2 flex flex-col items-center justify-center relative min-h-[400px] group"
+          <div className="rounded-[30px] border border-white/8 bg-card/35 p-7">
+            <CalendarDays className="h-6 w-6 text-primary" />
+            <h2 className="mt-5 text-2xl font-medium">Prefer a conversation?</h2>
+            <p className="mt-3 leading-relaxed text-muted-foreground">
+              Request a 30-minute introductory call. We’ll confirm a time after
+              reviewing the workflow details below.
+            </p>
+            <button
+              type="button"
+              onClick={requestCall}
+              data-cta="contact-request-call"
+              className="mt-6 inline-flex items-center gap-2 font-medium text-primary"
             >
-              <div className="relative w-full flex items-center justify-center">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-primary/20 rounded-full blur-[140px] pointer-events-none group-hover:bg-primary/30 transition-colors duration-700"></div>
+              Request a 30-minute call <ArrowDown className="h-4 w-4" />
+            </button>
+          </div>
+        </Reveal>
+      </section>
 
-                <div
-                  className="w-full max-w-lg aspect-3/4 bg-primary opacity-60 transition-all duration-700 hover:opacity-80"
-                  style={{
-                    WebkitMaskImage: "url('/map.svg')",
-                    WebkitMaskSize: "contain",
-                    WebkitMaskRepeat: "no-repeat",
-                    WebkitMaskPosition: "center",
-                    maskImage: "url('/map.svg')",
-                    maskSize: "contain",
-                    maskRepeat: "no-repeat",
-                    maskPosition: "center",
-                  }}
-                />
-              </div>
-            </motion.div>
-
-            {/* Right Column: Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-              className="w-full lg:w-1/2 max-w-lg mx-auto lg:mx-0 relative z-20"
-            >
-              <div className="bg-card/60 backdrop-blur-3xl border border-white/10 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.3)] p-8 sm:p-10 w-full liquid-glass relative overflow-hidden">
-                <div className="absolute -inset-x-12 -inset-y-12 bg-linear-to-bl from-primary/5 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0 pointer-events-none"></div>
-                <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none z-10"></div>
-
-                <div className="relative z-20">
-                  <h3 className="text-2xl md:text-3xl font-normal text-white mb-3 tracking-tight">
-                    Ready to Get Started?
-                  </h3>
-                  <p className="text-muted-foreground text-sm sm:text-base mb-8">
-                    Partner with our local experts to elevate your brand and
-                    scale your digital presence.
-                  </p>
-
-                  <form
-                    className="flex flex-col gap-5"
-                    onSubmit={handleSubmit}
-                    noValidate
-                  >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      {/* Name */}
-                      <div className="flex flex-col gap-1.5">
-                        <div
-                          className={`h-12 bg-black/40 backdrop-blur-md rounded-xl border transition-all overflow-hidden ${errors.name ? "border-red-500/60 ring-1 ring-red-500/30" : "border-white/10 hover:border-primary/40 focus-within:border-primary/60 focus-within:ring-1 focus-within:ring-primary/40"}`}
-                        >
-                          <input
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            placeholder="Full Name *"
-                            className="w-full h-full bg-transparent px-4 py-2 outline-none text-white text-sm placeholder:text-muted-foreground/60"
-                          />
-                        </div>
-                        {errors.name && (
-                          <p className="text-red-400 text-xs px-1">
-                            {errors.name}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Phone */}
-                      <div className="flex flex-col gap-1.5">
-                        <div
-                          className={`h-12 bg-black/40 backdrop-blur-md rounded-xl border transition-all overflow-hidden ${errors.phone ? "border-red-500/60 ring-1 ring-red-500/30" : "border-white/10 hover:border-primary/40 focus-within:border-primary/60 focus-within:ring-1 focus-within:ring-primary/40"}`}
-                        >
-                          <input
-                            type="tel"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            placeholder="Phone Number"
-                            className="w-full h-full bg-transparent px-4 py-2 outline-none text-white text-sm placeholder:text-muted-foreground/60"
-                          />
-                        </div>
-                        {errors.phone && (
-                          <p className="text-red-400 text-xs px-1">
-                            {errors.phone}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Email */}
-                    <div className="flex flex-col gap-1.5">
-                      <div
-                        className={`h-12 bg-black/40 backdrop-blur-md rounded-xl border transition-all overflow-hidden ${errors.email ? "border-red-500/60 ring-1 ring-red-500/30" : "border-white/10 hover:border-primary/40 focus-within:border-primary/60 focus-within:ring-1 focus-within:ring-primary/40"}`}
-                      >
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder="Email Address *"
-                          className="w-full h-full bg-transparent px-4 py-2 outline-none text-white text-sm placeholder:text-muted-foreground/60"
-                        />
-                      </div>
-                      {errors.email && (
-                        <p className="text-red-400 text-xs px-1">
-                          {errors.email}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Message */}
-                    <div className="flex flex-col gap-1.5">
-                      <div
-                        className={`bg-black/40 backdrop-blur-md rounded-xl border transition-all overflow-hidden ${errors.message ? "border-red-500/60 ring-1 ring-red-500/30" : "border-white/10 hover:border-primary/40 focus-within:border-primary/60 focus-within:ring-1 focus-within:ring-primary/40"}`}
-                      >
-                        <textarea
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          placeholder="Your Message *"
-                          rows={4}
-                          className="w-full bg-transparent px-4 py-3 outline-none text-white text-sm resize-none placeholder:text-muted-foreground/60"
-                        ></textarea>
-                      </div>
-                      {errors.message && (
-                        <p className="text-red-400 text-xs px-1">
-                          {errors.message}
-                        </p>
-                      )}
-                    </div>
-
-                    <Button
-                      type="submit"
-                      variant="default"
-                      disabled={status === "loading"}
-                      className={`w-full h-12 rounded-xl mt-2 text-base font-semibold transition-all duration-300 ${status === "success" ? "bg-green-500 text-white hover:bg-green-600" : status === "error" ? "bg-red-500 text-white hover:bg-red-600" : "liquid-glass"}`}
-                    >
-                      {status === "loading"
-                        ? "Sending..."
-                        : status === "success"
-                          ? "Message Sent!"
-                          : status === "error"
-                            ? "Error Sending"
-                            : "Send Message"}
-                    </Button>
-                  </form>
+      <section id="assessment-form" className="scroll-mt-28 border-t border-white/5 pb-24 pt-20 md:pb-32 md:pt-28">
+        <Reveal className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.72fr_1.28fr]">
+          <aside className="lg:sticky lg:top-32 lg:self-start">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">What happens next</p>
+            <h2 className="mt-4 text-3xl font-normal sm:text-4xl">A useful first conversation, not a generic sales pitch.</h2>
+            <div className="mt-8 space-y-6">
+              {[
+                "We review the workflow and the systems involved.",
+                "We clarify the desired result, constraints, and ownership.",
+                "We recommend a practical next step or tell you when a different specialist is a better fit.",
+              ].map((item) => (
+                <div key={item} className="flex gap-3">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <p className="leading-relaxed text-muted-foreground">{item}</p>
                 </div>
+              ))}
+            </div>
+            <div className="mt-10 space-y-3 border-t border-white/8 pt-7 text-sm">
+              <a href={`mailto:${company.contact.email}`} className="flex items-center gap-3 text-muted-foreground hover:text-primary">
+                <Mail className="h-4 w-4" /> {company.contact.email}
+              </a>
+              <a href={`tel:${company.contact.phone.replace(/[^0-9+]/g, "")}`} className="flex items-center gap-3 text-muted-foreground hover:text-primary">
+                <Phone className="h-4 w-4" /> {company.contact.phone}
+              </a>
+            </div>
+          </aside>
+
+          <div className="rounded-[36px] border border-white/10 bg-card/45 p-6 shadow-2xl sm:p-9 md:p-10">
+            {status === "success" ? (
+              <div role="status" className="flex min-h-[520px] flex-col items-center justify-center text-center">
+                <CheckCircle2 className="h-12 w-12 text-primary" />
+                <h2 className="mt-6 text-3xl font-medium">Assessment request received.</h2>
+                <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
+                  Thank you. Verexa will review the details and follow up using
+                  the contact information you provided.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setStatus("idle")}
+                  className="mt-7 font-medium text-primary"
+                >
+                  Send another request
+                </button>
               </div>
-            </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} noValidate className="space-y-6">
+                <div>
+                  <h2 className="text-2xl font-medium sm:text-3xl">Tell us about the current process</h2>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    Required fields are marked with an asterisk.
+                  </p>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Field label="Name *" error={errors.name}>
+                    <input name="name" value={formData.name} onChange={handleChange} autoComplete="name" className={inputClass} />
+                  </Field>
+                  <Field label="Work email *" error={errors.workEmail}>
+                    <input name="workEmail" type="email" value={formData.workEmail} onChange={handleChange} autoComplete="email" className={inputClass} />
+                  </Field>
+                  <Field label="Company *" error={errors.company}>
+                    <input name="company" value={formData.company} onChange={handleChange} autoComplete="organization" className={inputClass} />
+                  </Field>
+                  <Field label="Phone">
+                    <input name="phone" type="tel" value={formData.phone} onChange={handleChange} autoComplete="tel" className={inputClass} />
+                  </Field>
+                  <Field label="Company size">
+                    <select name="employeeCount" value={formData.employeeCount} onChange={handleChange} className={inputClass}>
+                      <option value="">Select a range</option>
+                      <option value="1-5">1–5 employees</option>
+                      <option value="6-20">6–20 employees</option>
+                      <option value="21-50">21–50 employees</option>
+                      <option value="51-200">51–200 employees</option>
+                      <option value="201+">201+ employees</option>
+                    </select>
+                  </Field>
+                  <Field label="Area of interest *" error={errors.interest}>
+                    <select name="interest" value={formData.interest} onChange={handleChange} className={inputClass}>
+                      <option value="technology-assessment">Technology assessment</option>
+                      <option value="ai-automation">AI & workflow automation</option>
+                      <option value="business-software">Custom business software</option>
+                      <option value="managed-technology">Managed technology</option>
+                      <option value="cloud-infrastructure">Cloud & infrastructure</option>
+                      <option value="website-application">Website or application</option>
+                    </select>
+                  </Field>
+                </div>
+
+                <Field label="What are you trying to improve? *" error={errors.currentProcess}>
+                  <textarea
+                    ref={processRef}
+                    name="currentProcess"
+                    value={formData.currentProcess}
+                    onChange={handleChange}
+                    rows={6}
+                    placeholder="Describe the current steps, tools involved, and where the work slows down."
+                    className={`${inputClass} min-h-40 resize-y py-3`}
+                  />
+                </Field>
+
+                <Field label="Optional budget range">
+                  <select name="budget" value={formData.budget} onChange={handleChange} className={inputClass}>
+                    <option value="">Not decided yet</option>
+                    <option value="under-5k">Under $5,000</option>
+                    <option value="5k-15k">$5,000–$15,000</option>
+                    <option value="15k-40k">$15,000–$40,000</option>
+                    <option value="40k-plus">$40,000+</option>
+                  </select>
+                </Field>
+
+                <div className="hidden" aria-hidden="true">
+                  <label>
+                    Website
+                    <input name="website" value={formData.website} onChange={handleChange} tabIndex={-1} autoComplete="off" />
+                  </label>
+                </div>
+
+                {status === "error" && (
+                  <p role="alert" className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-300">
+                    The request could not be sent. Please try again or email {company.contact.email}.
+                  </p>
+                )}
+
+                <Button
+                  type="submit"
+                  variant="hero"
+                  disabled={status === "loading"}
+                  data-cta="assessment-form-submit"
+                  className="h-13 w-full rounded-full text-base font-semibold"
+                >
+                  {status === "loading" ? "Sending assessment request…" : "Book a Technology Assessment"}
+                </Button>
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  By submitting this form, you agree that Verexa may contact you
+                  about this request. Do not include passwords or highly sensitive information.
+                </p>
+              </form>
+            )}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <Footer />
     </main>
+  );
+}
+
+const inputClass =
+  "mt-2 h-12 w-full rounded-xl border border-white/10 bg-black/30 px-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary/60 focus:ring-1 focus:ring-primary/30";
+
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <label className="block text-sm font-medium text-foreground/85">
+      {label}
+      {children}
+      {error && <span className="mt-2 block text-xs text-red-400">{error}</span>}
+    </label>
   );
 }

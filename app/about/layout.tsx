@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Verexa Technologies",
+  title: { absolute: "About Verexa | Verexa Technologies" },
   description:
-    "Learn about Verexa Technologies, a GTA-based technology company crafting exceptional digital experiences. We partner with startups and enterprises across Canada to build beautiful, performant products.",
-  keywords: ["About Verexa", "GTA Technology Company", "Digital Studio Canada", "Software Development GTA", "Toronto Tech Partner"],
+    "Verexa helps growing GTA businesses modernize operations through automation, focused software, and managed technology.",
+  alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Us | Verexa Technologies",
-    description: "Crafting exceptional digital experiences for businesses across the Greater Toronto Area and all of Canada.",
+    title: "About Verexa Technologies",
+    description:
+      "A Toronto-based technology partner helping GTA businesses automate, build, integrate, and manage.",
+    url: "/about",
     type: "website",
   },
 };
 
-export default function AboutLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

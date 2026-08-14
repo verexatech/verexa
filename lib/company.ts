@@ -1,13 +1,17 @@
 export const company = {
   name: "Verexa Technologies Inc.",
-  tagline: "Empowering GTA businesses with cutting-edge digital experiences.",
-  shortDescription: "Empowering GTA businesses with cutting-edge digital experiences. Toronto based. Future-ready.",
+  shortName: "Verexa",
+  positioning: "AI Automation & Managed Technology for GTA Businesses",
+  tagline:
+    "Automate what should not be manual. Build what your business actually needs. Manage the technology behind it.",
+  shortDescription:
+    "Verexa helps growing GTA businesses automate operations, build useful software, and manage the technology behind their work.",
   founder: "Rajat Sachdeva",
   contact: {
     email: "contact@verexa.ca",
     phone: "+1 (437) 660-7347",
     location: "Toronto, ON, Canada",
-    region: "GTA, Ontario",
+    region: "the Greater Toronto Area",
   },
   socials: {
     twitter: "https://twitter.com/verexatech",
@@ -15,44 +19,46 @@ export const company = {
     instagram: "https://www.instagram.com/verexatech",
     youtube: "https://www.youtube.com/@verexatech",
   },
-  stats: [
-    { label: "Experience", value: "5+", sub: "Years of excellence" },
-    { label: "Projects", value: "10+", sub: "Successfully delivered" },
-    { label: "Satisfaction", value: "99%", sub: "Clients Success Rate" },
-    { label: "Support", value: "24/7", sub: "Available for you" },
-  ],
-  values: [
+  principles: [
     {
       id: "01",
-      title: "Excellence by Design",
-      description: "We engineer premium digital experiences where world-class aesthetics meet uncompromising technical precision.",
-      gradientHover: "group-hover:bg-primary/5",
-      accentHover: "group-hover:text-primary",
-      bgAccent: "from-primary/10",
+      title: "Automate what should not be manual",
+      description:
+        "We find repetitive, rules-based work and turn it into a dependable flow with the right human checkpoints.",
     },
     {
       id: "02",
-      title: "Relentless Innovation",
-      description: "Pushing the boundaries of modern technology to future-proof your business in a rapidly evolving digital landscape.",
-      gradientHover: "group-hover:bg-accent/5",
-      accentHover: "group-hover:text-accent",
-      bgAccent: "from-accent/10",
+      title: "Build when standard tools do not fit",
+      description:
+        "We create focused software around the workflows that make your operation distinct.",
     },
     {
       id: "03",
-      title: "Unwavering Integrity",
-      description: "Rooted in Canadian values, we believe in radical transparency, honest communication, and doing what's right for your business.",
-      gradientHover: "group-hover:bg-accent/5",
-      accentHover: "group-hover:text-accent",
-      bgAccent: "from-accent/10",
+      title: "Manage what the business relies on",
+      description:
+        "We define ownership, document the environment, and support agreed systems after launch.",
+    },
+  ],
+  reasons: [
+    {
+      title: "Local GTA partner",
+      description:
+        "Based in Toronto and close enough to understand the operating context of local businesses.",
     },
     {
-      id: "04",
-      title: "True Partnership",
-      description: "We operate not just as an agency, but as a dedicated extension of your team invested in your long-term success.",
-      gradientHover: "group-hover:bg-accent/5",
-      accentHover: "group-hover:text-accent",
-      bgAccent: "from-accent/10",
+      title: "Business-first decisions",
+      description:
+        "We start with the workflow, expected value, constraints, and people—not a predetermined technology.",
+    },
+    {
+      title: "Build and operate",
+      description:
+        "The same partner can help discover, implement, integrate, document, and manage the solution.",
+    },
+    {
+      title: "Clear scope",
+      description:
+        "Responsibilities, assumptions, support coverage, and next steps are made explicit.",
     },
   ],
 };

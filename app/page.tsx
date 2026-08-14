@@ -7,13 +7,35 @@ const ServicesSection = dynamic(
   () => import("@/components/services-section").then((m) => ({ default: m.ServicesSection })),
   { ssr: true }
 );
-const AboutSection = dynamic(
-  () => import("@/components/about-section").then((m) => ({ default: m.AboutSection })),
-  { ssr: true }
+const ProblemsSection = dynamic(() =>
+  import("@/components/home-sections").then((m) => ({
+    default: m.ProblemsSection,
+  })),
 );
-const WorkWithUsSection = dynamic(
-  () => import("@/components/contact-section").then((m) => ({ default: m.WorkWithUsSection })),
-  { ssr: true }
+const IndustryExamplesSection = dynamic(() =>
+  import("@/components/home-sections").then((m) => ({
+    default: m.IndustryExamplesSection,
+  })),
+);
+const FeaturedWorkSection = dynamic(() =>
+  import("@/components/home-sections").then((m) => ({
+    default: m.FeaturedWorkSection,
+  })),
+);
+const ProcessSection = dynamic(() =>
+  import("@/components/home-sections").then((m) => ({
+    default: m.ProcessSection,
+  })),
+);
+const WhyVerexaSection = dynamic(() =>
+  import("@/components/home-sections").then((m) => ({
+    default: m.WhyVerexaSection,
+  })),
+);
+const AssessmentCta = dynamic(() =>
+  import("@/components/assessment-cta").then((m) => ({
+    default: m.AssessmentCta,
+  })),
 );
 const Footer = dynamic(
   () => import("@/components/footer").then((m) => ({ default: m.Footer })),
@@ -22,14 +44,17 @@ const Footer = dynamic(
 
 export default function Home() {
   return (
-    <main className="flex min-h-dvh flex-col bg-background overflow-x-hidden">
+    <main className="flex min-h-dvh flex-col bg-background overflow-x-clip">
       <Navbar />
       <HeroSection />
+      <ProblemsSection />
       <ServicesSection />
-      <AboutSection />
-      <WorkWithUsSection />
+      <IndustryExamplesSection />
+      <FeaturedWorkSection />
+      <ProcessSection />
+      <WhyVerexaSection />
+      <AssessmentCta />
       <Footer />
     </main>
   );
 }
-

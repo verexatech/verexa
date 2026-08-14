@@ -1,36 +1,35 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+
 import { services } from "@/lib/services";
 
-type Props = {
-  params: Promise<{ slug: string }>;
+type Props = { params: Promise<{ slug: string }> };
+
+const seoTitles: Record<string, string> = {
+  "ai-automation": "AI Automation Services Toronto",
+  "custom-business-software": "Custom Business Software Toronto",
+  "managed-technology": "Managed Technology Services Toronto",
+  "cloud-infrastructure": "Cloud Infrastructure Services Toronto",
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const service = services.find((s) => s.slug === slug);
+  const service = services.find((item) => item.slug === slug);
+  if (!service) return { title: "Service Not Found" };
 
-  if (!service) {
-    return {
-      title: "Service Not Found - Verexa Technologies",
-    };
-  }
-
+  const title = seoTitles[service.slug] ?? service.title;
   return {
-    title: `${service.title} Services | Verexa Technologies`,
+    title: { absolute: `${title} | Verexa Technologies` },
     description: service.description,
-    keywords: service.features.join(", "),
+    alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
-      title: `${service.title} | Verexa Technologies`,
-      description: service.tagline,
+      title: `${title} | Verexa Technologies`,
+      description: service.description,
+      url: `/services/${service.slug}`,
       type: "website",
     },
   };
 }
 
-export default function ServiceLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ServiceLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

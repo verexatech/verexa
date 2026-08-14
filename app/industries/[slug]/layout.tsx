@@ -1,36 +1,28 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+
 import { industries } from "@/lib/industries";
 
-type Props = {
-  params: Promise<{ slug: string }>;
-};
+type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const industry = industries.find((i) => i.slug === slug);
+  const industry = industries.find((item) => item.slug === slug);
+  if (!industry) return { title: "Industry Not Found" };
 
-  if (!industry) {
-    return {
-      title: "Industry Not Found - Verexa Technologies",
-    };
-  }
-
+  const title = `${industry.shortTitle} Automation Solutions Toronto`;
   return {
-    title: `${industry.title} Tech Solutions | Verexa Technologies`,
+    title: { absolute: `${title} | Verexa Technologies` },
     description: industry.description,
-    keywords: industry.features.join(", "),
+    alternates: { canonical: `/industries/${industry.slug}` },
     openGraph: {
-      title: `${industry.title} | Verexa Technologies`,
-      description: industry.tagline,
+      title: `${title} | Verexa Technologies`,
+      description: industry.description,
+      url: `/industries/${industry.slug}`,
       type: "website",
     },
   };
 }
 
-export default function IndustryLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function IndustryLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

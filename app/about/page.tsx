@@ -1,197 +1,133 @@
-"use client";
-
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
+import { ChevronRight, CheckCircle2, MapPin } from "lucide-react";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
-import { motion } from "motion/react";
+
+import { AssessmentCta } from "@/components/assessment-cta";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { Reveal } from "@/components/page-transition";
 import { company } from "@/lib/company";
+import { assessmentHref, deliverySteps } from "@/lib/site";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative">
+    <main className="min-h-screen overflow-x-clip bg-background text-foreground">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="pt-36 pb-12 md:pt-48 md:pb-16 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6"
-          >
-            Who We Are
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-            className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-justify"
-          >
-            Verexa Technologies is a GTA-based technology company committed to
-            crafting exceptional experiences for businesses in GTA. From
-            ambitious startups to established enterprises, we partner with
-            organizations across GTA to build digital products that are
-            beautiful, performant, and built to last.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Our Story Section */}
-      <section className="py-16 md:py-20 bg-background relative z-10">
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl text-center font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6"
-          >
-            Our Story
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="text-muted-foreground text-lg leading-relaxed mb-6 text-justify"
-          >
-            We blend cutting-edge technology with world-class design to help
-            companies across GTA scale, innovate, and lead their industries.
-            What started as a small team with a big vision has grown into a
-            full-service digital studio trusted by clients across GTA.
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="text-muted-foreground text-lg leading-relaxed mb-6 text-justify"
-          >
-            Our team of visionary designers, expert engineers, and strategic
-            thinkers work collaboratively to turn your most ambitious ideas into
-            reality. Proudly built in Canada, for Canada.
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-            className="text-muted-foreground text-lg leading-relaxed mb-16 text-justify"
-          >
-            We believe technology should empower people, not overwhelm them.
-            Every solution we deliver is grounded in clarity, craftsmanship, and
-            a deep commitment to your long-term success.
-          </motion.p>
-
-          {/* Embedded Stats Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 xl:gap-8 relative z-20 w-full">
-            {company.stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.1 }}
-                className="w-full text-center relative flex-1 min-w-0 group p-2"
-              >
-                <div className="absolute inset-0 rounded-2xl shadow-inner group-hover:bg-card/60 transition-colors"></div>
-                <div className="relative z-10">
-                  <h3 className="text-muted-foreground text-xs sm:text-[10px] md:text-sm font-medium mb-2 uppercase tracking-widest truncate">
-                    {stat.label}
-                  </h3>
-                  <div className="text-4xl lg:text-5xl tracking-tight font-medium text-white mb-2">
-                    {stat.value}
-                  </div>
-                  <p className="text-muted-foreground/70 text-xs">{stat.sub}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Values Section */}
-      <section className="py-16 md:py-20 bg-background relative z-10">
-        <div className="max-w-[1250px] mx-auto px-4 sm:px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mb-16 relative"
-          >
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6">
-              Our Values
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              The core principles driving everything we do at Verexa
-              Technologies.
+      <section className="relative overflow-hidden pb-20 pt-36 md:pb-28 md:pt-48">
+        <div className="absolute left-1/2 top-20 h-96 w-[800px] -translate-x-1/2 rounded-full bg-primary/8 blur-[140px]" />
+        <Reveal priority className="relative z-10 mx-auto max-w-7xl px-6">
+          <div className="max-w-5xl">
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              Why Verexa exists
             </p>
-          </motion.div>
-
-          <div className="relative flex items-center justify-center pt-8">
-            {/* Elegant backdrop glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] md:w-[500px] md:h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 relative z-20 w-full mb-12">
-              {company.values.map((value, i) => (
-                <motion.div
-                  key={value.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: 0.1 * (i + 1) }}
-                  className={`relative p-8 rounded-4xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 bg-card/30 border border-white/5 text-left h-full ${
-                    i % 2 !== 0 ? "md:hover:translate-y-6 lg:hover:translate-y-10 md:translate-y-8 lg:translate-y-12" : ""
-                  }`}
-                >
-                  <div className={`absolute inset-0 bg-card/60 backdrop-blur-3xl z-0 transition-colors duration-500 ${value.gradientHover}`}></div>
-                  <div className={`absolute -inset-x-12 -inset-y-12 bg-linear-to-br ${value.bgAccent} to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 z-0`}></div>
-                  <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none z-30"></div>
-                  <div className="relative z-10">
-                    <div className={`font-heading text-4xl sm:text-5xl font-light text-white/15 mb-6 transition-colors duration-500 ${value.accentHover}`}>
-                      {value.id}
-                    </div>
-                    <h3 className={`text-white font-medium text-xl mb-3 tracking-tight transition-colors duration-500 ${value.accentHover}`}>
-                      {value.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+            <h1 className="bg-linear-to-b from-foreground from-20% to-muted-foreground bg-clip-text text-5xl font-normal leading-[1.02] text-transparent sm:text-6xl lg:text-7xl">
+              Modernize operations without building a large internal technology team.
+            </h1>
+            <p className="mt-8 max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
+              Verexa helps growing GTA businesses automate repetitive work,
+              build software that fits, and take ownership of the technology
+              behind the operation.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-5">
+              <Link
+                href={assessmentHref}
+                data-cta="about-assessment"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-6 font-semibold text-primary-foreground"
+              >
+                Book a Technology Assessment <ChevronRight className="h-4 w-4" />
+              </Link>
+              <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                <MapPin className="h-4 w-4 text-primary" /> {company.contact.location}
+              </span>
             </div>
           </div>
-        </div>
-
-        {/* Global CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto mt-20 md:mt-40 px-6 text-center"
-        >
-          <div className="bg-card/40 border border-white/10 rounded-3xl p-12 backdrop-blur-md shadow-2xl liquid-glass relative overflow-hidden">
-            <h3 className="text-3xl md:text-4xl font-normal mb-4 relative z-10">
-              Start your next project with us
-            </h3>
-            <p className="text-muted-foreground text-lg mb-8 relative z-10">
-              Let&apos;s build something extraordinary together.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-6 py-3 rounded-xl font-medium group relative z-10"
-            >
-              Get in Touch
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </motion.div>
+        </Reveal>
       </section>
 
+      <section className="border-y border-white/5 bg-card/10 py-20 md:py-28">
+        <Reveal className="mx-auto max-w-7xl px-6">
+          <div className="mb-12 max-w-3xl">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              Our point of view
+            </p>
+            <h2 className="text-4xl font-normal leading-tight sm:text-5xl">
+              Technology is useful when the work becomes better.
+            </h2>
+          </div>
+          <div className="grid gap-5 lg:grid-cols-3">
+            {company.principles.map((principle) => (
+              <article
+                key={principle.id}
+                className="rounded-[30px] border border-white/8 bg-background/55 p-7 sm:p-8"
+              >
+                <p className="mb-8 text-sm font-semibold tracking-widest text-primary">
+                  {principle.id}
+                </p>
+                <h3 className="text-2xl font-medium leading-tight">{principle.title}</h3>
+                <p className="mt-5 leading-relaxed text-muted-foreground">
+                  {principle.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <Reveal className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              What partnership means
+            </p>
+            <h2 className="text-4xl font-normal leading-tight sm:text-5xl">
+              Clear scope before ambitious promises.
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              Every engagement should make the expected result, responsibilities,
+              assumptions, support coverage, and decisions easy to understand.
+              If a specialist is required, that should be explicit too.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {company.reasons.map((reason) => (
+              <article
+                key={reason.title}
+                className="rounded-3xl border border-white/8 bg-card/25 p-6"
+              >
+                <CheckCircle2 className="mb-5 h-5 w-5 text-primary" />
+                <h3 className="text-xl font-medium">{reason.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">
+                  {reason.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="border-y border-white/5 bg-card/10 py-20 md:py-28">
+        <Reveal className="mx-auto max-w-7xl px-6">
+          <div className="mb-12 max-w-3xl">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              How we work
+            </p>
+            <h2 className="text-4xl font-normal sm:text-5xl">
+              One partner from discovery through management.
+            </h2>
+          </div>
+          <div className="grid gap-px overflow-hidden rounded-[32px] border border-white/8 bg-white/8 md:grid-cols-4">
+            {deliverySteps.map((step) => (
+              <article key={step.id} className="min-h-64 bg-background p-7 sm:p-8">
+                <p className="mb-9 text-sm font-semibold tracking-widest text-primary">{step.id}</p>
+                <h3 className="text-2xl font-medium">{step.title}</h3>
+                <p className="mt-4 leading-relaxed text-muted-foreground">{step.description}</p>
+              </article>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      <AssessmentCta />
       <Footer />
     </main>
   );

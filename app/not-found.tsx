@@ -23,9 +23,9 @@ export default function NotFound() {
         <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto gap-8">
           {/* Giant 404 number */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.7 }}
             className="relative select-none"
           >
             {/* Outline glow layer */}
@@ -56,9 +56,9 @@ export default function NotFound() {
 
           {/* Glass card with message */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+            transition={{ duration: 0.7, delay: 0.08 }}
             className="w-full max-w-2xl"
           >
             <div className="liquid-glass rounded-3xl px-8 py-10 sm:px-12 sm:py-12 relative overflow-hidden">
@@ -71,9 +71,9 @@ export default function NotFound() {
               <div className="relative z-10 flex flex-col items-center gap-6">
                 {/* Status badge */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.65, delay: 0.16 }}
                   className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium tracking-widest uppercase"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
@@ -113,9 +113,9 @@ export default function NotFound() {
 
           {/* Quick nav links */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.35 }}
+            transition={{ duration: 0.65, delay: 0.24 }}
             className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
           >
             <span className="text-muted-foreground/50 text-xs uppercase tracking-widest">

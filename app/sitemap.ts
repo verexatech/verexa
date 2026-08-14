@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { services } from "@/lib/services";
 import { industries } from "@/lib/industries";
+import { caseStudies } from "@/lib/case-studies";
+import { insights } from "@/lib/insights";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://verexa.ca";
@@ -42,6 +44,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly" as const,
       priority: 0.5,
     },
+    {
+      url: `${baseUrl}/insights`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/resources/automation-assessment`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
   ];
 
   const serviceRoutes = services.map((service) => ({
@@ -58,5 +72,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...industryRoutes];
+  const caseStudyRoutes = caseStudies.map((study) => ({
+    url: `${baseUrl}/portfolio/${study.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const insightRoutes = insights.map((insight) => ({
+    url: `${baseUrl}/insights/${insight.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...serviceRoutes,
+    ...industryRoutes,
+    ...caseStudyRoutes,
+    ...insightRoutes,
+  ];
 }

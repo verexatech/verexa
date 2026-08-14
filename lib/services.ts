@@ -1,435 +1,441 @@
+export type ServiceExample = {
+  title: string;
+  problem: string;
+  workflow: string;
+  outcome: string;
+};
+
 export type Service = {
   id: string;
   slug: string;
   title: string;
+  shortTitle: string;
   tagline: string;
   description: string;
   features: string[];
-  graphicId: "web" | "mobile" | "cloud" | "ai" | "support" | "design";
+  graphicId: "software" | "cloud" | "ai" | "managed";
   detailedDescription: string[];
   benefits: { title: string; description: string }[];
   process: { step: string; title: string; description: string }[];
-  technologies: string[];
+  examples: ServiceExample[];
+  integrations: string[];
+  primary: boolean;
 };
 
 export const services: Service[] = [
   {
     id: "01",
-    slug: "web-design-and-development",
-    title: "Web Design & Development",
-    tagline: "Digital experiences that convert.",
+    slug: "ai-automation",
+    title: "AI & Workflow Automation",
+    shortTitle: "AI Automation",
+    tagline: "Give repetitive work to reliable systems.",
     description:
-      "Crafting stunning, highly performant web applications tailored to your brand. We build fast, accessible, and scalable websites that look great on every device and drive measurable results.",
+      "We map the manual work slowing your team down, then connect AI and automation to the tools you already use.",
     features: [
-      "Custom UI/UX Design & Branding",
-      "Scalable Single Page Applications (React/Next.js)",
-      "E-commerce Platforms & Integrations",
-      "Performance & SEO Optimization",
+      "Business process automation",
+      "Document and data processing",
+      "AI assistants with source-aware answers",
+      "Email, CRM, and reporting workflows",
+      "System integrations and human approval steps",
+      "Monitoring and ongoing improvement",
     ],
-    graphicId: "web",
+    graphicId: "ai",
     detailedDescription: [
-      "In today's digital landscape, your website is often the first interaction a potential customer has with your brand. We don't just build websites; we craft digital experiences that leave a lasting impression.",
-      "Our approach combines cutting-edge aesthetics with robust, scalable architecture. Whether you need a corporate portfolio, a high-converting landing page, or a complex e-commerce platform, our team ensures your digital presence is fast, accessible, and perfectly aligned with your business goals.",
+      "Automation should solve a visible operating problem—not add another tool for your team to manage. We begin with the workflow, the people involved, the systems that hold the data, and the decisions that still need a human.",
+      "From there, we build a practical automation with clear checkpoints, exception handling, and ownership. Your team gets a system that fits the way the business actually works, plus support after it goes live.",
     ],
     benefits: [
       {
-        title: "Enhanced User Experience",
+        title: "Less manual administration",
         description:
-          "Intuitive navigation and responsive layouts that keep visitors engaged across all devices.",
+          "Move repetitive copying, sorting, follow-up, and reporting out of your team’s day.",
       },
       {
-        title: "Optimized Performance",
+        title: "Fewer disconnected steps",
         description:
-          "Lightning-fast load times and SEO best practices to improve your search rankings.",
+          "Connect email, forms, documents, CRMs, and internal tools into one dependable workflow.",
       },
       {
-        title: "Scalable Architecture",
+        title: "Control where it matters",
         description:
-          "Built on modern frameworks like React and Next.js, allowing your platform to grow seamlessly.",
+          "Keep approvals, audit trails, and human review around sensitive or high-impact decisions.",
       },
     ],
     process: [
       {
         step: "01",
-        title: "Discovery",
+        title: "Discover",
         description:
-          "Understanding your business goals, target audience, and functional requirements.",
+          "Map the current workflow, volume, exceptions, systems, and time spent.",
+      },
+      {
+        step: "02",
+        title: "Prioritize",
+        description:
+          "Choose a useful first automation based on impact, feasibility, and risk.",
+      },
+      {
+        step: "03",
+        title: "Integrate",
+        description:
+          "Build, connect, test, and document the workflow with your team.",
+      },
+      {
+        step: "04",
+        title: "Manage",
+        description:
+          "Monitor the automation, handle exceptions, and improve it as the business changes.",
+      },
+    ],
+    examples: [
+      {
+        title: "Automate incoming enquiries",
+        problem: "New enquiries are copied between email, spreadsheets, and a CRM.",
+        workflow:
+          "Email or form → extract key details → create or update CRM record → notify the right person → draft follow-up",
+        outcome:
+          "A consistent intake process with faster routing and fewer missed details.",
+      },
+      {
+        title: "Automate documents",
+        problem: "Staff repeatedly read PDFs, invoices, and forms to re-enter the same data.",
+        workflow:
+          "Document → extract fields → validate rules → request approval when needed → update the destination system",
+        outcome:
+          "Less re-keying, clearer exception handling, and a traceable process.",
+      },
+      {
+        title: "Build an internal AI assistant",
+        problem: "Employees lose time searching policies, procedures, and project files.",
+        workflow:
+          "Question → search approved company sources → produce a sourced answer → escalate when confidence is low",
+        outcome:
+          "Faster access to internal knowledge without replacing the source documents.",
+      },
+      {
+        title: "Automate reporting",
+        problem: "Weekly reporting depends on manual exports and spreadsheet consolidation.",
+        workflow:
+          "Business systems → collect and normalize data → generate analysis → deliver a scheduled management report",
+        outcome:
+          "A repeatable reporting rhythm with less preparation work.",
+      },
+    ],
+    integrations: [
+      "Microsoft 365",
+      "Google Workspace",
+      "QuickBooks",
+      "HubSpot",
+      "Salesforce",
+      "OpenAI",
+      "Custom APIs",
+    ],
+    primary: true,
+  },
+  {
+    id: "02",
+    slug: "custom-business-software",
+    title: "Custom Business Software",
+    shortTitle: "Business Software",
+    tagline: "Software shaped around your operation.",
+    description:
+      "We build internal systems, client portals, web applications, and mobile tools when off-the-shelf software does not fit.",
+    features: [
+      "Internal dashboards and operations systems",
+      "Client, vendor, and employee portals",
+      "Custom web applications and SaaS products",
+      "Mobile and field applications",
+      "API and business-system integrations",
+      "Product design and user experience",
+    ],
+    graphicId: "software",
+    detailedDescription: [
+      "Growing businesses often reach a point where spreadsheets, disconnected subscriptions, and manual handoffs become the system. Custom software can replace that friction with one clear operating flow.",
+      "We design and build around the real users, permissions, data, and edge cases in your business. Web development, mobile development, and UI/UX are capabilities within this work—not separate ends in themselves.",
+    ],
+    benefits: [
+      {
+        title: "One operating view",
+        description:
+          "Bring the information and actions a team needs into a focused, role-aware workspace.",
+      },
+      {
+        title: "A better fit",
+        description:
+          "Support the workflow that differentiates your business instead of forcing it into a generic tool.",
+      },
+      {
+        title: "Room to evolve",
+        description:
+          "Start with the highest-value workflow and extend the system as needs become clearer.",
+      },
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Discover",
+        description:
+          "Define the users, business rules, current tools, constraints, and desired result.",
       },
       {
         step: "02",
         title: "Design",
         description:
-          "Creating wireframes and high-fidelity prototypes for your review.",
+          "Prototype the critical journeys and validate them with the people who will use the system.",
       },
       {
         step: "03",
-        title: "Development",
+        title: "Build",
         description:
-          "Writing clean, efficient code and integrating necessary APIs and CMS platforms.",
+          "Deliver the product in useful increments with testing and regular review.",
       },
       {
         step: "04",
-        title: "Launch",
+        title: "Operate",
         description:
-          "Rigorous testing, optimization, and finally deploying your site to the world.",
+          "Launch, document, support, and improve the application as usage grows.",
       },
     ],
-    technologies: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Node.js",
-      "Shopify",
-    ],
-  },
-  {
-    id: "02",
-    slug: "mobile-app-development",
-    title: "Mobile App Development",
-    tagline: "Your business, in their pocket.",
-    description:
-      "Native and cross-platform mobile experiences that engage users on the go. We design intuitive apps that leverage device capabilities to offer smooth, app-store ready experiences.",
-    features: [
-      "iOS & Android Native Development",
-      "Cross-Platform Solutions (React Native)",
-      "Intuitive Mobile UI/UX Design",
-      "Seamless Backend API Integrations",
-    ],
-    graphicId: "mobile",
-    detailedDescription: [
-      "Mobile devices dominate digital consumption. Having a powerful, user-friendly mobile application is no longer optional for businesses aiming to stay competitive.",
-      "We develop native and cross-platform applications that deliver native-like performance. From conceptualization to App Store launch, we handle every step of the mobile development lifecycle, ensuring your app is secure, scalable, and loved by your users.",
-    ],
-    benefits: [
+    examples: [
       {
-        title: "Broader Reach",
-        description:
-          "Connect with your audience directly on the devices they use most.",
+        title: "Operations dashboard",
+        problem: "Managers cannot see work status without asking multiple people or opening several systems.",
+        workflow:
+          "Connected sources → role-based dashboard → alerts and actions → shared operating history",
+        outcome:
+          "A clearer view of the operation and fewer status-chasing conversations.",
       },
       {
-        title: "High Performance",
-        description:
-          "Smooth animations and fast response times for a premium feel.",
+        title: "Client portal",
+        problem: "Documents, requests, and updates move through long email threads.",
+        workflow:
+          "Secure sign-in → requests and uploads → status updates → notifications and records",
+        outcome:
+          "A more consistent client experience and a cleaner internal process.",
       },
       {
-        title: "Cost-Effective",
-        description:
-          "Cross-platform solutions allow you to reach both iOS and Android users efficiently.",
+        title: "Field application",
+        problem: "Office and field teams rely on paper, calls, and end-of-day updates.",
+        workflow:
+          "Assigned work → mobile updates → photos and forms → office review → downstream billing or reporting",
+        outcome:
+          "Information moves between the field and office without duplicate entry.",
       },
     ],
-    process: [
-      {
-        step: "01",
-        title: "Strategy",
-        description:
-          "Defining the app's core value proposition and feature roadmap.",
-      },
-      {
-        step: "02",
-        title: "UI/UX Design",
-        description:
-          "Crafting intuitive mobile interfaces tailored for touch interactions.",
-      },
-      {
-        step: "03",
-        title: "Engineering",
-        description: "Developing robust frontend and backend architectures.",
-      },
-      {
-        step: "04",
-        title: "Deployment",
-        description:
-          "Handling App Store and Google Play submissions and compliance.",
-      },
+    integrations: [
+      "Microsoft 365",
+      "Google Workspace",
+      "Stripe",
+      "QuickBooks",
+      "CRM platforms",
+      "Industry APIs",
+      "Cloud databases",
     ],
-    technologies: [
-      "React Native",
-      "Swift",
-      "Kotlin",
-      "Firebase",
-      "GraphQL",
-      "Redux",
-    ],
+    primary: true,
   },
   {
     id: "03",
-    slug: "cloud-infrastructure",
-    title: "Cloud Infrastructure",
-    tagline: "Scale without limits.",
+    slug: "managed-technology",
+    title: "Managed Technology",
+    shortTitle: "Managed Technology",
+    tagline: "Keep critical business technology dependable.",
     description:
-      "Scalable, secure, and robust cloud architectures for your enterprise. We engineer resilient backend systems to handle high traffic and ensure data security around the clock.",
+      "We manage the applications, cloud systems, automations, access, and business technology that your company depends on.",
     features: [
-      "AWS, GCP & Azure Architecture",
-      "Microservices & Auto-scaling Deployments",
-      "DevOps Pipelines (CI/CD)",
-      "Database Optimization & Migration",
+      "Application and automation management",
+      "Cloud environment administration",
+      "Microsoft 365 and Google Workspace support",
+      "Backups, access, and configuration management",
+      "Technology troubleshooting and coordination",
+      "Roadmaps, documentation, and vendor liaison",
     ],
-    graphicId: "cloud",
+    graphicId: "managed",
     detailedDescription: [
-      "A strong digital product requires a foundation that won't crumble under pressure. Our cloud infrastructure services ensure your applications are highly available, secure, and ready to scale at a moment's notice.",
-      "We specialize in designing and migrating architectures on major cloud providers. By implementing DevOps best practices, CI/CD pipelines, and automated monitoring, we remove the operational headache so you can focus on your product.",
+      "Many businesses need consistent ownership of their technology without building a large internal team. We provide a practical management layer across the applications, automations, cloud services, and workplace systems in an agreed scope.",
+      "Every engagement defines what is covered, who owns each system, how requests are handled, and when specialist vendors are required. We do not describe this as a 24/7 helpdesk or security operations centre unless those capabilities are explicitly included in a written service agreement.",
     ],
     benefits: [
       {
-        title: "Unmatched Reliability",
+        title: "Clear ownership",
         description:
-          "High availability setups that minimize downtime and ensure business continuity.",
+          "Know who maintains each covered system and how issues or changes are handled.",
       },
       {
-        title: "Cost Optimization",
+        title: "Fewer surprises",
         description:
-          "Pay only for what you use with auto-scaling architectures.",
+          "Use documented configurations, routine reviews, and agreed maintenance practices.",
       },
       {
-        title: "Enhanced Security",
+        title: "Technology that keeps pace",
         description:
-          "Implementation of strict identity management, encryption, and compliance standards.",
+          "Review the stack as the team, workflow, vendors, and business priorities change.",
       },
     ],
     process: [
       {
         step: "01",
-        title: "Assessment",
+        title: "Assess",
         description:
-          "Evaluating your current infrastructure and defining scaling requirements.",
+          "Inventory the systems, owners, dependencies, access, pain points, and current vendors.",
       },
       {
         step: "02",
-        title: "Architecture",
+        title: "Define",
         description:
-          "Designing a resilient, secure cloud topology tailored to your needs.",
+          "Agree on coverage, responsibilities, communication, response expectations, and exclusions.",
       },
       {
         step: "03",
-        title: "Migration",
+        title: "Stabilize",
         description:
-          "Safely transferring data and applications with zero to minimal downtime.",
+          "Resolve priority gaps, document the environment, and establish repeatable maintenance.",
       },
       {
         step: "04",
-        title: "Optimization",
+        title: "Manage",
         description:
-          "Continuous monitoring, cost analysis, and performance tuning.",
+          "Handle covered requests, review system health, and plan improvements with the business.",
       },
     ],
-    technologies: [
+    examples: [
+      {
+        title: "Application ownership",
+        problem: "A business-critical application has no clear maintenance owner after launch.",
+        workflow:
+          "Support intake → triage → fix or vendor coordination → release → documentation",
+        outcome:
+          "A defined path for issues, changes, and ongoing improvement.",
+      },
+      {
+        title: "Automation monitoring",
+        problem: "Automated workflows fail silently when data or connected systems change.",
+        workflow:
+          "Health checks → alert → diagnosis → recovery → root-cause follow-up",
+        outcome:
+          "Better visibility into the workflows the operation relies on.",
+      },
+      {
+        title: "Access and workspace administration",
+        problem: "Account access and permissions are handled inconsistently as staff change.",
+        workflow:
+          "Approved request → access change → verification → documented record",
+        outcome:
+          "A more consistent joiner, mover, and leaver process.",
+      },
+    ],
+    integrations: [
+      "Microsoft 365",
+      "Google Workspace",
       "AWS",
       "Google Cloud",
       "Microsoft Azure",
-      "Docker",
-      "Kubernetes",
-      "Terraform",
+      "Business applications",
+      "Custom automations",
     ],
+    primary: true,
   },
   {
     id: "04",
-    slug: "ai-automation",
-    title: "AI Automation",
-    tagline: "Work smarter, not harder.",
+    slug: "cloud-infrastructure",
+    title: "Cloud & Infrastructure",
+    shortTitle: "Cloud & Infrastructure",
+    tagline: "A stable foundation for software and automation.",
     description:
-      "Streamline operations and elevate user experiences with intelligent AI solutions. We integrate cutting-edge machine learning models to automate repetitive tasks, extract insights, and create responsive applications that learn and adapt.",
+      "We design, migrate, and improve cloud environments for the applications and workflows your business runs.",
     features: [
-      "Custom LLM Integrations",
-      "Automated Workflows & Data Processing",
-      "Intelligent Chatbots & Assistants",
-      "Predictive Analytics & Insights",
+      "Cloud architecture and migration planning",
+      "Application deployment and delivery pipelines",
+      "Database, backup, and recovery design",
+      "Identity, access, and environment configuration",
+      "Performance and cost reviews",
+      "Operational documentation",
     ],
-    graphicId: "ai",
+    graphicId: "cloud",
     detailedDescription: [
-      "Artificial Intelligence is transforming how businesses operate. We help you harness the power of AI to automate tedious workflows, gain deeper insights from your data, and create personalized experiences for your customers.",
-      "From integrating advanced Large Language Models (LLMs) into your customer service to building predictive analytics engines, our team demystifies AI and turns it into a tangible asset for your company.",
+      "Cloud work is most valuable when it supports a clear application or operating need. We design environments around availability, access, recovery, cost, and the team that will maintain them.",
+      "This capability supports our software, automation, and managed technology work, and is also available for focused migrations or infrastructure improvements.",
     ],
     benefits: [
       {
-        title: "Increased Efficiency",
+        title: "Designed for the workload",
         description:
-          "Automate repetitive tasks, freeing your team to focus on high-value work.",
+          "Match architecture and operating complexity to what the application actually requires.",
       },
       {
-        title: "Data-Driven Decisions",
+        title: "Recoverable by design",
         description:
-          "Extract actionable insights from vast amounts of unstructured data.",
+          "Plan backups, access, deployments, and recovery before they become urgent.",
       },
       {
-        title: "Enhanced Support",
+        title: "Documented operations",
         description:
-          "Deploy intelligent chatbots that provide instant, accurate assistance 24/7.",
+          "Leave the business with a clear view of environments, responsibilities, and runbooks.",
       },
     ],
     process: [
       {
         step: "01",
-        title: "Ideation",
+        title: "Assess",
         description:
-          "Identifying workflows and touchpoints where AI can deliver the most impact.",
+          "Review the workload, current environment, dependencies, costs, and operational risks.",
       },
       {
         step: "02",
-        title: "Data Prep",
+        title: "Design",
         description:
-          "Gathering, cleaning, and structuring your data for model training or integration.",
+          "Define the target architecture, access model, migration path, and recovery approach.",
       },
       {
         step: "03",
-        title: "Integration",
+        title: "Implement",
         description:
-          "Connecting AI models to your existing software ecosystem.",
+          "Build or migrate in controlled stages with testing and rollback planning.",
       },
       {
         step: "04",
-        title: "Refinement",
+        title: "Optimize",
         description:
-          "Testing accuracy, reducing hallucinations, and optimizing prompts/models.",
+          "Document the environment and review reliability, performance, and cost over time.",
       },
     ],
-    technologies: [
-      "OpenAI",
-      "Anthropic",
-      "Python",
-      "LangChain",
-      "Vector Databases",
-      "TensorFlow",
+    examples: [
+      {
+        title: "Application launch environment",
+        problem: "A new business application needs a dependable production foundation.",
+        workflow:
+          "Architecture → environments → deployment pipeline → monitoring → operating documentation",
+        outcome:
+          "A repeatable path from code to a managed production system.",
+      },
+      {
+        title: "Cloud migration",
+        problem: "An existing application is constrained by its current hosting or deployment process.",
+        workflow:
+          "Inventory → target design → staged migration → validation → handover",
+        outcome:
+          "A controlled move with clear ownership and recovery planning.",
+      },
     ],
+    integrations: [
+      "AWS",
+      "Google Cloud",
+      "Microsoft Azure",
+      "Vercel",
+      "Docker",
+      "PostgreSQL",
+      "Managed databases",
+    ],
+    primary: false,
   },
-  {
-    id: "05",
-    slug: "it-and-tech-support",
-    title: "IT & Tech Support",
-    tagline: "Flawless operations, 24/7.",
-    description:
-      "Reliable technical assistance to keep your Canadian operations running flawlessly. Our proactive support prevents downtime and bridges the gap between technology and your workflow.",
-    features: [
-      "24/7 Helpdesk & Rapid Response SLAs",
-      "Cybersecurity Audits & Monitoring",
-      "Network Management & Provisioning",
-      "Software Maintenance & Updates",
-    ],
-    graphicId: "support",
-    detailedDescription: [
-      "Technology should empower your business, not slow it down. Our comprehensive IT support services are designed to keep your operations running smoothly, securely, and efficiently.",
-      "We act as your dedicated IT department, providing proactive monitoring, rapid troubleshooting, and strategic guidance to ensure your technology stack aligns perfectly with your business objectives.",
-    ],
-    benefits: [
-      {
-        title: "Proactive Maintenance",
-        description:
-          "Identifying and resolving potential issues before they impact your business.",
-      },
-      {
-        title: "Robust Security",
-        description:
-          "Protecting your sensitive data with enterprise-grade cybersecurity measures.",
-      },
-      {
-        title: "Expert Guidance",
-        description:
-          "Strategic advice on technology investments and digital transformation.",
-      },
-    ],
-    process: [
-      {
-        step: "01",
-        title: "Audit",
-        description:
-          "Comprehensive review of your existing IT infrastructure and security posture.",
-      },
-      {
-        step: "02",
-        title: "Implementation",
-        description:
-          "Deploying necessary software, hardware, and security protocols.",
-      },
-      {
-        step: "03",
-        title: "Monitoring",
-        description:
-          "24/7 surveillance of your network and systems for anomalies.",
-      },
-      {
-        step: "04",
-        title: "Support",
-        description:
-          "Rapid response helpdesk for your team's day-to-day technical challenges.",
-      },
-    ],
-    technologies: [
-      "Microsoft 365",
-      "Google Workspace",
-      "Cisco",
-      "Fortinet",
-      "CrowdStrike",
-      "Zendesk",
-    ],
-  },
-  {
-    id: "06",
-    slug: "graphic-designing",
-    title: "Graphic Designing",
-    tagline: "Visuals that captivate.",
-    description:
-      "Captivating visual identities, branding, and striking UI/UX designs. We transform complex ideas into intuitive, beautiful, and engaging digital art that resonates with your audience.",
-    features: [
-      "Brand Identity & Logo Design",
-      "Wireframing & Interactive Prototyping",
-      "Marketing Collateral & Digital Assets",
-      "User Research & Usability Testing",
-    ],
-    graphicId: "design",
-    detailedDescription: [
-      "Great design is more than just making things look pretty; it's about visual communication. We create compelling visual identities that capture the essence of your brand and resonate deeply with your target audience.",
-      "Whether you're starting from scratch with a new brand identity or need a complete UI/UX overhaul for your software, our design team brings creativity, psychology, and strategic thinking to every pixel.",
-    ],
-    benefits: [
-      {
-        title: "Brand Consistency",
-        description:
-          "A unified visual language across all your digital and physical touchpoints.",
-      },
-      {
-        title: "Higher Conversion",
-        description:
-          "Strategic UI/UX design that guides users effortlessly toward desired actions.",
-      },
-      {
-        title: "Memorable Identity",
-        description:
-          "Stand out in a crowded market with a unique and professional aesthetic.",
-      },
-    ],
-    process: [
-      {
-        step: "01",
-        title: "Research",
-        description:
-          "Deep dive into your industry, competitors, and target audience.",
-      },
-      {
-        step: "02",
-        title: "Concepting",
-        description:
-          "Developing mood boards, typography selections, and initial sketches.",
-      },
-      {
-        step: "03",
-        title: "Iteration",
-        description:
-          "Refining designs based on your feedback and usability testing.",
-      },
-      {
-        step: "04",
-        title: "Delivery",
-        description:
-          "Providing comprehensive design systems and production-ready assets.",
-      },
-    ],
-    technologies: [
-      "Figma",
-      "Adobe Creative Suite",
-      "Framer",
-      "Sketch",
-      "Blender",
-      "Webflow",
-    ],
-  },
+];
+
+export const primaryServices = services.filter((service) => service.primary);
+
+export const additionalCapabilities = [
+  "Web applications",
+  "Mobile applications",
+  "Cloud infrastructure",
+  "Product design",
+  "UI/UX",
+  "System integrations",
 ];

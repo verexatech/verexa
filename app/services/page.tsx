@@ -1,149 +1,136 @@
 "use client";
 
-import { Navbar } from "@/components/navbar";
+import { ChevronRight, Check } from "lucide-react";
+import { motion } from "motion/react";
+import Link from "next/link";
+
+import { AssessmentCta } from "@/components/assessment-cta";
 import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
 import {
-  WebGraphic,
-  MobileGraphic,
+  AIGraphic,
   CloudGraphic,
   SupportGraphic,
-  DesignGraphic,
-  AIGraphic,
+  WebGraphic,
 } from "@/components/service-graphics";
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
-import { motion } from "motion/react";
-import { services } from "@/lib/services";
+import { additionalCapabilities, services } from "@/lib/services";
 
 const graphicMap = {
-  web: <WebGraphic />,
-  mobile: <MobileGraphic />,
+  software: <WebGraphic />,
   cloud: <CloudGraphic />,
   ai: <AIGraphic />,
-  support: <SupportGraphic />,
-  design: <DesignGraphic />
+  managed: <SupportGraphic />,
 };
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="pt-36 pb-12 md:pt-48 md:pb-16 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-normal leading-[1.05] bg-linear-to-b from-foreground from-20% to-muted-foreground sm:from-foreground sm:from-30% sm:to-muted-foreground to-100% bg-clip-text text-transparent mb-6"
-          >
-            What We Do
-          </motion.h1>
+      <section className="relative overflow-hidden pb-16 pt-36 text-center md:pb-24 md:pt-48">
+        <div className="absolute left-1/2 top-20 h-96 w-[800px] -translate-x-1/2 rounded-full bg-primary/8 blur-[140px]" />
+        <div className="relative z-10 mx-auto max-w-5xl px-6">
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-            className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+            className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-primary"
           >
-            From captivating web designs to robust cloud infrastructures, our
-            GTA-based team engineers end-to-end digital solutions that scale
-            with your ambitions.
+            Services
           </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="bg-linear-to-b from-foreground from-20% to-muted-foreground bg-clip-text text-5xl font-normal leading-[1.02] text-transparent sm:text-6xl lg:text-7xl"
+          >
+            Improve the operation,
+            <br />
+            then choose the technology.
+          </motion.h1>
+          <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            Verexa helps GTA businesses automate repetitive work, build focused
+            software, and manage the systems those workflows depend on.
+          </p>
         </div>
       </section>
 
-      {/* Services List Section */}
-      <section className="py-20 bg-background relative z-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col gap-32">
+      <section className="pb-16 md:pb-24">
+        <div className="mx-auto flex max-w-7xl flex-col gap-24 px-6 md:gap-32">
           {services.map((service, index) => {
-            const isEven = index % 2 !== 0;
-
+            const reverse = index % 2 !== 0;
             return (
-              <div
-                key={service.id}
-                className={`flex flex-col ${
-                  isEven ? "md:flex-row-reverse" : "md:flex-row"
-                } items-center gap-12 md:gap-20`}
+              <motion.article
+                key={service.slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-70px" }}
+                transition={{ duration: 0.65 }}
+                className={`flex flex-col items-center gap-12 lg:gap-20 ${
+                  reverse ? "lg:flex-row-reverse" : "lg:flex-row"
+                }`}
               >
-                <motion.div
-                  initial={{ opacity: 0, x: isEven ? 40 : -40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
-                  className="flex-1 space-y-6"
-                >
-                  <div className="text-primary text-sm font-bold tracking-widest uppercase">
-                    {service.id}. {service.title}
+                <div className="flex-1">
+                  <div className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+                    {service.id} · {service.primary ? "Primary service" : "Supporting capability"}
                   </div>
-                  <h2 className="text-3xl md:text-5xl font-normal leading-tight">
-                    {service.tagline}
+                  <h2 className="text-4xl font-normal leading-tight sm:text-5xl">
+                    {service.title}
                   </h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
+                  <p className="mt-5 text-xl text-foreground/75">{service.tagline}</p>
+                  <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
                     {service.description}
                   </p>
-                  <ul className="space-y-3 mt-6 text-muted-foreground">
-                    {service.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+                    {service.features.slice(0, 4).map((feature) => (
+                      <li key={feature} className="flex gap-3 text-sm text-foreground/80">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  <div className="pt-4">
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium group"
-                    >
-                      Learn more about {service.title}
-                      <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, x: isEven ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
-                  className={`flex-1 w-full flex ${
-                    isEven ? "justify-start" : "justify-end"
-                  } items-center`}
-                >
-                  <div className="w-full max-w-md h-[390px] relative rounded-[32px] overflow-hidden bg-card/30 border border-white/5 shadow-2xl flex items-center justify-center liquid-glass group">
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="mt-8 inline-flex items-center gap-2 font-medium text-primary"
+                  >
+                    Explore {service.shortTitle}
+                    <ChevronRight className="h-4 w-4" />
+                  </Link>
+                </div>
+
+                <div className="w-full flex-1">
+                  <div className="relative mx-auto flex h-[390px] w-full max-w-lg items-center justify-center overflow-hidden rounded-[36px] border border-white/8 bg-card/30 shadow-2xl">
                     {graphicMap[service.graphicId]}
                   </div>
-                </motion.div>
-              </div>
+                </div>
+              </motion.article>
             );
           })}
         </div>
+      </section>
 
-        {/* Global CTA */}
+      <section className="border-y border-white/5 bg-card/10 py-14">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-4xl mx-auto mt-32 px-6 text-center"
+          viewport={{ once: true, margin: "-70px" }}
+          transition={{ duration: 0.65 }}
+          className="mx-auto max-w-7xl px-6"
         >
-          <div className="bg-card/40 border border-white/10 rounded-3xl p-12 backdrop-blur-md shadow-2xl liquid-glass relative overflow-hidden">
-            <h3 className="text-3xl md:text-4xl font-normal mb-4 relative z-10">
-              Start your next project with us
-            </h3>
-            <p className="text-muted-foreground text-lg mb-8 relative z-10">
-              Let&apos;s build something extraordinary together.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 liquid-glass text-foreground hover:bg-white/10 transition-all duration-300 ease-in-out px-6 py-3 rounded-xl font-medium group relative z-10"
-            >
-              Get in Touch
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+          <p className="mb-5 font-medium">Additional capabilities used within projects</p>
+          <div className="flex flex-wrap gap-2">
+            {additionalCapabilities.map((capability) => (
+              <span
+                key={capability}
+                className="rounded-full border border-white/10 bg-background/50 px-4 py-2 text-sm text-muted-foreground"
+              >
+                {capability}
+              </span>
+            ))}
           </div>
         </motion.div>
       </section>
 
+      <AssessmentCta />
       <Footer />
     </main>
   );

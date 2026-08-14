@@ -115,13 +115,13 @@ export function WebGraphic() {
             style={{ animation: "codeScroll 10s linear infinite" }}
           >
             <span className="text-pink-400">import</span> React{" "}
-            <span className="text-pink-400">from</span> 'react';{"\n"}
+            <span className="text-pink-400">from</span> {"'react';"}{"\n"}
             <span className="text-pink-400">export function</span> App() {"{"}
             {"\n"}
             {"  "}
             <span className="text-pink-400">return</span> ({"\n"}
             {"    "}&lt;<span className="text-blue-400">div</span> className=
-            <span className="text-green-400">"app"</span>&gt;{"\n"}
+            <span className="text-green-400">{`"app"`}</span>&gt;{"\n"}
             {"      "}&lt;<span className="text-blue-400">Header</span> /&gt;
             {"\n"}
             {"      "}&lt;<span className="text-blue-400">Hero</span> /&gt;
