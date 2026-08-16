@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { company } from "@/lib/company";
 import { featuredIndustries } from "@/lib/industries";
-import { assessmentHref } from "@/lib/site";
+import { assessmentHref, blogHref } from "@/lib/site";
 import { services } from "@/lib/services";
 
 export function Footer() {
@@ -64,6 +64,7 @@ export function Footer() {
             <FooterLink href="/portfolio">Work</FooterLink>
             <FooterLink href="/about">About</FooterLink>
             <FooterLink href="/insights">Insights</FooterLink>
+            <FooterLink href={blogHref}>Blog</FooterLink>
             <FooterLink href="/contact">Contact</FooterLink>
             <FooterLink href="/resources/automation-assessment">
               Automation checklist

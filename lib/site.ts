@@ -1,5 +1,7 @@
 export const assessmentHref = "/contact?interest=technology-assessment#assessment-form";
 
+export const blogHref = "https://verexatech.blogspot.com/";
+
 export const primaryCta = "Book a Technology Assessment";
 
 export const secondaryCta = "See What We Automate";

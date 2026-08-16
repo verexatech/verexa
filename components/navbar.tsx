@@ -7,13 +7,14 @@ import { useEffect, useRef, useState } from "react";
 
 import { Logo } from "@/components/logo";
 import { featuredIndustries } from "@/lib/industries";
-import { assessmentHref } from "@/lib/site";
+import { assessmentHref, blogHref } from "@/lib/site";
 import { services } from "@/lib/services";
 
 const mainLinks = [
   { href: "/portfolio", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/insights", label: "Insights" },
+  { href: blogHref, label: "Blog" },
 ];
 
 export function Navbar() {
