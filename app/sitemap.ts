@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
-import { services } from "@/lib/services";
+import { serviceLocations } from "@/lib/service-locations";
+import { primaryServices, services } from "@/lib/services";
 import { industries } from "@/lib/industries";
 import { caseStudies } from "@/lib/case-studies";
 import { insights } from "@/lib/insights";
@@ -65,6 +66,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const serviceLocationRoutes = primaryServices.flatMap((service) =>
+    serviceLocations.map((location) => ({
+      url: `${baseUrl}/services/${service.slug}/${location.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    })),
+  );
+
   const industryRoutes = industries.map((industry) => ({
     url: `${baseUrl}/industries/${industry.slug}`,
     lastModified: new Date(),
@@ -89,6 +99,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...serviceRoutes,
+    ...serviceLocationRoutes,
     ...industryRoutes,
     ...caseStudyRoutes,
     ...insightRoutes,

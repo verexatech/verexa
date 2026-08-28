@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle2, MapPin } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -12,6 +12,7 @@ import {
   SupportGraphic,
   WebGraphic,
 } from "@/components/service-graphics";
+import { serviceLocations } from "@/lib/service-locations";
 import { services } from "@/lib/services";
 import { assessmentHref } from "@/lib/site";
 
@@ -52,7 +53,9 @@ export default async function ServicePage({
           <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-24">
             <div className="flex-1">
               <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                {service.primary ? "Primary service" : "Supporting capability"}
+                {service.primary
+                  ? "Primary service · Across the GTA"
+                  : "Supporting capability · Across the GTA"}
               </p>
               <h1 className="bg-linear-to-b from-foreground from-20% to-muted-foreground bg-clip-text text-5xl font-normal leading-[1.02] text-transparent sm:text-6xl lg:text-7xl">
                 {service.title}
@@ -210,6 +213,40 @@ export default async function ServicePage({
           </div>
         </Reveal>
       </section>
+
+      {service.primary && (
+        <section className="border-y border-white/5 bg-card/10 py-20 md:py-24">
+          <Reveal className="mx-auto max-w-7xl px-6">
+            <div className="mb-10 max-w-3xl">
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                GTA service areas
+              </p>
+              <h2 className="text-4xl font-normal sm:text-5xl">
+                {service.shortTitle} for businesses across the region.
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+                Explore locally focused examples and service information for
+                your city.
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              {serviceLocations.map((location) => (
+                <Link
+                  key={location.slug}
+                  href={`/services/${service.slug}/${location.slug}`}
+                  className="group flex min-h-24 flex-col justify-between rounded-2xl border border-white/8 bg-background/50 p-5 transition-colors hover:border-primary/35"
+                >
+                  <MapPin className="h-5 w-5 text-primary" />
+                  <span className="mt-5 flex items-center justify-between gap-2 font-medium">
+                    {location.name}
+                    <ChevronRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+      )}
 
       <AssessmentCta compact />
       <Footer />
